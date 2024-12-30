@@ -6,7 +6,7 @@
 	<div class="text-center">
 		<h1 class="text-4xl font-bold text-gray-900 mb-4">👋 Hi, I'm Xavier!</h1>
 	</div>
-	<div class="flex items-end sm:gap-8 lg:gap-10">
+	<div class="flex flex-col sm:flex-row items-center sm:items-end sm:gap-8 lg:gap-10">
 		<ProfileImage class="max-w-48 mb-8" />
 		<div>
 			<p class="text-lg text-gray-600 mb-8 align-text-bottom">

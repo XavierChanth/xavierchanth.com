@@ -7,7 +7,7 @@
 </script>
 
 <div class="max-w-6xl mx-auto px-4 py-12">
-	<div class="italic">
+	<div class="italic mb-2">
 		<p>Written by {data.author}</p>
 		<p>Posted on {data.date}</p>
 	</div>
