@@ -1,7 +1,6 @@
 <script>
 	import '../app.css';
 	let { children } = $props();
-export const prerender = true;
 </script>
 
 <main class="min-h-screen bg-gray-100 flex flex-col">
