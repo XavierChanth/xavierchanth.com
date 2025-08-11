@@ -36,7 +36,7 @@
 				</div>
         <!-- Mobile -->
 				<div class="md:hidden">
-					<button on:click={toggleMenu} class="text-gray-600 hover:text-gray-900 focus:outline-none">
+					<button onclick={toggleMenu} class="text-gray-600 hover:text-gray-900 focus:outline-none">
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							{#if isMenuOpen}
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -49,15 +49,15 @@
 			</div>
       {#if isMenuOpen}
         <div class="flex flex-col justify-items-center text-center gap-4 pb-4">
-          <a on:click={closeMenu} href="/" class="text-gray-600 hover:text-blue-500 flex-col-1">About</a>
+          <a onclick={closeMenu} href="/" class="text-gray-600 hover:text-blue-500 flex-col-1">About</a>
           <a
-            on:click={closeMenu}
+            onclick={closeMenu}
             href="https://github.com/xavierchanth"
             target="_blank"
             rel="noopener noreferrer"
             class="text-gray-600 hover:text-blue-500 flex-col-1"
           >Projects</a>
-        <a on:click={closeMenu} href="/posts" class="text-gray-600 hover:text-blue-500 flex-col-1">Posts</a>
+        <a onclick={closeMenu} href="/posts" class="text-gray-600 hover:text-blue-500 flex-col-1">Posts</a>
         </div>
       {/if}
 		</div>
