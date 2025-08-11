@@ -24,6 +24,13 @@
 
 <style lang="scss">
 	.post-body :global {
+    h1,h2,h3,h4,h5,h6 {
+			margin: 1rem 0;
+    }
+    p, ul, ol {
+			margin-bottom: 1rem;
+    }
+
 		h1 {
 			font-size: 2.25rem; /* 36px */
 			line-height: 2.5rem; /* 40px */
@@ -57,7 +64,6 @@
 
 		p {
 			size: 12rem;
-			margin-bottom: 0.5rem;
 		}
 
 		code {

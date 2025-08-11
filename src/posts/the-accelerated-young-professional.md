@@ -3,7 +3,7 @@ title: 'The Accelerated Young Professional'
 description: "One who leverages time into accelerated growth, allowing them to become highly effective at their craft much earlier than the norm."
 author: 'Xavier Chanthavong'
 date: '2025-08-10'
-published: false
+published: true
 ---
 
 ## **TLDR**
@@ -32,15 +32,15 @@ The accelerated young professional is one who searches for improvements which ad
 
 In addition to the basic skills and qualities that make you fit in your profession, I believe there are a certain set of skills that are required which allow a young professional, regardless of the field, to begin operating at a higher level of effectiveness earlier in their career. I do believe that there's more, but I've specifically refined my list based on a number of factors.
 
-**Personal experience:**
+#### Personal experience:
 
 Everything that I cover is something that I've experienced to be true. Maybe a statement is not true in all circumstances, but I do my best to cover what I believe to be the requirements for making it true. There may be some requirements which are trivial to me that I have overlooked, I would appreciate your input if I have missed something.
 
-**Common Opinion:**
+#### Common Opinion:
 
 Is this a common opinion? My goal with this article is to cover the things that I think are unique and different. If they are obvious statements, then they aren't going to bring value to the reader. That is, my list should be slightly controversial. It's not meant to cover the common individual's path to success, but rather indicate a path to accelerated growth.
 
-**Cohesion:**
+#### Cohesion:
 
 The qualities should be reproducible, in some capacity. It should create a framework which feels complete. Some qualities in this framework do interact, and I've covered the most common cases that I experience towards the end. Moreover, I think the cohesion of this framework is where the real value is. Individually, these skills and qualities are useful, but when used in combination they compound in value.
 
