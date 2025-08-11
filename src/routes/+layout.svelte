@@ -7,6 +7,9 @@
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
 	}
+  function closeMenu() {
+    isMenuOpen = false
+  }
 </script>
 
 <main class="min-h-screen bg-gray-100 flex flex-col">
@@ -46,14 +49,15 @@
 			</div>
       {#if isMenuOpen}
         <div class="flex flex-col justify-items-center text-center gap-4 pb-4">
-          <a href="/" class="text-gray-600 hover:text-blue-500 flex-col-1">About</a>
+          <a on:click={closeMenu} href="/" class="text-gray-600 hover:text-blue-500 flex-col-1">About</a>
           <a
+            on:click={closeMenu}
             href="https://github.com/xavierchanth"
             target="_blank"
             rel="noopener noreferrer"
             class="text-gray-600 hover:text-blue-500 flex-col-1"
           >Projects</a>
-        <a href="/posts" class="text-gray-600 hover:text-blue-500 flex-col-1">Posts</a>
+        <a on:click={closeMenu} href="/posts" class="text-gray-600 hover:text-blue-500 flex-col-1">Posts</a>
         </div>
       {/if}
 		</div>
