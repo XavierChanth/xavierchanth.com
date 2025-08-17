@@ -1,26 +1,26 @@
 /**
  * @param {string} path
- * @returns {string | undefined}
+ * @returns {string}
  */
-const slugFromPath = (/** @type {string} */ path) => {
-	return path.match(/([\w-]+)\.md/i)?.[1];
+const slugFromPath = (path) => {
+  return path.match(/([\w-]+)\.md/i)?.[1] ?? path /** @type {string} */;
 };
 
 /**
  * @returns {Promise<Md.ResolvedPost[]>}
  */
 const getPosts = async () => {
-	const posts = Object.entries(import.meta.glob('/src/posts/*.md')).map(
-		async ([path, resolver]) => {
-			const post = /** @type Md.Post */ (await resolver());
-			return {
-				component: post.default,
-				slug: slugFromPath(path),
-				...post.metadata
-			};
-		}
-	);
-	return await Promise.all(posts);
+  const posts = Object.entries(import.meta.glob('/src/posts/*.md')).map(
+    async ([path, resolver]) => {
+      const post = /** @type Md.Post */ (await resolver());
+      return {
+        component: post.default,
+        slug: slugFromPath(path),
+        ...post.metadata
+      };
+    }
+  );
+  return await Promise.all(posts);
 };
 
 /**
@@ -28,20 +28,20 @@ const getPosts = async () => {
  * @returns {Promise<Md.ResolvedPost>}
  */
 const getPost = async (slug) => {
-	const posts = Object.entries(import.meta.glob('/src/posts/*.md'))
-		.filter(([path, _]) => {
-			return slugFromPath(path) === slug;
-		})
-		.map(async ([path, resolver]) => {
-			const post = /** @type Md.Post */ (await resolver());
-			return {
-				component: post.default,
-				slug: slugFromPath(path),
-				...post.metadata
-			};
-		});
+  const posts = Object.entries(import.meta.glob('/src/posts/*.md'))
+    .filter(([path, _]) => {
+      return slugFromPath(path) === slug;
+    })
+    .map(async ([path, resolver]) => {
+      const post = /** @type Md.Post */ (await resolver());
+      return {
+        component: post.default,
+        slug: slugFromPath(path),
+        ...post.metadata
+      };
+    });
 
-	return posts[0];
+  return posts[0];
 };
 
 export { getPosts, getPost };

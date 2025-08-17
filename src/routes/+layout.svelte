@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+  import RssLink from "$lib/components/RssLink.svelte";
 	let { children } = $props();
 
 	let isMenuOpen = $state(false);
@@ -69,6 +70,7 @@
 	<footer class="bg-gray-800 text-white py-8">
 		<div class="max-w-6xl mx-auto px-4 text-center">
 			<p>&copy; 2025 Xavier Chanthavong. All rights reserved.</p>
+      <RssLink/>
 		</div>
 	</footer>
 </main>
