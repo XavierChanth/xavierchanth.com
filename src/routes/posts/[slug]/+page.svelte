@@ -24,12 +24,19 @@
 
 <style lang="scss">
 	.post-body :global {
-    h1,h2,h3,h4,h5,h6 {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
 			margin: 1rem 0;
-    }
-    p, ul, ol {
+		}
+		p,
+		ul,
+		ol {
 			margin-bottom: 1rem;
-    }
+		}
 
 		h1 {
 			font-size: 2.25rem; /* 36px */
@@ -66,19 +73,21 @@
 			size: 12rem;
 		}
 
-		code {
+		pre {
 			background-color: rgb(203 213 225 / var(--tw-bg-opacity, 1));
+			margin: 0.5rem 0;
+			padding: 0.5rem;
+		}
+
+		blockquote {
+			background-color: rgb(203 213 225 / var(--tw-bg-opacity, 0.5));
+			margin: 0.5rem 0;
+			padding: 0 0.5rem;
+			font-style: italic;
 		}
 
 		a {
 			color: rgb(59 130 246 / var(--tw-text-opacity, 1));
-		}
-
-		pre {
-			margin: 0.5rem 0;
-			code {
-				padding: 0.5rem;
-			}
 		}
 
 		ul {
