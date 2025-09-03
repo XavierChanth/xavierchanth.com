@@ -98,7 +98,7 @@ jupytext handle the translation for you.
 ```sh
 #!/usr/bin/env bash
 
-uv init "$1"
+uv init .
 uv add --dev ipykernel
 script_dir="$(dirname -- "$(readlink -f -- "$0")")"
 echo 'formats = "ipynb,py:percent"' >"$script_dir/jupytext.toml"
@@ -277,11 +277,11 @@ any javascript.
 ```sh
 #!/usr/bin/env bash
 
-uv init "$1"
+uv init .
 uv add --dev ipykernel marimo watchdog
 script_dir="$(dirname -- "$(readlink -f -- "$0")")"
 
-marimo_config = $(
+marimo_config=$(
 cat <<EOF
 [tool.marimo.save]
 format_on_save=true
@@ -294,7 +294,7 @@ pythonpath = ["./notebooks"]
 EOF
 )
 
-echo "$marimo_config" >"$script_dir/pyproject.toml"
+echo "$marimo_config" >>"$script_dir/pyproject.toml"
 ```
 
 \*Script not tested, but it *should* work as is. It's a recreation of the steps I
