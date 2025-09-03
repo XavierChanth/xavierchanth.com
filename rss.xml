@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-08-31T17:55:59.640Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-09-03T01:51:02.267Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
   &lt;p&gt;Apologies for the lack of syntax highlighting.&lt;br /&gt;
   I hope to add that in an update when I find some spare time.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -75,7 +75,7 @@ comments.&lt;/p&gt;
 jupytext handle the translation for you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
 
-uv init "$1"
+uv init .
 uv add --dev ipykernel
 script_dir="$(dirname -- "$(readlink -f -- "$0")")"
 echo 'formats = "ipynb,py:percent"' &amp;gt;"$script_dir/jupytext.toml"
@@ -219,11 +219,11 @@ any javascript.&lt;/p&gt;
 &lt;h4 id="setupaproject"&gt;Setup a project&lt;/h4&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
 
-uv init "$1"
+uv init .
 uv add --dev ipykernel marimo watchdog
 script_dir="$(dirname -- "$(readlink -f -- "$0")")"
 
-marimo_config = $(
+marimo_config=$(
 cat &amp;lt;&amp;lt;EOF
 [tool.marimo.save]
 format_on_save=true
@@ -236,7 +236,7 @@ pythonpath = ["./notebooks"]
 EOF
 )
 
-echo "$marimo_config" &amp;gt;"$script_dir/pyproject.toml"
+echo "$marimo_config" &amp;gt;&amp;gt;"$script_dir/pyproject.toml"
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;*Script not tested, but it &lt;em&gt;should&lt;/em&gt; work as is. It's a recreation of the steps I
 took to create my setup.&lt;/p&gt;

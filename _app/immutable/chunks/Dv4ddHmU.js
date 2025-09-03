@@ -1,4 +1,4 @@
-import"./DsnmJJEf.js";import"./Cs0UCCHV.js";import{a6 as q,h as v,a as w,P as M,a7 as N,k as _,W as $,Y as A,$ as S,Z as E,G as I,s as F,F as O,L as m,Q as C,a8 as t,a9 as R,R as P,aa as o,ab as p,S as D}from"./MK_1jcyn.js";function i(g,h,l=!1,c=!1,d=!1){var u=g,e="";q(()=>{var r=M;if(e===(e=h()??"")){v&&w();return}if(r.nodes_start!==null&&(N(r.nodes_start,r.nodes_end),r.nodes_start=r.nodes_end=null),e!==""){if(v){_.data;for(var a=w(),k=a;a!==null&&(a.nodeType!==$||a.data!=="");)k=a,a=A(a);if(a===null)throw S(),E;I(_,k),u=F(a);return}var n=e+"";l?n=`<svg>${n}</svg>`:c&&(n=`<math>${n}</math>`);var s=O(n);if((l||c)&&(s=m(s)),I(m(s),s.lastChild),l||c)for(;m(s);)u.before(m(s));else u.before(s)}})}const Q={title:"Python Notebooks with uv and Neovim",description:"Still not perfect, but it's getting better.",author:"Xavier Chanthavong",date:"2025-08-31",published:!0},{title:L,description:W,author:H,date:J,published:X}=Q;var Y=C(`<blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
+import"./DsnmJJEf.js";import"./Cs0UCCHV.js";import{a6 as q,h as v,a as w,P as M,a7 as N,k as _,W as A,Y as S,$,Z as E,G as I,s as F,F as O,L as m,Q as C,a8 as t,a9 as R,R as P,aa as o,ab as p,S as D}from"./MK_1jcyn.js";function i(g,h,l=!1,c=!1,d=!1){var u=g,e="";q(()=>{var r=M;if(e===(e=h()??"")){v&&w();return}if(r.nodes_start!==null&&(N(r.nodes_start,r.nodes_end),r.nodes_start=r.nodes_end=null),e!==""){if(v){_.data;for(var a=w(),k=a;a!==null&&(a.nodeType!==A||a.data!=="");)k=a,a=S(a);if(a===null)throw $(),E;I(_,k),u=F(a);return}var n=e+"";l?n=`<svg>${n}</svg>`:c&&(n=`<math>${n}</math>`);var s=O(n);if((l||c)&&(s=m(s)),I(m(s),s.lastChild),l||c)for(;m(s);)u.before(m(s));else u.before(s)}})}const Q={title:"Python Notebooks with uv and Neovim",description:"Still not perfect, but it's getting better.",author:"Xavier Chanthavong",date:"2025-08-31",published:!0},{title:L,description:W,author:H,date:J,published:X}=Q;var Y=C(`<blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
 Python notebooks. For reference, my background is in Data Science, and
 while my day job doesn’t really involve much of the work, I really enjoy
 jumping in a python notebook from time to time to do some analysis work. Every
@@ -73,7 +73,7 @@ AI slop.</p> <p>Because of this fact, my primary goal going forward will be to f
 way to reload jupyter on file save. I will consider Marimo for the data
 visualization dashboard use-case though.</p>`,1);function Z(g){var h=Y(),l=t(R(h),38),c=o(l);i(c,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv init <span class="token string">"<span class="token variable">$1</span>"</span>
+uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
 echo 'formats = "</span>ipynb,py:percent<span class="token string">"' >"</span><span class="token variable">$script_dir</span>/jupytext.toml"</code>`),p(l);var d=t(l,4),u=o(d);i(u,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
@@ -156,11 +156,11 @@ def _<span class="token punctuation">(</span><span class="token punctuation">)</
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token builtin class-name">:</span>
     app.run<span class="token punctuation">(</span><span class="token punctuation">)</span></code>`),p(f);var b=t(f,14),x=o(b);i(x,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv init <span class="token string">"<span class="token variable">$1</span>"</span>
+uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel marimo watchdog
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
 
-marimo_config = <span class="token variable"><span class="token variable">$(</span>
+marimo_config=<span class="token variable"><span class="token variable">$(</span>
 <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF
 [tool.marimo.save]
 format_on_save=true
@@ -173,5 +173,5 @@ pythonpath = ["./notebooks"]
 EOF</span>
 <span class="token variable">)</span></span>
 
-echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code>`),p(b);var y=t(b,6),T=o(y);i(T,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
+echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >>"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code>`),p(b);var y=t(b,6),T=o(y);i(T,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 uv run marimo edit notebooks <span class="token parameter variable">--watch</span></code>`),p(y),D(8),P(g,h)}export{Z as default,Q as metadata};

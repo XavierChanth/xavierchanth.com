@@ -7,22 +7,22 @@
 		
 		<link href="../_app/immutable/assets/0.BuC7zabh.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/4.Cshn1bzU.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.DbNhQdjK.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/EtHyjz6f.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.DaBpRTV-.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/8CnReza4.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/Bnde7R3c.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/MK_1jcyn.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/BOIFE3Wm.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/DNWtRCTQ.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/BNtOuXG_.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/D0iwhpLH.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.DSOb-02P.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.B5TEIMaO.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/D9Z9MdNV.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/DsnmJJEf.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/IAeKJ3ZZ.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.COmrNZxy.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/Cs0UCCHV.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/4.CQNKcfyn.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/BIfAiKAF.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.DbK7pHN1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CasqNh-_.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents"><!--[--><!--[--><!----><main class="min-h-screen bg-gray-100 flex flex-col"><nav class="bg-white shadow-lg sticky top-0"><div class="max-w-6xl mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="text-xl font-bold text-gray-800"><a href="/">XavierChanth</a></div> <div class="hidden md:flex space-x-4"><a href="/" class="text-gray-600 hover:text-gray-900">About</a> <a href="https://github.com/xavierchanth" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">Projects</a> <a href="/posts" class="text-gray-600 hover:text-gray-900">Posts</a></div> <div class="md:hidden"><button class="text-gray-600 hover:text-gray-900 focus:outline-none"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><!--[!--><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path><!--]--></svg></button></div></div> <!--[!--><!--]--></div></nav> <div class="flex-grow"><!----><div class="max-w-6xl mx-auto px-4 py-12"><div class="italic mb-2"><p>Written by Xavier Chanthavong</p> <p>Posted on 2025-08-31</p></div> <div class="text-center mb-8"><h1 class="text-4xl mb-4">Python Notebooks with uv and Neovim</h1> <p>Still not perfect, but it's getting better.</p></div> <div class="post-body max-w-4xl mx-auto svelte-xyu1dh"><blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
@@ -66,7 +66,7 @@ a single comment: <code># %%</code>. You can also write your markdown blocks in 
 comments.</p> <p>In practice, this means you can edit and version your python files, letting
 jupytext handle the translation for you.</p> <pre class="language-sh"><!----><code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv init <span class="token string">"<span class="token variable">$1</span>"</span>
+uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
 echo 'formats = "</span>ipynb,py:percent<span class="token string">"' >"</span><span class="token variable">$script_dir</span>/jupytext.toml"</code><!----></pre> <h3>Run Script</h3> <pre class="language-sh"><!----><code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
@@ -174,11 +174,11 @@ ones where I want to spike something quickly and I want it to be interactive.</p
 a d3-like experience for the consumer of your notebook without having to write
 any javascript.</p> <h3>Marimo Scripts</h3> <h4>Setup a project</h4> <pre class="language-sh"><!----><code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv init <span class="token string">"<span class="token variable">$1</span>"</span>
+uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel marimo watchdog
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
 
-marimo_config = <span class="token variable"><span class="token variable">$(</span>
+marimo_config=<span class="token variable"><span class="token variable">$(</span>
 <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF
 [tool.marimo.save]
 format_on_save=true
@@ -191,7 +191,7 @@ pythonpath = ["./notebooks"]
 EOF</span>
 <span class="token variable">)</span></span>
 
-echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code><!----></pre> <p>*Script not tested, but it <em>should</em> work as is. It’s a recreation of the steps I
+echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >>"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code><!----></pre> <p>*Script not tested, but it <em>should</em> work as is. It’s a recreation of the steps I
 took to create my setup.</p> <h4>Run Server</h4> <pre class="language-sh"><!----><code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 uv run marimo edit notebooks <span class="token parameter variable">--watch</span></code><!----></pre> <h2>Conclusions</h2> <p>I think I’ll jump between Jupytext and Marimo based on what I’m trying to do,
 both are decent candidates for a good setup. I still have some research to do
@@ -205,15 +205,15 @@ visualization dashboard use-case though.</p><!----></div></div><!----><!----></d
 			
 			<script>
 				{
-					__sveltekit_yxot5l = {
+					__sveltekit_1rod3ec = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../_app/immutable/entry/start.DbNhQdjK.js"),
-						import("../_app/immutable/entry/app.DSOb-02P.js")
+						import("../_app/immutable/entry/start.DaBpRTV-.js"),
+						import("../_app/immutable/entry/app.B5TEIMaO.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],
