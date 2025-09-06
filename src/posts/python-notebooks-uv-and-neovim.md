@@ -83,6 +83,9 @@ worth trying. If you don't mind manually refreshing the browser, then jupyter
 will pickup your changes, but I have a feeling that the back and forth could be
 extremely annoying if you're trying to tweak something.
 
+Update(2025-09-05): jupyter does support auto reloading the notebook through
+it's collaboration mode. Scripts have been updated to reflect that.
+
 ### Setup Script
 
 This script sets up a new uv project and installs an ipython kernel to the venv.
@@ -109,7 +112,8 @@ echo 'formats = "ipynb,py:percent"' >"$script_dir/jupytext.toml"
 ```sh
 #!/usr/bin/env bash
 
-uv run --with jupyter --with jupytext jupyter lab
+uv run --with jupyter --with jupytext --with jupyter_collaboration \
+  jupyter lab --collaborative
 ```
 
 ## Marimo
@@ -322,3 +326,6 @@ AI slop.
 Because of this fact, my primary goal going forward will be to find a reasonable
 way to reload jupyter on file save. I will consider Marimo for the data
 visualization dashboard use-case though.
+
+Update(2025-09-05): I have found a way to reload with Jupyter. It will be my
+preferred option unless I really need something out of Marimo.
