@@ -23,10 +23,9 @@
 <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">
 	<div class="text-center space-y-4">
 		<p class="text-xs uppercase tracking-[0.35em] text-slate-500">Writing</p>
-		<h1 class="text-4xl sm:text-5xl">Notes from the lab</h1>
+		<h1 class="text-4xl sm:text-5xl">My Posts</h1>
 		<p class="mx-auto max-w-2xl text-lg text-slate-600">
-			Deep dives, practical notes, and discoveries along the way.<br />New posts show up as soon as
-			they ship.
+			Deep dives, practical notes, thought leadership, and everything in-between.
 		</p>
 	</div>
 	<ul class="mt-10 space-y-6">
