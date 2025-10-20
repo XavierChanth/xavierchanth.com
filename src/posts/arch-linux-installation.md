@@ -21,18 +21,9 @@ There were three main sources I referenced when coming up with my own setup:
 If you want to see why I run Arch, see this
 [blog post](./settling-into-arch-linux).
 
-## Table of Contents
-
-- [Preparation steps](#preparation-steps)
-- [Drive partitioning](#drive-partitioning)
-- [Basic Arch installation](#basic-arch-installation)
-- [Setting up my per-system settings](#setting-up-per-system-settings)
-- [Setting up disk encryption](#setting-up-disk-encryption)
-- [Setting up LVM](#setting-up-lvm)
-- [Creating unified kernel images](#creating-unified-kernel-images)
-- [Signing UKIs](#signing-ukis)
-- [Setting up secure boot](#setting-up-secure-boot)
-- [Storing the LUKS key in the TPM](#storing-the-luks-key-in-the-tpm)
+Warning: I did not do this in one sitting, so there may be some missing steps.
+Particularly around systemd-ukify setup. Treat this as a suggestion for how
+to approach secure boot installation, not as a step by step guide.
 
 ## Preparation Steps
 
