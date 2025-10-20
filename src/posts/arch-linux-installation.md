@@ -18,9 +18,6 @@ There were three main sources I referenced when coming up with my own setup:
 - [OdinsPlasmaRifle's LVM on LUKS guide](https://gist.github.com/OdinsPlasmaRifle/e16700b83624ff44316f87d9cdbb5c94)
 - [Jpetazzo's guide on Secure Boot](https://jpetazzo.github.io/2024/02/23/archlinux-luks-tpm-secureboot-install/)
 
-If you want to see why I run Arch, see this
-[blog post](./settling-into-arch-linux).
-
 Warning: I did not do this in one sitting, so there may be some missing steps.
 Particularly around systemd-ukify setup. Treat this as a suggestion for how
 to approach secure boot installation, not as a step by step guide.
@@ -338,7 +335,7 @@ Edit the hooks in `/etc/mkinitcpio.conf`:
 HOOKS=(base systemd keyboard autodetect microcode modconf kms sd-vconsole block lvm2 sd-encrypt filesystems fsck)
 ```
 
-You will notice that keyboard is ahead of autodetect, this ensure the keyboard
+You will notice that keyboard is ahead of autodetect, this ensures the keyboard
 is loaded in case you don't set up the TPM to decrypt the LUKS partition. That
 way you'll be able to type your password manually without any issues.
 
@@ -481,7 +478,7 @@ systemd-cryptenroll --recovery-key /dev/nvme0n1p2
 Generate a key in the TPM and add it to a key slot in the LUKS device:
 
 ```sh
-systemd-cryptenroll --temp2-device=auto /dev/nvme0n1p2 --tpm2-pcrs=7
+systemd-cryptenroll --tpm2-device=auto /dev/nvme0n1p2 --tpm2-pcrs=7
 ```
 
 You can change the tpm pcrs setting if you like, see
