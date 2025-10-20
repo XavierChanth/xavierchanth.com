@@ -7,22 +7,22 @@
 		
 		<link href="../_app/immutable/assets/0.BuC7zabh.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/4.Cshn1bzU.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.DaBpRTV-.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/8CnReza4.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Bnde7R3c.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/MK_1jcyn.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/BOIFE3Wm.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/DNWtRCTQ.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/BNtOuXG_.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.DyjqxgeI.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CXLqIzFp.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/rdb9ZvKr.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Cihz2tA7.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/lawL7Hqn.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DJzajdL3.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/9pBTwwiJ.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/D0iwhpLH.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.B5TEIMaO.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.CkwD5s1K.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/D9Z9MdNV.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/DsnmJJEf.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/IAeKJ3ZZ.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.COmrNZxy.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Cs0UCCHV.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/4.DbK7pHN1.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/CasqNh-_.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/B6td6wPo.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.CZ5ZcUIl.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Bm4CXk6a.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.L6O24636.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CDjgT4v0.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents"><!--[--><!--[--><!----><main class="min-h-screen bg-gray-100 flex flex-col"><nav class="bg-white shadow-lg sticky top-0"><div class="max-w-6xl mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="text-xl font-bold text-gray-800"><a href="/">XavierChanth</a></div> <div class="hidden md:flex space-x-4"><a href="/" class="text-gray-600 hover:text-gray-900">About</a> <a href="https://github.com/xavierchanth" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">Projects</a> <a href="/posts" class="text-gray-600 hover:text-gray-900">Posts</a></div> <div class="md:hidden"><button class="text-gray-600 hover:text-gray-900 focus:outline-none"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><!--[!--><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path><!--]--></svg></button></div></div> <!--[!--><!--]--></div></nav> <div class="flex-grow"><!----><div class="max-w-6xl mx-auto px-4 py-12"><div class="italic mb-2"><p>Written by Xavier Chanthavong</p> <p>Posted on 2025-08-31</p></div> <div class="text-center mb-8"><h1 class="text-4xl mb-4">Python Notebooks with uv and Neovim</h1> <p>Still not perfect, but it's getting better.</p></div> <div class="post-body max-w-4xl mx-auto svelte-xyu1dh"><blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
@@ -58,7 +58,8 @@ with this setup is that jupyter doesn’t support watching the filesystem. I hav
 searched around for ways to do this online, but didn’t see any elegant solutions
 worth trying. If you don’t mind manually refreshing the browser, then jupyter
 will pickup your changes, but I have a feeling that the back and forth could be
-extremely annoying if you’re trying to tweak something.</p> <h3>Setup Script</h3> <p>This script sets up a new uv project and installs an ipython kernel to the venv.
+extremely annoying if you’re trying to tweak something.</p> <p>Update(2025-09-05): jupyter does support auto reloading the notebook through
+it’s collaboration mode. Scripts have been updated to reflect that.</p> <h3>Setup Script</h3> <p>This script sets up a new uv project and installs an ipython kernel to the venv.
 It then adds the necessary configuration for jupytext to automatically pair a
 python file with every notebook. There are various formats, but the percent
 format is most popular. This format allows you to separate your code blocks with
@@ -71,7 +72,8 @@ uv <span class="token function">add</span> <span class="token parameter variable
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
 echo 'formats = "</span>ipynb,py:percent<span class="token string">"' >"</span><span class="token variable">$script_dir</span>/jupytext.toml"</code><!----></pre> <h3>Run Script</h3> <pre class="language-sh"><!----><code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv run <span class="token parameter variable">--with</span> jupyter <span class="token parameter variable">--with</span> jupytext jupyter lab</code><!----></pre> <h2>Marimo</h2> <p>One evening earlier this week, I was doing some more browsing for a way of
+uv run <span class="token parameter variable">--with</span> jupyter <span class="token parameter variable">--with</span> jupytext <span class="token parameter variable">--with</span> jupyter_collaboration <span class="token punctuation"></span>
+  jupyter lab <span class="token parameter variable">--collaborative</span></code><!----></pre> <h2>Marimo</h2> <p>One evening earlier this week, I was doing some more browsing for a way of
 reloading jupytext automatically. That’s when I stumbled across two tools:
 marimo and europie. Europie seems interesting, it is a tui based tool. Even
 though it seems use vim-like controls, I’m not interested in learning another
@@ -201,19 +203,20 @@ is an ai prompt when I tried to run <code>uv run marimo new test-notebook.py</co
 notebook it created was still at a temporary path, and prepopulated with random
 AI slop.</p> <p>Because of this fact, my primary goal going forward will be to find a reasonable
 way to reload jupyter on file save. I will consider Marimo for the data
-visualization dashboard use-case though.</p><!----></div></div><!----><!----></div> <footer class="bg-gray-800 text-white py-8"><div class="max-w-6xl mx-auto px-4 text-center"><p>© 2025 Xavier Chanthavong. All rights reserved.</p> <a href="/rss.xml" download="xavierchanth-rss.xml" class="feed svelte-t8o9ok">subscribe to future posts</a><!----></div></footer></main><!----><!--]--> <!--[!--><!--]--><!--]-->
+visualization dashboard use-case though.</p> <p>Update(2025-09-05): I have found a way to reload with Jupyter. It will be my
+preferred option unless I really need something out of Marimo.</p><!----></div></div><!----><!----></div> <footer class="bg-gray-800 text-white py-8"><div class="max-w-6xl mx-auto px-4 text-center"><p>© 2025 Xavier Chanthavong. All rights reserved.</p> <a href="/rss.xml" download="xavierchanth-rss.xml" class="feed svelte-t8o9ok">subscribe to future posts</a><!----></div></footer></main><!----><!--]--> <!--[!--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_1rod3ec = {
+					__sveltekit_1ecbg1i = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../_app/immutable/entry/start.DaBpRTV-.js"),
-						import("../_app/immutable/entry/app.B5TEIMaO.js")
+						import("../_app/immutable/entry/start.DyjqxgeI.js"),
+						import("../_app/immutable/entry/app.CkwD5s1K.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],

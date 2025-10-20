@@ -1,4 +1,4 @@
-import"./DsnmJJEf.js";import"./Cs0UCCHV.js";import{a6 as q,h as v,a as w,P as M,a7 as N,k as _,W as A,Y as S,$,Z as E,G as I,s as F,F as O,L as m,Q as C,a8 as t,a9 as R,R as P,aa as o,ab as p,S as D}from"./MK_1jcyn.js";function i(g,h,l=!1,c=!1,d=!1){var u=g,e="";q(()=>{var r=M;if(e===(e=h()??"")){v&&w();return}if(r.nodes_start!==null&&(N(r.nodes_start,r.nodes_end),r.nodes_start=r.nodes_end=null),e!==""){if(v){_.data;for(var a=w(),k=a;a!==null&&(a.nodeType!==A||a.data!=="");)k=a,a=S(a);if(a===null)throw $(),E;I(_,k),u=F(a);return}var n=e+"";l?n=`<svg>${n}</svg>`:c&&(n=`<math>${n}</math>`);var s=O(n);if((l||c)&&(s=m(s)),I(m(s),s.lastChild),l||c)for(;m(s);)u.before(m(s));else u.before(s)}})}const Q={title:"Python Notebooks with uv and Neovim",description:"Still not perfect, but it's getting better.",author:"Xavier Chanthavong",date:"2025-08-31",published:!0},{title:L,description:W,author:H,date:J,published:X}=Q;var Y=C(`<blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
+import"./DsnmJJEf.js";import"./Bm4CXk6a.js";import{Q as I,R as a,S as _,T as j,V as n,W as s,X as x}from"./Cihz2tA7.js";import{h as e}from"./Cc-Jo9MS.js";const T={title:"Python Notebooks with uv and Neovim",description:"Still not perfect, but it's getting better.",author:"Xavier Chanthavong",date:"2025-08-31",published:!0},{title:F,description:$,author:E,date:C,published:O}=T;var q=I(`<blockquote><p>Apologies for the lack of syntax highlighting.<br/> I hope to add that in an update when I find some spare time.</p></blockquote> <p>Ever since switching to neovim, I’ve had a sore spot when it comes to using
 Python notebooks. For reference, my background is in Data Science, and
 while my day job doesn’t really involve much of the work, I really enjoy
 jumping in a python notebook from time to time to do some analysis work. Every
@@ -31,7 +31,8 @@ with this setup is that jupyter doesn’t support watching the filesystem. I hav
 searched around for ways to do this online, but didn’t see any elegant solutions
 worth trying. If you don’t mind manually refreshing the browser, then jupyter
 will pickup your changes, but I have a feeling that the back and forth could be
-extremely annoying if you’re trying to tweak something.</p> <h3>Setup Script</h3> <p>This script sets up a new uv project and installs an ipython kernel to the venv.
+extremely annoying if you’re trying to tweak something.</p> <p>Update(2025-09-05): jupyter does support auto reloading the notebook through
+it’s collaboration mode. Scripts have been updated to reflect that.</p> <h3>Setup Script</h3> <p>This script sets up a new uv project and installs an ipython kernel to the venv.
 It then adds the necessary configuration for jupytext to automatically pair a
 python file with every notebook. There are various formats, but the percent
 format is most popular. This format allows you to separate your code blocks with
@@ -71,14 +72,16 @@ is an ai prompt when I tried to run <code>uv run marimo new test-notebook.py</co
 notebook it created was still at a temporary path, and prepopulated with random
 AI slop.</p> <p>Because of this fact, my primary goal going forward will be to find a reasonable
 way to reload jupyter on file save. I will consider Marimo for the data
-visualization dashboard use-case though.</p>`,1);function Z(g){var h=Y(),l=t(R(h),38),c=o(l);i(c,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
+visualization dashboard use-case though.</p> <p>Update(2025-09-05): I have found a way to reload with Jupyter. It will be my
+preferred option unless I really need something out of Marimo.</p>`,1);function P(d){var u=q(),t=a(_(u),40),k=n(t);e(k,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
 uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel
 <span class="token assign-left variable">script_dir</span><span class="token operator">=</span><span class="token string">"$(dirname -- "<span class="token variable"><span class="token variable">$(</span>readlink <span class="token parameter variable">-f</span> -- <span class="token string">"<span class="token variable">$0</span>"</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span><span class="token string">"
-echo 'formats = "</span>ipynb,py:percent<span class="token string">"' >"</span><span class="token variable">$script_dir</span>/jupytext.toml"</code>`),p(l);var d=t(l,4),u=o(d);i(u,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
+echo 'formats = "</span>ipynb,py:percent<span class="token string">"' >"</span><span class="token variable">$script_dir</span>/jupytext.toml"</code>`),s(t);var o=a(t,4),m=n(o);e(m,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
-uv run <span class="token parameter variable">--with</span> jupyter <span class="token parameter variable">--with</span> jupytext jupyter lab</code>`),p(d);var e=t(d,14),r=o(e);i(r,()=>`<code class="language-json"><span class="token punctuation">&#123;</span>
+uv run <span class="token parameter variable">--with</span> jupyter <span class="token parameter variable">--with</span> jupytext <span class="token parameter variable">--with</span> jupyter_collaboration <span class="token punctuation"></span>
+  jupyter lab <span class="token parameter variable">--collaborative</span></code>`),s(o);var p=a(o,14),g=n(p);e(g,()=>`<code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"Marimo cell"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
     <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"mcell"</span><span class="token punctuation">,</span>
     <span class="token property">"body"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -89,7 +92,7 @@ uv run <span class="token parameter variable">--with</span> jupyter <span class=
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Create a cell in Marimo"</span>
   <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span></code>`),p(e);var a=t(e,8),k=o(a);i(k,()=>`<code class="language-python"><span class="token keyword">import</span> marimo
+<span class="token punctuation">&#125;</span></code>`),s(p);var i=a(p,8),b=n(i);e(b,()=>`<code class="language-python"><span class="token keyword">import</span> marimo
 
 __generated_with <span class="token operator">=</span> <span class="token string">"0.15.2"</span>
 app <span class="token operator">=</span> marimo<span class="token punctuation">.</span>App<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token string">"medium"</span><span class="token punctuation">)</span>
@@ -107,7 +110,7 @@ app <span class="token operator">=</span> marimo<span class="token punctuation">
 
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span></code>`),p(a);var n=t(a,16),s=o(n);i(s,()=>'<code class="language-sh">uv run marimo new <span class="token string">"write a fibonacci visual"</span></code>'),p(n);var f=t(n,4),j=o(f);i(j,()=>`<code class="language-sh"><span class="token comment"># /// script</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span></code>`),s(i);var l=a(i,16),f=n(l);e(f,()=>'<code class="language-sh">uv run marimo new <span class="token string">"write a fibonacci visual"</span></code>'),s(l);var r=a(l,4),y=n(r);e(y,()=>`<code class="language-sh"><span class="token comment"># /// script</span>
 <span class="token comment"># [tool.marimo.runtime]</span>
 <span class="token comment"># auto_instantiate = false</span>
 <span class="token comment"># ///</span>
@@ -154,7 +157,7 @@ def _<span class="token punctuation">(</span><span class="token punctuation">)</
     <span class="token builtin class-name">return</span>
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token builtin class-name">:</span>
-    app.run<span class="token punctuation">(</span><span class="token punctuation">)</span></code>`),p(f);var b=t(f,14),x=o(b);i(x,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
+    app.run<span class="token punctuation">(</span><span class="token punctuation">)</span></code>`),s(r);var c=a(r,14),v=n(c);e(v,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
 uv init <span class="token builtin class-name">.</span>
 uv <span class="token function">add</span> <span class="token parameter variable">--dev</span> ipykernel marimo watchdog
@@ -173,5 +176,5 @@ pythonpath = ["./notebooks"]
 EOF</span>
 <span class="token variable">)</span></span>
 
-echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >>"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code>`),p(b);var y=t(b,6),T=o(y);i(T,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
-uv run marimo edit notebooks <span class="token parameter variable">--watch</span></code>`),p(y),D(8),P(g,h)}export{Z as default,Q as metadata};
+echo "</span><span class="token variable">$marimo_config</span><span class="token string">" >>"</span><span class="token variable">$script_dir</span>/pyproject.toml"</code>`),s(c);var h=a(c,6),w=n(h);e(w,()=>`<code class="language-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
+uv run marimo edit notebooks <span class="token parameter variable">--watch</span></code>`),s(h),x(10),j(d,u)}export{P as default,T as metadata};

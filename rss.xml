@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-09-03T01:51:02.267Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T00:21:54.255Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
   &lt;p&gt;Apologies for the lack of syntax highlighting.&lt;br /&gt;
   I hope to add that in an update when I find some spare time.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -64,6 +64,8 @@ searched around for ways to do this online, but didn't see any elegant solutions
 worth trying. If you don't mind manually refreshing the browser, then jupyter
 will pickup your changes, but I have a feeling that the back and forth could be
 extremely annoying if you're trying to tweak something.&lt;/p&gt;
+&lt;p&gt;Update(2025-09-05): jupyter does support auto reloading the notebook through
+it's collaboration mode. Scripts have been updated to reflect that.&lt;/p&gt;
 &lt;h3 id="setupscript"&gt;Setup Script&lt;/h3&gt;
 &lt;p&gt;This script sets up a new uv project and installs an ipython kernel to the venv.
 It then adds the necessary configuration for jupytext to automatically pair a
@@ -83,7 +85,8 @@ echo 'formats = "ipynb,py:percent"' &amp;gt;"$script_dir/jupytext.toml"
 &lt;h3 id="runscript"&gt;Run Script&lt;/h3&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
 
-uv run --with jupyter --with jupytext jupyter lab
+uv run --with jupyter --with jupytext --with jupyter_collaboration \
+  jupyter lab --collaborative
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="marimo"&gt;Marimo&lt;/h2&gt;
 &lt;p&gt;One evening earlier this week, I was doing some more browsing for a way of
@@ -255,7 +258,9 @@ notebook it created was still at a temporary path, and prepopulated with random
 AI slop.&lt;/p&gt;
 &lt;p&gt;Because of this fact, my primary goal going forward will be to find a reasonable
 way to reload jupyter on file save. I will consider Marimo for the data
-visualization dashboard use-case though.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/the-accelerated-young-professional</guid><title>The Accelerated Young Professional</title><link href="https://xavierchanth.com/posts/the-accelerated-young-professional"/><description>One who leverages time into accelerated growth, allowing them to become highly effective at their craft much earlier than the norm.</description><pubDate>2025-08-10</pubDate><content:encoded>&lt;h2 id="tldr"&gt;&lt;strong&gt;TLDR&lt;/strong&gt;&lt;/h2&gt;
+visualization dashboard use-case though.&lt;/p&gt;
+&lt;p&gt;Update(2025-09-05): I have found a way to reload with Jupyter. It will be my
+preferred option unless I really need something out of Marimo.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/the-accelerated-young-professional</guid><title>The Accelerated Young Professional</title><link href="https://xavierchanth.com/posts/the-accelerated-young-professional"/><description>One who leverages time into accelerated growth, allowing them to become highly effective at their craft much earlier than the norm.</description><pubDate>2025-08-10</pubDate><content:encoded>&lt;h2 id="tldr"&gt;&lt;strong&gt;TLDR&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;An accelerated young professional is a young professional who is capable of rapid growth and adaptability. This framework is built upon my own experiences to create a systematic, reproducible way of becoming one. The five main qualities are as follows:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Efficiency&lt;/strong&gt;: Set goals, work hard and meet them.  &lt;/li&gt;
