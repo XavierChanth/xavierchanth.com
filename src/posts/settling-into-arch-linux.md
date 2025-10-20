@@ -3,7 +3,7 @@ title: 'Settling into Arch Linux'
 description: "My history with computers and developer tooling."
 author: 'Xavier Chanthavong'
 date: '2025-10-19'
-published: false
+published: true
 ---
 
 ## My Early Days
