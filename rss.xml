@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T13:03:30.582Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/arch-linux-installation</guid><title>Arch Linux Installation</title><link href="https://xavierchanth.com/posts/arch-linux-installation"/><description>Every manual step I do to install Arch Linux.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T13:14:30.727Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/arch-linux-installation</guid><title>Arch Linux Installation</title><link href="https://xavierchanth.com/posts/arch-linux-installation"/><description>Every manual step I do to install Arch Linux.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
 &lt;p&gt;This is how I prefer to install Arch Linux. It's important to be mindful
 of your system's security, this isn't 100% foolproof, but I wouldn't be
 comfortable travelling with an Arch installation without this.&lt;/p&gt;
@@ -8,8 +8,6 @@ comfortable travelling with an Arch installation without this.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://gist.github.com/OdinsPlasmaRifle/e16700b83624ff44316f87d9cdbb5c94"&gt;OdinsPlasmaRifle's LVM on LUKS guide&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://jpetazzo.github.io/2024/02/23/archlinux-luks-tpm-secureboot-install/"&gt;Jpetazzo's guide on Secure Boot&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If you want to see why I run Arch, see this
-&lt;a href="./settling-into-arch-linux"&gt;blog post&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Warning: I did not do this in one sitting, so there may be some missing steps.
 Particularly around systemd-ukify setup. Treat this as a suggestion for how
 to approach secure boot installation, not as a step by step guide.&lt;/p&gt;
