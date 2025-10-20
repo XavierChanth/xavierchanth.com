@@ -1,4 +1,402 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T00:21:54.255Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T00:28:47.075Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/arch-linux-installation</guid><title>Arch Linux Installation</title><link href="https://xavierchanth.com/posts/arch-linux-installation"/><description>Every manual step I do to install Arch Linux.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
+&lt;p&gt;This is how I prefer to install Arch Linux. It's important to be mindful
+of your system's security, this isn't 100% foolproof, but I wouldn't be
+comfortable travelling with an Arch installation without this.&lt;/p&gt;
+&lt;p&gt;There were three main sources I referenced when coming up with my own setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/"&gt;The Arch Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/OdinsPlasmaRifle/e16700b83624ff44316f87d9cdbb5c94"&gt;OdinsPlasmaRifle's LVM on LUKS guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://jpetazzo.github.io/2024/02/23/archlinux-luks-tpm-secureboot-install/"&gt;Jpetazzo's guide on Secure Boot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to see why I run Arch, see this
+&lt;a href="./settling-into-arch-linux"&gt;blog post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Warning: I did not do this in one sitting, so there may be some missing steps.
+Particularly around systemd-ukify setup. Treat this as a suggestion for how
+to approach secure boot installation, not as a step by step guide.&lt;/p&gt;
+&lt;h2 id="preparationsteps"&gt;Preparation Steps&lt;/h2&gt;
+&lt;h3 id="installationusb"&gt;Installation USB&lt;/h3&gt;
+&lt;p&gt;First things first, prepare yourself an Installation USB following the Arch
+Wiki's
+&lt;a href="https://wiki.archlinux.org/title/Installation_guide"&gt;Installation Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I will be referencing the Arch Wiki alot, as should any Linux user. It's a great
+source for learning about Linux regardless of the distro, though some things of
+course are going to be Arch specific.&lt;/p&gt;
+&lt;h3 id="biospreparationforsecureboot"&gt;BIOS preparation for Secure Boot&lt;/h3&gt;
+&lt;p&gt;First, jump into BIOS and disable secure boot.
+Then put Secure Boot into Setup Mode.&lt;/p&gt;
+&lt;p&gt;Now boot into the live USB.&lt;/p&gt;
+&lt;h3 id="networkaccess"&gt;Network Access&lt;/h3&gt;
+&lt;p&gt;Ensure you have a network connection:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;ping archlinux.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use iwctl if you need to make a wifi connection:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;iwctl station wlan0 scan
+iwctl station wlan0 connect &amp;lt;SSID&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sync the system clock using ntp&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;timedatectl set-ntp true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Update the pacman mirrors:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;reflector --save /etc/pacman.d/mirrorlist  --protocol https --latest 5 --sort age
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or download the live list and add the appropriate entries to
+&lt;code&gt;/etc/pacman.d/mirrorlist&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;curl -L https://archlinux.org/mirrorlist/all/https/ -o ~/mirrorlist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="drivepartitioning"&gt;Drive Partitioning&lt;/h2&gt;
+&lt;p&gt;To follow this guide, drive partitioning must be done slightly carefully.
+There are ways to auto-mount the root drive based on gpt type, though I haven't
+found a way yet with LUKS on LVM (my preferred way to do disk encryption). You
+can read more about that
+&lt;a href="https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are two main ways to do partitioning, I take no credit for this, I'm
+summarizing for my own records. All credit for this goes to Jpetazzo and his
+post (linked above).&lt;/p&gt;
+&lt;p&gt;Option one uses a single Boot partition which serves as the ESP
+(EFI System Partition) and contains all of the boot information for Arch Linux.&lt;/p&gt;
+&lt;p&gt;Option two separates the partition into an ESP (which can be small) and a
+Linux extended boot partition. Jpetazzo recommends 1G in size, I typically opt
+for 2G since I like to have multiple kernels installed.&lt;/p&gt;
+&lt;p&gt;Since we will be creating and signing UKIS, we need a decent amount of space
+in the Boot partition, so if your partition is less than a Gigabyte, I recommend
+going with option two and using a separate extended boot partition.&lt;/p&gt;
+&lt;p&gt;You will also probably want to go with Option two if you will be dual booting
+or can't expand the existing ESP.&lt;/p&gt;
+&lt;h3 id="partitioning"&gt;Partitioning&lt;/h3&gt;
+&lt;p&gt;List out disks so we know which disk to partition:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;lsblk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Optionally, shred the disk which will FULLY WIPE IT:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;shred -v -n1 /dev/&amp;lt;YOUR DISK&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Feel free to use which ever partitioning tool you're most comfortable with.
+The type codes I'm providing work in fdisk, gdisk, and sgdisk.&lt;/p&gt;
+&lt;h4 id="partition1"&gt;Partition 1:&lt;/h4&gt;
+&lt;p&gt;We always need an ESP partition which will use typecode: &lt;code&gt;ea00&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id="partition2"&gt;Partition 2:&lt;/h4&gt;
+&lt;p&gt;We will also need the LVM partition: &lt;code&gt;8e00&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id="partition3optional"&gt;Partition 3 (optional):&lt;/h4&gt;
+&lt;p&gt;If we are also using an extended boot partition it will use: &lt;code&gt;ef00&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="formatthebootfilesystems"&gt;Format the boot file systems&lt;/h3&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkfs.fat -F32 /dev/nvme0n1p1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And if you've got an extended boot partition:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkfs.fat -F32 /dev/nvme0n1p3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="settingupdiskencryption"&gt;Setting up Disk Encryption&lt;/h2&gt;
+&lt;p&gt;N.B. These next two sections come from OdinsPlasmaRifle's guide linked above.&lt;/p&gt;
+&lt;p&gt;Enable dm-crypt using modprobe:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;modprobe dm-crypt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Encrypt the disk:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;cryptsetup luksFormat --type luks2 /dev/nvme0n1p2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Open the disk:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;cryptsetup open /dev/nvme0n1p2 cryptlvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="settinguplvm"&gt;Setting up LVM&lt;/h2&gt;
+&lt;p&gt;Ensure the disk was opened correctly:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;ls /dev/mapper/cryptlvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create a physical volume and volume group on the disk:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;pvcreate /dev/mapper/cryptlvm
+vgcreate volume /dev/mapper/cryptlvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create the logical partitions:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;lvcreate -L32G volume -n swap
+lvcreate -L120G volume -n root
+lvcreate -L240G  volume -n home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Feel free to tweak the numbers. I typically like to keep space free for
+the future.&lt;/p&gt;
+&lt;p&gt;Format the filesystem on the logical partitions:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkfs.ext4 /dev/volume/root
+mkfs.ext4 /dev/volume/home
+mkswap /dev/volume/swap
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now mount everything:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mount /dev/volume/root /mnt
+mkdir /mnt/home
+mount /dev/volume/home /mnt/home
+swapon /dev/volume/swap
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you went with a single boot disk, mount it at &lt;code&gt;/boot&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkdir /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you've got the extended boot disk mount it at &lt;code&gt;/boot&lt;/code&gt;, and the ESP at &lt;code&gt;/efi&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkdir /mnt/efi
+mkdir /mnt/boot
+
+mount /dev/nvme0n1p1 /mnt/efi
+mount /dev/nvme0n1p3 /mnt/boot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="basicarchinstallation"&gt;Basic Arch Installation&lt;/h2&gt;
+&lt;h3 id="installbasepackages"&gt;Install Base Packages&lt;/h3&gt;
+&lt;p&gt;Now install your usual base packages:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;pacstrap /mnt base base-devel linux linux-lts linux-firmware linux-headers \
+  sudo git less man-db man-pages iw iwd dhcpcd \
+  lvm2 sbctl sbsigntools systemd-ukify tpm2-tools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We've added the following additional packages here since we will need these as
+part of this guide:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;lvm2&lt;/li&gt;
+&lt;li&gt;sbctl&lt;/li&gt;
+&lt;li&gt;sbsigntools&lt;/li&gt;
+&lt;li&gt;systemd-ukify&lt;/li&gt;
+&lt;li&gt;tpm2-tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="generatefstabfilemounts"&gt;Generate fstab file (mounts)&lt;/h3&gt;
+&lt;p&gt;Now we can generate an fstab file for the mounts we setup in the previous step:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="chrootintothesystem"&gt;Chroot into the System&lt;/h3&gt;
+&lt;p&gt;And finally chroot into the installed system:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;arch-chroot /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="locale"&gt;Locale&lt;/h3&gt;
+&lt;p&gt;Set up time locale (I'm in eastern time, change to your own zoneinfo):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Set the hardware clock based on the current system time:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;hwclock --systohc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Set up locale info (pick your own preferred locales):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;echo en_CA.UTF-8 UTF-8 &amp;gt;&amp;gt; /etc/locale.gen
+echo en_US.UTF-8 UTF-8 &amp;gt;&amp;gt; /etc/locale.gen
+locale-gen
+locale | sed -e '/LANG=.*/LANG=en_US.UTF-8/' &amp;gt; /etc/locale.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="hostname"&gt;Hostname&lt;/h3&gt;
+&lt;p&gt;Set your system hostname:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;vim /etc/hostname
+vim /etc/hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="user"&gt;User&lt;/h3&gt;
+&lt;p&gt;Set the environment variable &lt;code&gt;MYUSER&lt;/code&gt; with your username:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;echo "%wheel ALL=(ALL:ALL) ALL" &amp;gt;&amp;gt; /etc/sudoers.d/wheel
+useradd -m $MYUSER
+usermod -aG wheel $MYUSER
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Set the root password:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Set your user password:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;passwd $MYUSER
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="installthebootloader"&gt;Install the bootloader&lt;/h3&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;bootctl install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Based on our setup above, if &lt;code&gt;/efi&lt;/code&gt; exists, it will automatically be used for
+ESP otherwise &lt;code&gt;/boot&lt;/code&gt; will be. We don't need to specify any arguments. Though,
+if you want to be explicit:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;bootctl install --boot-path=/boot --esp-path=/efi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="creatingunifiedkernelimages"&gt;Creating Unified Kernel Images&lt;/h2&gt;
+&lt;p&gt;Jpetazzo's guide helped a ton with getting Secure boot setup and TPM enrollment
+working.&lt;/p&gt;
+&lt;p&gt;Edit the hooks in &lt;code&gt;/etc/mkinitcpio.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="bash language-bash"&gt;HOOKS=(base systemd keyboard autodetect microcode modconf kms sd-vconsole block lvm2 sd-encrypt filesystems fsck)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will notice that keyboard is ahead of autodetect, this ensure the keyboard
+is loaded in case you don't set up the TPM to decrypt the LUKS partition. That
+way you'll be able to type your password manually without any issues.&lt;/p&gt;
+&lt;p&gt;Make sure to update the presets and enable the uki, they should be installed in
+&lt;code&gt;/boot&lt;/code&gt; since thats where we've ensure there's enough allocated space for them.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/mkinitcpio.d/linux.preset&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;# mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux.img"
+default_uki="/boot/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-fallback.img"
+fallback_uki="/boot/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;/etc/mkinitcpio.d/linux-lts.preset&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;# mkinitcpio preset file for the 'linux-lts' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-lts"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-lts.img"
+default_uki="/boot/EFI/Linux/arch-linux-lts.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-lts-fallback.img"
+fallback_uki="/boot/EFI/Linux/arch-linux-lts-fallback.efi"
+fallback_options="-S autodetect"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, since we are building UKIs we won't be setting up any loader entries. To
+make sure the system opens the LUKS LVM drive, we need to setup kernel options
+that are built into the UKI.&lt;/p&gt;
+&lt;p&gt;Add the following to &lt;code&gt;/etc/cmdline.d/cryptlvm.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;rd.luks.name=&amp;lt;LVM UUID HERE&amp;gt;=cryptlvm
+root=/dev/volume/root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can use the following vim normal command to get the UUID:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;:r!blkid /dev/nvme0n1p2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can build these now, but they need to be signed, thus it's better to setup
+secure boot before building.&lt;/p&gt;
+&lt;h2 id="settingupsecureboot"&gt;Setting Up Secure Boot&lt;/h2&gt;
+&lt;p&gt;Ensure that your secure boot setup mode is enabled, or reboot to enable it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create your own signing keys:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl create-keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sign the systemd bootloader:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl sign -s \
+  -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed \
+  /usr/lib/systemd/boot/efi/systemd-bootx64.efi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Enroll your custom keys:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl enroll-keys --microsoft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;--microsoft&lt;/code&gt; will include the Microsoft keys into key enrollment.
+My machine wasn't happy when I tried to run without, but YMMV.
+I may end up dual booting, so I kept them around.&lt;/p&gt;
+&lt;p&gt;Now we should be ready to build the UKIs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkinitcpio --allpresets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The UKIs will automatically be signed by &lt;code&gt;systemd-ukify&lt;/code&gt; through a hook in
+mkinitcpio, so all we have to do is sign the main EFI binaries.&lt;/p&gt;
+&lt;p&gt;If you've only got a single boot partition:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/EFI/Boot/bootx64.efi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you've got a separate ESP and extended partition:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl sign -s /efi/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /efi/EFI/Boot/bootx64.efi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now verify the signing:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;sbctl verify
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will have verified signing of the UKIs through mkinitcpio.&lt;/p&gt;
+&lt;h2 id="enrollingatpmkeyforluksdecryption"&gt;Enrolling a TPM key for LUKS decryption&lt;/h2&gt;
+&lt;p&gt;Generate a recovery key for the LUKS device, put it somewhere safe:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;systemd-cryptenroll --recovery-key /dev/nvme0n1p2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Generate a key in the TPM and add it to a key slot in the LUKS device:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;systemd-cryptenroll --temp2-device=auto /dev/nvme0n1p2 --tpm2-pcrs=7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can change the tpm pcrs setting if you like, see
+&lt;code&gt;man systemd-cryptenroll.1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A PCRS of 7 makes the key available through updates of the kernel and initrds.
+However, secure boot being disabled, or secure boot keys being altered will
+disable it.&lt;/p&gt;
+&lt;p&gt;Next, check if we need to load kernel modules. First get the name of the module
+for your tpm:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;systemd-cryptenroll --tpm2-device=list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then check if it will need to be loaded:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;lsmod | grep tpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the output is empty you're good. Otherwise, add it to the modules in
+&lt;code&gt;/etc/mkinitcpio.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;MODULES=()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And if you needed to add a module, you will need to rebuild:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;mkinitcpio --allpresets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Test the secure boot configuration, by shutting down and enabling secure boot.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;umount -R /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;shutdown now
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now restart and enter BIOS, enabling secure boot. Boot into the machine.&lt;/p&gt;
+&lt;p&gt;If all is well and the TPM decrypted your LUKS device (i.e. no password to enter
+for decryption) then you can remove the password you set for it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="sh language-sh"&gt;systemd-cryptenroll /dev/nvme0n1p2 --wipe-slot=password
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/settling-into-arch-linux</guid><title>Settling into Arch Linux</title><link href="https://xavierchanth.com/posts/settling-into-arch-linux"/><description>My history with computers and developer tooling.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="myearlydays"&gt;My Early Days&lt;/h2&gt;
+&lt;p&gt;My journey with computers started in an atypical way. As a kid, I was
+surrounded by tech due to my dad's business, where he owned and operated a tech
+consulting firm. When I was just 7, I had access to his Ubuntu machine. It was
+my first exposure to a desktop computer, running Ubuntu 07.04. Fast forward
+a few years, my uncle gave me an old enterprise machine. At 12, I couldn't
+afford Windows, so I installed Ubuntu 12.04 or maybe 11. I wrote papers,
+explored free open-source software, used LibreOffice, played Minecraft,
+and learned basic GNOME on Linux.&lt;/p&gt;
+&lt;p&gt;Around the age of 14, I had saved enough money to get my first gaming PC with
+help from my dad. I opted for Windows as I was playing Windows-only games
+with friends. Running them on Linux using Wine and Lutris was tricky. Proton
+wasn't available yet, and troubleshooting game installations was not my
+thing. My late-night gaming would sometimes annoy my dad enough that he'd
+cut off the internet, leading me to spoof my MAC address to keep playing.&lt;/p&gt;
+&lt;h2 id="universityandlinux"&gt;University and Linux&lt;/h2&gt;
+&lt;p&gt;At 18, preparing for university, I picked a first-generation MateBook X Pro.
+It allowed dual booting Windows and Linux. I initially started with Windows but
+switched to Linux due to my earlier Linux experiences, settling on Manjaro
+after considering Arch and Arco Linux. Manjaro offered the stability and
+driver support I needed at that time, given my dedicated NVIDIA GPU and the
+hassles involved with getting it to function correctly.&lt;/p&gt;
+&lt;p&gt;During university, I discovered a passion for Linux. I worked my entire degree
+on it, up until COVID hit. I was on my way home from campus when they announced
+that campus was closing. In 2020, as studies moved online, I first met Atsign,
+interned with them the following year and part-time contracted with them
+after that. Working from home, I relied on my desktop PC due to its power for
+programming with Flutter and running Docker containers. It was while working
+on an Atsign project that I wrote my first cross-platform, POSIX compliant
+script. To this day, I still write most of my scripts to be POSIX compliant,
+despite having bash on every single machine I would want to run them on.&lt;/p&gt;
+&lt;h2 id="makingmyenvironmentbespoke"&gt;Making my Environment Bespoke&lt;/h2&gt;
+&lt;p&gt;In 2022, I picked up the MacBook M1 Pro and delved deeper into tools like
+NeoVim, Tmux, and FZF. LazyVim was my initial choice for configuration,
+which over the years I've replaced and refined, leading to faster startup
+times and a more minimal and stable setup. During this time, I also started
+using homerow mods, first through QMK (hardware) then kanata (with internal
+laptop keyboards). I purchased an ortholinear split keyboard, which was a
+pain to learn, but totally worth it long-term. I'm still using QWERTY to
+ensure that I can use normal keyboards and my laptop keyboard when necessary.&lt;/p&gt;
+&lt;p&gt;I then got into Aerospace, a window manager for MacOS, with Sketchybar,
+an alternative menu bar that I customized. Two great open-source projects,
+by maintainers that I admire.  This is when the first wave of bugs started
+appearing in MacOS, frequent updates would break the keyboard driver powering
+Kanata, thus also affecting my normal home-row key binds for Aerospace.
+At some point, I got fed up enough with the OS to leave it behind.&lt;/p&gt;
+&lt;p&gt;In recent years, I've transitioned from the M1 MacBook Pro to a Framework
+13 laptop, appreciating the fact that it's lighter, especially during
+travel. The Framework's longevity through potential hardware upgrades
+appealed to me. While the first purchase of this machine is more expensive,
+I suspect that by the time it becomes the Ship of Theseus, I will have saved
+some money compared to buying several laptops worth of upgrades. To make sure
+I still have access to a mac when I need it for testing and development I've
+thrown a base model M4 mini into my homelab.&lt;/p&gt;
+&lt;h2 id="sowhatamirunningontheframework"&gt;So, what am I running on the framework?&lt;/h2&gt;
+&lt;p&gt;I chose Arch Linux. Not for the hype reasons that the community has. I'm not
+running a riced out Hyprland setup. I running a simple, minimal Sway setup on
+Wayland. I found a minimal black and white Waybar configuration and made it
+my own. I primarily use only two GUI applications - my terminal and browser,
+with a handful of supplementary ones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Terminal Emulator: Ghostty&lt;/li&gt;
+&lt;li&gt;Browser: Zen (tried a ton, this is the one I'm happiest wiht for now)&lt;/li&gt;
+&lt;li&gt;Notes: Obsidian&lt;/li&gt;
+&lt;li&gt;Screen Capture: Obs&lt;/li&gt;
+&lt;li&gt;RDP/VNC Client: Remmina&lt;/li&gt;
+&lt;li&gt;And some basic office and media applications that you'd expect on most systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I chose Arch because it allows me to install exactly what I want on my system.
+I get to make the choices, I get the features and tools I want, not some
+random crap that poses a risk of breaking my system. Because of this,
+I can install my entire Arch setup by configuring my hardware, setting up
+secure boot, creating a user, then running a single script.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
   &lt;p&gt;Apologies for the lack of syntax highlighting.&lt;br /&gt;
   I hope to add that in an update when I find some spare time.&lt;/p&gt;
 &lt;/blockquote&gt;

@@ -1,4 +1,4 @@
-import"./DsnmJJEf.js";import"./Bm4CXk6a.js";import{Q as a,T as n,X as i}from"./Cihz2tA7.js";const o={title:"Settling into Arch Linux",description:"My history with computers and developer tooling.",author:"Xavier Chanthavong",date:"2025-10-19",published:!1},{title:l,description:m,author:p,date:u,published:c}=o;var r=a(`<h2>My Early Days</h2> <p>My journey with computers started in an atypical way. As a kid, I was
+import"./DsnmJJEf.js";import"./Bm4CXk6a.js";import{Q as a,T as n,X as i}from"./Cihz2tA7.js";const o={title:"Settling into Arch Linux",description:"My history with computers and developer tooling.",author:"Xavier Chanthavong",date:"2025-10-19",published:!0},{title:l,description:m,author:p,date:u,published:c}=o;var r=a(`<h2>My Early Days</h2> <p>My journey with computers started in an atypical way. As a kid, I was
 surrounded by tech due to my dad’s business, where he owned and operated a tech
 consulting firm. When I was just 7, I had access to his Ubuntu machine. It was
 my first exposure to a desktop computer, running Ubuntu 07.04. Fast forward
