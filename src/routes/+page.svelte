@@ -2,27 +2,74 @@
 	import ProfileImage from '$lib/components/ProfileImage.svelte';
 </script>
 
-<div class="max-w-6xl mx-auto px-4 py-12">
-	<div class="text-center">
-		<h1 class="text-4xl font-bold text-gray-900 mb-4">👋 Hi, I'm Xavier!</h1>
-	</div>
-	<div class="flex flex-col sm:flex-row items-center sm:items-end sm:gap-8 lg:gap-10">
-		<ProfileImage class="max-w-48 mb-8" />
-		<div>
-			<p class="text-lg text-gray-600 mb-8 align-text-bottom">
-				I'm a software engineer with a deep passion for learning, and I'm constantly improving my
-				ability to write effective software. I'm a big fan of open-source. I love to use, write, and
-				contribute to open-source software whenever possible.
-			</p>
-			<p class="text-lg text-gray-600 mb-8 align-text-bottom">
-				This site is my dedicated space for sharing the software that I'm building, and for sharing
-				my findings along the way.
+<div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">
+	<section class="grid gap-10 lg:grid-cols-[auto,1fr] items-center">
+		<div class="relative mx-auto lg:mx-0">
+			<div
+				class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-white/90 via-white/40 to-white/10 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.6)]"
+			></div>
+			<ProfileImage
+				class="relative max-w-56 rounded-[2rem] border border-white/70 shadow-2xl"
+			/>
+		</div>
+		<div class="space-y-6">
+			<div
+				class="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white/70 px-4 py-1 text-sm font-medium text-slate-600 shadow-sm"
+			>
+				<span class="h-2 w-2 rounded-full bg-[rgb(var(--accent))]"></span>
+				Software Engineer - Open Source Enthusiast
+			</div>
+			<h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight text-shadow-soft">
+				👋 Hi, I'm Xavier.
+			</h1>
+			<h2 class="text-2xl sm:text-3xl lg:text-4xl text-slate-600">
+				Engineer by day, explorer by heart, learner by choice.
+			</h2>
+			<div class="flex flex-wrap items-center gap-4">
+				<a
+					href="/posts"
+					class="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--accent))] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/20 hover:-translate-y-0.5 transition"
+				>
+					Blog Posts
+				</a>
+				<a
+					href="https://github.com/xavierchanth"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-700 hover:text-slate-900 hover:-translate-y-0.5 transition"
+				>
+					<svg viewBox="0 0 24 24" class="h-4 w-4" aria-hidden="true" fill="currentColor">
+						<path
+							d="M12 .5a12 12 0 00-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.78-1.34-1.78-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.57.12-3.28 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0C17.02 5 18.03 5.32 18.03 5.32c.66 1.71.24 2.97.12 3.28.77.84 1.24 1.91 1.24 3.22 0 4.61-2.82 5.62-5.5 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0012 .5z"
+						/>
+					</svg>
+					GitHub
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-16 grid gap-6 md:grid-cols-3">
+		<div class="rounded-2xl border border-white/80 bg-white/80 p-6 shadow-lg">
+			<p class="text-xs uppercase tracking-[0.25em] text-slate-500">Growth</p>
+			<h2 class="mt-3 text-2xl">Always learning</h2>
+			<p class="mt-3 text-slate-600">
+				I'm constantly improving my ability to write effective software through steady practice.
 			</p>
 		</div>
-	</div>
-	<div class="text-center">
-		<a href="/posts" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-			My Posts
-		</a>
-	</div>
+		<div class="rounded-2xl border border-white/80 bg-white/80 p-6 shadow-lg">
+			<p class="text-xs uppercase tracking-[0.25em] text-slate-500">Open Source</p>
+			<h2 class="mt-3 text-2xl">Build in the open</h2>
+			<p class="mt-3 text-slate-600">
+				I love to use, write, and contribute to open-source software whenever possible.
+			</p>
+		</div>
+		<div class="rounded-2xl border border-white/80 bg-white/80 p-6 shadow-lg">
+			<p class="text-xs uppercase tracking-[0.25em] text-slate-500">Sharing</p>
+			<h2 class="mt-3 text-2xl">Sharing the journey</h2>
+			<p class="mt-3 text-slate-600">
+				This site shares the software I'm building and the lessons learned along the way.
+			</p>
+		</div>
+	</section>
 </div>

@@ -2,20 +2,27 @@
 	const { post } = $props();
 </script>
 
-<li class="my-4">
-	<div
-		class="border border-slate-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 bg-gray-50 hover:bg-white"
+<li>
+	<a
+		href={`/posts/${post.slug}`}
+		class="group block rounded-2xl border border-white/70 bg-white/80 p-6 shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-2xl"
 	>
-		<a href={`/posts/${post.slug}`} class="block rounded p-6">
-			<div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-				<div class="col-span-1 md:col-span-2">
-					<h2 class="text-2xl font-semibold text-slate-900 mb-2">{post.title}</h2>
-					<p class="text-sm text-slate-600">{post.author} - {post.date}</p>
-				</div>
-				<div class="col-span-1 md:col-span-3">
-					<p class="text-lg text-slate-700">{post.description}</p>
-				</div>
+		<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+			<div class="space-y-3">
+				<p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+					{post.author} - {post.date}
+				</p>
+				<h2 class="text-2xl md:text-3xl group-hover:text-[rgb(var(--accent))] transition">
+					{post.title}
+				</h2>
+				<p class="text-lg text-slate-600">{post.description}</p>
 			</div>
-		</a>
-	</div>
+			<span
+				class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 group-hover:text-[rgb(var(--accent))] transition"
+			>
+				Read post
+				<span aria-hidden="true">-&gt;</span>
+			</span>
+		</div>
+	</a>
 </li>

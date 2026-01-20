@@ -6,9 +6,6 @@ date: '2025-08-31'
 published: true
 ---
 
-> Apologies for the lack of syntax highlighting.  
-> I hope to add that in an update when I find some spare time.
-
 Ever since switching to neovim, I've had a sore spot when it comes to using Python notebooks. For reference, my background is in Data Science, and while my day job doesn't really involve much of the work, I really enjoy jumping in a python notebook from time to time to do some analysis work. Every so often, I hear somebody mention something which sparks the thought "that would be quite easy to spike in a python notebook".
 
 Though, the problem that I face is that I'm actually quite helpless outside of the terminal. Not having a good setup for working with notebooks would make that spike take far longer than it should. Even with vim keybinds enabled in a vscode derivative, the experience is not the same. The only GUI editor that I may consider using in the future is Zed, but the control that I get with tmux and Neovim has kept me where I am.

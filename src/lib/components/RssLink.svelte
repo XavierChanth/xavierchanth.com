@@ -1,9 +1,14 @@
 <style>
-  .feed {
-    margin-left: 3px;
-    padding: 0 0 0 19px;
-    background: url("/assets/feed-icon-14x14.png") no-repeat 0 50%;
-  } 
+	.feed-icon {
+		background: url('/assets/feed-icon-14x14.png') no-repeat 0 50%;
+	}
 </style>
 
-<a href="/rss.xml" download="xavierchanth-rss.xml" class="feed">subscribe to future posts</a>
+<a
+	href="/rss.xml"
+	download="xavierchanth-rss.xml"
+	class="inline-flex items-center gap-2 text-sm text-slate-200 hover:text-white transition-colors"
+>
+	<span class="feed-icon h-4 w-4"></span>
+	subscribe to future posts
+</a>
