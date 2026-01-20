@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
   import RssLink from "$lib/components/RssLink.svelte";
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import {
 		BLOG_AUTHOR,
 		BLOG_AUTHOR_GITHUB,
@@ -13,7 +13,7 @@
 	} from '$lib/metadata';
 	let { children } = $props();
 
-	const canonical = $derived(() => `${BLOG_URL}${$page.url.pathname}`);
+	const canonical = $derived(`${BLOG_URL}${page.url.pathname}`);
 
 	const websiteJsonLd = {
 		'@context': 'https://schema.org',
