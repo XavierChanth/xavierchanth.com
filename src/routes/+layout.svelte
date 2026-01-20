@@ -73,7 +73,13 @@
 				<a href="/" class="text-xl font-semibold tracking-tight">
 					<span class="text-[rgb(var(--accent))]">Xavier</span>Chanth
 				</a>
-				<div class="flex items-center">
+				<div class="flex items-center gap-3">
+					<a
+						href="/posts"
+						class="inline-flex items-center justify-center rounded-full border border-black/10 bg-white/70 px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-slate-900"
+					>
+						Blog posts
+					</a>
 					<a
 						href="https://github.com/xavierchanth"
 						target="_blank"
