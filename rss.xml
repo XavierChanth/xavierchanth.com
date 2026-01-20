@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2025-10-20T13:14:30.727Z</lastBuiltDate><description>I'm a software engineer with a deep passion for learning, and I'm constantly improving my ability to write effective software.</description><item><guid>https://xavierchanth.com/posts/arch-linux-installation</guid><title>Arch Linux Installation</title><link href="https://xavierchanth.com/posts/arch-linux-installation"/><description>Every manual step I do to install Arch Linux.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2026-01-20T02:07:34.407Z</lastBuiltDate><description>Software engineer, boulderer, and world traveler who loves learning and open-source.</description><item><guid>https://xavierchanth.com/posts/upgrade-your-vcs-to-upgrade-your-agentic-workflow</guid><title>Upgrade your VCS to Upgrade your Agentic Workflow</title><link href="https://xavierchanth.com/posts/upgrade-your-vcs-to-upgrade-your-agentic-workflow"/><description>Discussing rebasing tools like GitButler and Jujutsu</description><pubDate>2025-12-10</pubDate><content:encoded>&lt;p&gt;If you haven’t played with some VCS tools that enable rebasing workflows, they can be extremely powerful. The case for using such a tool is in managing multiple working copies simultaneously. Previously, I think this only mattered for those that worked in a high velocity team. I was on the receiving end of some very distasteful comments about my use of git worktrees. While I disagree with how they approached the initial conversation, I don’t disagree with their position. From their perspective, how I used git worktrees was probably a very stupid way for them to be using them. It’s all about circumstance.&lt;/p&gt;
+&lt;p&gt;My workflow was tuned for being able to context switch. Most people want to avoid doing that, but I needed to be able to jump between projects, changesets, and tasks in a moments notice. At the time, we were working on go-to-market launches for multiple products.&lt;/p&gt;
+&lt;p&gt;In the post-agentic era, I think circumstances have very much changed. In fact, I believe they’ve changed so much so that context switching is becoming the core UX of product design (e.g. Clad Labs in YC’s Fall 2025 batch).&lt;/p&gt;
+&lt;p&gt;We’re seeing many agentic workflows leverage worktrees as a way of isolating sessions. It’s a very good way of doing things. But, I think there is merit to using rebasing workflows that are built into some of the newer VCS clients.&lt;/p&gt;
+&lt;p&gt;I will start with the client I recommend to most people: GitButler. To call out why I recommend it, parallel and stack branches. This type of rebasing workflow does something which is missing from traditional git — it allows the commits to be treated differently during development and presentation (by presentation, I mean anytime the commits become visible to someone else). To put this more plainly, it’s very easy to reorganize your changes later. Tools like GitButler treat the commit graph as mutable until it’s been pushed remotely, which makes it so much easier to:&lt;/p&gt;
+&lt;p&gt;Test multiple in-progress changes for compatibility
+Create stacked PRs — useful for preserving atomicity of large changesets
+Reorder your commits to optimize them for PR review
+Keep in mind the importance of the “immutable once pushed” rule which mitigates all major issues caused by treating your commit graph like modeling clay.&lt;/p&gt;
+&lt;p&gt;As I stated above, I’m not using GitButler. Instead, I’m using Jujutsu. Why I don’t recommend jujutsu is the steeper learning curve, and lack of solid GUI apps. Jujutsu has its own changesets and change IDs which are separate to commit IDs.&lt;/p&gt;
+&lt;p&gt;At first, having this second layer dimension of changes to manage seems more challenging, but in practice it gives me way more control over how I prepare and present my commits for review. Jujutsu changesets are designed for mutation, and it’s rare that git commits actually need to be operated directly on.&lt;/p&gt;
+&lt;p&gt;To conclude, I believe there is merit to using VCS tools which separate how commits are treated during “development” and “presentation” phases. Worktrees are just the surface level representation of parallelization during development, but there is so much room for workflow improvement in this space.&lt;/p&gt;
+&lt;p&gt;If you want to get your toes wet, I encourage you to look at GitButler. If you’re will to put in some time to learn a tool that gives you a simpler, more controlled experience, then most certainly take some time to learn Jujutsu.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/arch-linux-installation</guid><title>Arch Linux Installation</title><link href="https://xavierchanth.com/posts/arch-linux-installation"/><description>Every manual step I do to install Arch Linux.</description><pubDate>2025-10-19</pubDate><content:encoded>&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
 &lt;p&gt;This is how I prefer to install Arch Linux. It's important to be mindful
 of your system's security, this isn't 100% foolproof, but I wouldn't be
 comfortable travelling with an Arch installation without this.&lt;/p&gt;
@@ -394,31 +406,11 @@ with a handful of supplementary ones:&lt;/p&gt;
 I get to make the choices, I get the features and tools I want, not some
 random crap that poses a risk of breaking my system. Because of this,
 I can install my entire Arch setup by configuring my hardware, setting up
-secure boot, creating a user, then running a single script.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;blockquote&gt;
-  &lt;p&gt;Apologies for the lack of syntax highlighting.&lt;br /&gt;
-  I hope to add that in an update when I find some spare time.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Ever since switching to neovim, I've had a sore spot when it comes to using
-Python notebooks. For reference, my background is in Data Science, and
-while my day job doesn't really involve much of the work, I really enjoy
-jumping in a python notebook from time to time to do some analysis work. Every
-so often, I hear somebody mention something which sparks the thought "that
-would be quite easy to spike in a python notebook".&lt;/p&gt;
-&lt;p&gt;Though, the problem that I face is that I'm actually quite helpless outside of
-the terminal. Not having a good setup for working with notebooks would make
-that spike take far longer than it should. Even with vim keybinds enabled in
-a vscode derivative, the experience is not the same. The only GUI editor that I
-may consider using in the future is Zed, but the control that I get with tmux
-and Neovim has kept me where I am.&lt;/p&gt;
+secure boot, creating a user, then running a single script.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/python-notebooks-uv-and-neovim</guid><title>Python Notebooks with uv and Neovim</title><link href="https://xavierchanth.com/posts/python-notebooks-uv-and-neovim"/><description>Still not perfect, but it's getting better.</description><pubDate>2025-08-31</pubDate><content:encoded>&lt;p&gt;Ever since switching to neovim, I've had a sore spot when it comes to using Python notebooks. For reference, my background is in Data Science, and while my day job doesn't really involve much of the work, I really enjoy jumping in a python notebook from time to time to do some analysis work. Every so often, I hear somebody mention something which sparks the thought "that would be quite easy to spike in a python notebook".&lt;/p&gt;
+&lt;p&gt;Though, the problem that I face is that I'm actually quite helpless outside of the terminal. Not having a good setup for working with notebooks would make that spike take far longer than it should. Even with vim keybinds enabled in a vscode derivative, the experience is not the same. The only GUI editor that I may consider using in the future is Zed, but the control that I get with tmux and Neovim has kept me where I am.&lt;/p&gt;
 &lt;h2 id="quartobasedsetup"&gt;Quarto Based Setup&lt;/h2&gt;
-&lt;p&gt;When I first moved over to Neovim I started with LazyVim, and I eventually, over
-several weekends migrated myself to a standalone configuration. At one point I
-had a python notebook setup which I cobbled together using a combination of
-quarto, magma.nvim, some markdown plugins, and some lua scripts to glue
-everything together the way I wanted it.&lt;/p&gt;
-&lt;p&gt;For those that aren't familiar with Quarto, Quarto basically converts the
-notebook into a markup file (I chose markdown), and let's you edit that file.
-On save, it converts the notebook back to a notebook file.&lt;/p&gt;
+&lt;p&gt;When I first moved over to Neovim I started with LazyVim, and I eventually, over several weekends migrated myself to a standalone configuration. At one point I had a python notebook setup which I cobbled together using a combination of quarto, magma.nvim, some markdown plugins, and some lua scripts to glue everything together the way I wanted it.&lt;/p&gt;
+&lt;p&gt;For those that aren't familiar with Quarto, Quarto basically converts the notebook into a markup file (I chose markdown), and let's you edit that file. On save, it converts the notebook back to a notebook file.&lt;/p&gt;
 &lt;p&gt;Here are some of the problems that I had with that approach:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Too many dependencies required for a good experience&lt;/li&gt;
@@ -434,43 +426,18 @@ On save, it converts the notebook back to a notebook file.&lt;/p&gt;
 &lt;li&gt;Quarto isn't available in all of the package managers that my dotfiles are
 designed to automatically install with.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This setup can be roughly found in my dotfiles at
-&lt;a href="https://github.com/XavierChanth/dotfiles/commit/3dd24c455a19153f9e99a2f1f2c9278ec176b7a9"&gt;4dd24c4&lt;/a&gt;
-. Though, there probably have been changes since, that commit.&lt;/p&gt;
+&lt;p&gt;This setup can be roughly found in my dotfiles at &lt;a href="https://github.com/XavierChanth/dotfiles/commit/3dd24c455a19153f9e99a2f1f2c9278ec176b7a9"&gt;4dd24c4&lt;/a&gt;. Though, there probably have been changes since, that commit.&lt;/p&gt;
 &lt;h2 id="adifferentapproach"&gt;A Different Approach&lt;/h2&gt;
-&lt;p&gt;I eventually deleted that bit of quarto configuration, and since, I've started
-periodically removing plugins and refining my setup. Nowadays there is a much
-smaller core of plugins that I use, and every single plugin only loads exactly
-when I need it. Outside of this core, I use quite a bit of language specific
-plugins each of these also only loads when I work in that specific language.&lt;/p&gt;
-&lt;p&gt;During my exploration of quarto + magma, I did look at other options, at the
-time I gave them a brief attempt. Since then, something in the python space has
-changed which opens the door to better experiences in those avenues.&lt;/p&gt;
-&lt;p&gt;That change is the growth in uv. I've been keeping an eye on uv, and have found
-it to be by far one of the best (if not the best) developer experiences across
-any language. Thus, it was time to revisit the idea of a Neovim based python
-notebook experience using uv.&lt;/p&gt;
+&lt;p&gt;I eventually deleted that bit of quarto configuration, and since, I've started periodically removing plugins and refining my setup. Nowadays there is a much smaller core of plugins that I use, and every single plugin only loads exactly when I need it. Outside of this core, I use quite a bit of language specific plugins each of these also only loads when I work in that specific language.&lt;/p&gt;
+&lt;p&gt;During my exploration of quarto + magma, I did look at other options, at the time I gave them a brief attempt. Since then, something in the python space has changed which opens the door to better experiences in those avenues.&lt;/p&gt;
+&lt;p&gt;That change is the growth in uv. I've been keeping an eye on uv, and have found it to be by far one of the best (if not the best) developer experiences across any language. Thus, it was time to revisit the idea of a Neovim based python notebook experience using uv.&lt;/p&gt;
 &lt;h2 id="jupytext"&gt;Jupytext&lt;/h2&gt;
-&lt;p&gt;One of the most popular ways for using jupyter notebooks with neovim has been
-jupytext. So I started by revisiting jupytext, I ended up with a decent setup
-in jupytext that can be installed with just a few scripts.&lt;/p&gt;
-&lt;p&gt;Both jupyter and jupytext are supported by uv, the only problem that I have
-with this setup is that jupyter doesn't support watching the filesystem. I have
-searched around for ways to do this online, but didn't see any elegant solutions
-worth trying. If you don't mind manually refreshing the browser, then jupyter
-will pickup your changes, but I have a feeling that the back and forth could be
-extremely annoying if you're trying to tweak something.&lt;/p&gt;
-&lt;p&gt;Update(2025-09-05): jupyter does support auto reloading the notebook through
-it's collaboration mode. Scripts have been updated to reflect that.&lt;/p&gt;
+&lt;p&gt;One of the most popular ways for using jupyter notebooks with neovim has been jupytext. So I started by revisiting jupytext, I ended up with a decent setup in jupytext that can be installed with just a few scripts.&lt;/p&gt;
+&lt;p&gt;Both jupyter and jupytext are supported by uv, the only problem that I have with this setup is that jupyter doesn't support watching the filesystem. I have searched around for ways to do this online, but didn't see any elegant solutions worth trying. If you don't mind manually refreshing the browser, then jupyter will pickup your changes, but I have a feeling that the back and forth could be extremely annoying if you're trying to tweak something.&lt;/p&gt;
+&lt;p&gt;Update(2025-09-05): jupyter does support auto reloading the notebook through it's collaboration mode. Scripts have been updated to reflect that.&lt;/p&gt;
 &lt;h3 id="setupscript"&gt;Setup Script&lt;/h3&gt;
-&lt;p&gt;This script sets up a new uv project and installs an ipython kernel to the venv.
-It then adds the necessary configuration for jupytext to automatically pair a
-python file with every notebook. There are various formats, but the percent
-format is most popular. This format allows you to separate your code blocks with
-a single comment: &lt;code&gt;# %%&lt;/code&gt;. You can also write your markdown blocks in pure
-comments.&lt;/p&gt;
-&lt;p&gt;In practice, this means you can edit and version your python files, letting
-jupytext handle the translation for you.&lt;/p&gt;
+&lt;p&gt;This script sets up a new uv project and installs an ipython kernel to the venv. It then adds the necessary configuration for jupytext to automatically pair a python file with every notebook. There are various formats, but the percent format is most popular. This format allows you to separate your code blocks with a single comment: &lt;code&gt;# %%&lt;/code&gt;. You can also write your markdown blocks in pure comments.&lt;/p&gt;
+&lt;p&gt;In practice, this means you can edit and version your python files, letting jupytext handle the translation for you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
 
 uv init .
@@ -485,19 +452,11 @@ uv run --with jupyter --with jupytext --with jupyter_collaboration \
   jupyter lab --collaborative
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="marimo"&gt;Marimo&lt;/h2&gt;
-&lt;p&gt;One evening earlier this week, I was doing some more browsing for a way of
-reloading jupytext automatically. That's when I stumbled across two tools:
-marimo and europie. Europie seems interesting, it is a tui based tool. Even
-though it seems use vim-like controls, I'm not interested in learning another
-tool, given how often I will be using.&lt;/p&gt;
-&lt;p&gt;This leaves me with Marimo, an alternative notebook server which supports
-use of editing in an external tool. I do have a few problems with this tool,
-but they are relatively easy to avoid.&lt;/p&gt;
+&lt;p&gt;One evening earlier this week, I was doing some more browsing for a way of reloading jupytext automatically. That's when I stumbled across two tools: marimo and europie. Europie seems interesting, it is a tui based tool. Even though it seems use vim-like controls, I'm not interested in learning another tool, given how often I will be using.&lt;/p&gt;
+&lt;p&gt;This leaves me with Marimo, an alternative notebook server which supports use of editing in an external tool. I do have a few problems with this tool, but they are relatively easy to avoid.&lt;/p&gt;
 &lt;h3 id="problemswithmarimo"&gt;Problems with Marimo&lt;/h3&gt;
 &lt;h4 id="cellsyntax"&gt;Cell Syntax&lt;/h4&gt;
-&lt;p&gt;The syntax for a cell is far more verbose than using percent pairing in
-jupytext. The solution here is to simply use a snippet. Note that I'm using a
-plugin in neovim that allows me to use vsc*de style snippets:&lt;/p&gt;
+&lt;p&gt;The syntax for a cell is far more verbose than using percent pairing in jupytext. The solution here is to simply use a snippet. Note that I'm using a plugin in neovim that allows me to use vsc*de style snippets:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="json language-json"&gt;{
   "Marimo cell": {
     "prefix": "mcell",
@@ -512,8 +471,7 @@ plugin in neovim that allows me to use vsc*de style snippets:&lt;/p&gt;
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id="marimosstandards"&gt;Marimo's Standards&lt;/h4&gt;
-&lt;p&gt;The industry tends to use jupyter, so it may be difficult to get by-in since
-Marimo files are distinctly Marimo.&lt;/p&gt;
+&lt;p&gt;The industry tends to use jupyter, so it may be difficult to get by-in since Marimo files are distinctly Marimo.&lt;/p&gt;
 &lt;p&gt;e.g.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="python language-python"&gt;import marimo
 
@@ -535,21 +493,10 @@ def hello():
 if __name__ == "__main__":
     app.run()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I've added populated a few cells to the default template, you'll notice that
-the hello function can be imported in a another file the way that this is
-designed. Though, this lacks the ability to specificy multiple functions in a
-single cell (if there's a way, I'm not sure what it is yet). It is arguable
-whether you'd even want to specify more than one function in a cell. I could
-see it being useful in scenarios where you've refined a set of bespoke utility
-functions that you want to paste in the header of every notebook for
-portability.&lt;/p&gt;
+&lt;p&gt;I've added populated a few cells to the default template, you'll notice that the hello function can be imported in a another file the way that this is designed. Though, this lacks the ability to specificy multiple functions in a single cell (if there's a way, I'm not sure what it is yet). It is arguable whether you'd even want to specify more than one function in a cell. I could see it being useful in scenarios where you've refined a set of bespoke utility functions that you want to paste in the header of every notebook for portability.&lt;/p&gt;
 &lt;h4 id="ai"&gt;AI&lt;/h4&gt;
-&lt;p&gt;I don't want AI in my tools by default, let me add it in my own way. These AI
-tools that try to be helpful tend to be annoying popups that do things other
-than what I intend to, they annoy me in the same way an advertisement would.&lt;/p&gt;
-&lt;p&gt;At the very least, it seems that using marimo for only displaying a notebook
-is not that bad. It has live reloading, so I'm fine enough with it as long as I
-edit from an external editor.&lt;/p&gt;
+&lt;p&gt;I don't want AI in my tools by default, let me add it in my own way. These AI tools that try to be helpful tend to be annoying popups that do things other than what I intend to, they annoy me in the same way an advertisement would.&lt;/p&gt;
+&lt;p&gt;At the very least, it seems that using marimo for only displaying a notebook is not that bad. It has live reloading, so I'm fine enough with it as long as I edit from an external editor.&lt;/p&gt;
 &lt;p&gt;Though, the fact still stands that Marimo shows me this:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/assets/posts/marimo-ai-disabled.png" alt="Marimo AI tab shows that it is disabled" /&gt;&lt;/p&gt;
 &lt;p&gt;Meanwhile, when I run this:&lt;/p&gt;
@@ -607,13 +554,8 @@ if __name__ == "__main__":
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;That doesn't look very disabled to me, now does it?&lt;/p&gt;
 &lt;h2 id="whatilikeaboutmarimo"&gt;What I Like About Marimo&lt;/h2&gt;
-&lt;p&gt;Marimo supports file watching with the &lt;code&gt;--watch&lt;/code&gt; flag, and it will make use of
-watchdog if you have it installed. It also supports an &lt;code&gt;app view&lt;/code&gt; which provides
-a nice user-interface. Thus, I will consider it for some projects, especially
-ones where I want to spike something quickly and I want it to be interactive.&lt;/p&gt;
-&lt;p&gt;I see this fitting in as sort of a blend between d3 and jupyter. You can provide
-a d3-like experience for the consumer of your notebook without having to write
-any javascript.&lt;/p&gt;
+&lt;p&gt;Marimo supports file watching with the &lt;code&gt;--watch&lt;/code&gt; flag, and it will make use of watchdog if you have it installed. It also supports an &lt;code&gt;app view&lt;/code&gt; which provides a nice user-interface. Thus, I will consider it for some projects, especially ones where I want to spike something quickly and I want it to be interactive.&lt;/p&gt;
+&lt;p&gt;I see this fitting in as sort of a blend between d3 and jupyter. You can provide a d3-like experience for the consumer of your notebook without having to write any javascript.&lt;/p&gt;
 &lt;h3 id="marimoscripts"&gt;Marimo Scripts&lt;/h3&gt;
 &lt;h4 id="setupaproject"&gt;Setup a project&lt;/h4&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
@@ -637,26 +579,16 @@ EOF
 
 echo "$marimo_config" &amp;gt;&amp;gt;"$script_dir/pyproject.toml"
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;*Script not tested, but it &lt;em&gt;should&lt;/em&gt; work as is. It's a recreation of the steps I
-took to create my setup.&lt;/p&gt;
+&lt;p&gt;*Script not tested, but it &lt;em&gt;should&lt;/em&gt; work as is. It's a recreation of the steps I took to create my setup.&lt;/p&gt;
 &lt;h4 id="runserver"&gt;Run Server&lt;/h4&gt;
 &lt;pre&gt;&lt;code class="sh language-sh"&gt;#!/usr/bin/env bash
 uv run marimo edit notebooks --watch
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="conclusions"&gt;Conclusions&lt;/h2&gt;
-&lt;p&gt;I think I'll jump between Jupytext and Marimo based on what I'm trying to do,
-both are decent candidates for a good setup. I still have some research to do
-in order to refine the setups for each.&lt;/p&gt;
-&lt;p&gt;I really would like to love Marimo, but the AI thing does bother me.
-I only discovered the fact that the first positional argument of the new command
-is an ai prompt when I tried to run &lt;code&gt;uv run marimo new test-notebook.py&lt;/code&gt; and the
-notebook it created was still at a temporary path, and prepopulated with random
-AI slop.&lt;/p&gt;
-&lt;p&gt;Because of this fact, my primary goal going forward will be to find a reasonable
-way to reload jupyter on file save. I will consider Marimo for the data
-visualization dashboard use-case though.&lt;/p&gt;
-&lt;p&gt;Update(2025-09-05): I have found a way to reload with Jupyter. It will be my
-preferred option unless I really need something out of Marimo.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/the-accelerated-young-professional</guid><title>The Accelerated Young Professional</title><link href="https://xavierchanth.com/posts/the-accelerated-young-professional"/><description>One who leverages time into accelerated growth, allowing them to become highly effective at their craft much earlier than the norm.</description><pubDate>2025-08-10</pubDate><content:encoded>&lt;h2 id="tldr"&gt;&lt;strong&gt;TLDR&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;I think I'll jump between Jupytext and Marimo based on what I'm trying to do, both are decent candidates for a good setup. I still have some research to do in order to refine the setups for each.&lt;/p&gt;
+&lt;p&gt;I really would like to love Marimo, but the AI thing does bother me. I only discovered the fact that the first positional argument of the new command is an ai prompt when I tried to run &lt;code&gt;uv run marimo new test-notebook.py&lt;/code&gt; and the notebook it created was still at a temporary path, and prepopulated with random AI slop.&lt;/p&gt;
+&lt;p&gt;Because of this fact, my primary goal going forward will be to find a reasonable way to reload jupyter on file save. I will consider Marimo for the data visualization dashboard use-case though.&lt;/p&gt;
+&lt;p&gt;Update(2025-09-05): I have found a way to reload with Jupyter. It will be my preferred option unless I really need something out of Marimo.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/the-accelerated-young-professional</guid><title>The Accelerated Young Professional</title><link href="https://xavierchanth.com/posts/the-accelerated-young-professional"/><description>One who leverages time into accelerated growth, allowing them to become highly effective at their craft much earlier than the norm.</description><pubDate>2025-08-10</pubDate><content:encoded>&lt;h2 id="tldr"&gt;&lt;strong&gt;TLDR&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;An accelerated young professional is a young professional who is capable of rapid growth and adaptability. This framework is built upon my own experiences to create a systematic, reproducible way of becoming one. The five main qualities are as follows:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Efficiency&lt;/strong&gt;: Set goals, work hard and meet them.  &lt;/li&gt;
