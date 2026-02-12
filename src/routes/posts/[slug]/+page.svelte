@@ -58,7 +58,7 @@
 
 	<div class="mt-12 max-w-4xl mx-auto">
 		<div
-			class="prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-[rgb(var(--accent))] prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-blockquote:border-l-[rgb(var(--accent))] prose-blockquote:bg-white/70"
+			class="prose-post prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-[rgb(var(--accent))] prose-pre:bg-slate-900 prose-pre:text-slate-100"
 		>
 			<Component />
 		</div>
