@@ -18,7 +18,7 @@
 				<p class="text-lg text-slate-600">{post.description}</p>
 			</div>
 			<span
-				class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 group-hover:text-[rgb(var(--accent))] transition"
+				class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-semibold text-slate-600 group-hover:text-[rgb(var(--accent))] transition"
 			>
 				Read post
 				<span aria-hidden="true">-&gt;</span>
