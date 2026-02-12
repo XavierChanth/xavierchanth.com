@@ -101,9 +101,9 @@
 		{@render children()}
 	</div>
 
-	<footer class="bg-slate-900 text-slate-200 py-10">
-		<div class="max-w-6xl mx-auto px-4 text-center space-y-2">
-			<p class="text-sm tracking-wide">&copy; 2025 Xavier Chanthavong. All rights reserved.</p>
+	<footer class="border-t border-black/5 bg-[rgb(var(--page))]/90 py-10 backdrop-blur">
+		<div class="max-w-6xl mx-auto px-4 text-center space-y-2 text-[rgb(var(--muted))]">
+			<p class="text-sm tracking-wide">&copy; 2026 Xavier Chanthavong. All rights reserved.</p>
 			<RssLink />
 		</div>
 	</footer>
