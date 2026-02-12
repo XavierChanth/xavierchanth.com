@@ -1,4 +1,4 @@
-import"./DsnmJJEf.js";import"./D9DIa3sn.js";import{f as a,b as n,n as i}from"./BeQqkNVA.js";const o={title:"Settling into Arch Linux",description:"My history with computers and developer tooling.",author:"Xavier Chanthavong",date:"2025-10-19",published:!0},{title:l,description:m,author:p,date:u,published:c}=o;var r=a(`<h2>My Early Days</h2> <p>My journey with computers started in an atypical way. As a kid, I was
+import{a,f as n}from"./BoERT2pC.js";import"./I57mnAC8.js";import{n as i}from"./CWWssa4G.js";const o={title:"Settling into Arch Linux",description:"My history with computers and developer tooling.",author:"Xavier Chanthavong",date:"2025-10-19",published:!0},{title:l,description:m,author:p,date:u,published:c}=o;var r=n(`<h2>My Early Days</h2> <p>My journey with computers started in an atypical way. As a kid, I was
 surrounded by tech due to my dad’s business, where he owned and operated a tech
 consulting firm. When I was just 7, I had access to his Ubuntu machine. It was
 my first exposure to a desktop computer, running Ubuntu 07.04. Fast forward
@@ -50,4 +50,4 @@ with a handful of supplementary ones:</p> <ul><li>Terminal Emulator: Ghostty</li
 I get to make the choices, I get the features and tools I want, not some
 random crap that poses a risk of breaking my system. Because of this,
 I can install my entire Arch setup by configuring my hardware, setting up
-secure boot, creating a user, then running a single script.</p>`,1);function y(e){var t=r();i(26),n(e,t)}export{y as default,o as metadata};
+secure boot, creating a user, then running a single script.</p>`,1);function y(e){var t=r();i(26),a(e,t)}export{y as default,o as metadata};
