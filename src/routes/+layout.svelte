@@ -59,7 +59,7 @@
 	<script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
 </svelte:head>
 
-<main class="min-h-screen flex flex-col relative overflow-hidden bg-[rgb(var(--page))]">
+<main class="min-h-screen flex flex-col relative overflow-x-hidden bg-[rgb(var(--page))] pt-16">
 	<div
 		class="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,116,144,0.25),transparent_65%)] blur-3xl"
 	></div>
@@ -67,7 +67,7 @@
 		class="pointer-events-none absolute top-40 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.2),transparent_60%)] blur-3xl"
 	></div>
 
-	<nav class="sticky top-0 z-20 border-b border-black/5 bg-[rgb(var(--page))]/80 backdrop-blur">
+	<nav class="fixed inset-x-0 top-0 z-50 border-b border-black/5 bg-[rgb(var(--page))]/80 backdrop-blur">
 		<div class="max-w-6xl mx-auto px-4">
 			<div class="flex justify-between items-center h-16">
 				<a href="/" class="text-xl font-semibold tracking-tight">

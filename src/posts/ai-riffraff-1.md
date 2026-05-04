@@ -81,6 +81,14 @@ That conversational workflow helps a lot.
 It lets me stay in the flow while the model helps organize what I'm saying.
 Once I feel like I've covered everything I care about, I'll ask it to turn the conversation into a design doc.
 
+> One thing to watch for during this stage is overfitting.
+If you tell the model not to do something, it may still keep that idea at the
+center of the response. For example, if I say, "don’t make this too abstract,"
+the model might remove one interface or rename a layer while preserving the same
+basic shape. What I really want to make it into the plan is usually more direct:
+start with the concrete workflow and interfaces, and only introduce abstractions
+if they become necessary.
+
 After that, I'll usually take the draft to a stronger model and ask it to review the plan for gaps, open-ended decisions, weak assumptions, or places where the tradeoffs haven't really been thought through.
 I'll keep iterating until the plan feels solid, then I'll turn that into a Markdown document and bring it into my coding editor.
 
@@ -103,7 +111,7 @@ AI mistakes are a form of technical debt, and we probably shouldn't be starting 
 
 ## Recap of my AI Greenfield Development Workflow
 
-- **Converse**: Talk through a problem with AI, and let it structure your thoughts into a coherent design doc draft.
+- **Capture**: Get the raw shape of the problem out of your head first. Let the ideas be messy, then use AI to organize them into a coherent design doc draft.
 - **Refine**: Pull in a more powerful model to review, refine, and finalize the design document.
 - **Develop**: Bring the design document into the codebase and break it down into sizeable chunks.
 - **Review**: The better you are at catching mistakes now, the happier you will be later.
