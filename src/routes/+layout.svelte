@@ -93,6 +93,17 @@
 							/>
 						</svg>
 					</a>
+					<a
+						href="https://www.linkedin.com/in/xavierchanth"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn"
+						class="inline-flex items-center justify-center rounded-full border border-white/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-slate-900"
+					>
+						<svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="currentColor">
+							<path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.11 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.75-2C19.2 8 21 10.35 21 14.2V23h-4v-7.6c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97V23h-4V8z"/>
+						</svg>
+					</a>
 				</div>
 			</div>
 		</div>
