@@ -10,7 +10,7 @@
    - Include the homepage, posts index, and all published posts.
    - Submit the sitemap in Google Search Console and Bing Webmaster Tools.
 
-3. Add `robots.txt`
+3. [x] Add `robots.txt`
    - Allow crawling.
    - Reference the sitemap URL.
 
