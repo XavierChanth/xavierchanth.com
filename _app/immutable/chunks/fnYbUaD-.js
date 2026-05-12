@@ -1,4 +1,4 @@
-import{a,f as i}from"./p5MUIfSB.js";import"./BalhOgjs.js";import{O as n}from"./BzleJMns.js";const o={title:"The Next Generation of the User Experience",description:"The Evolution of UX: Why Security is the New Engine of Innovation",author:"Xavier Chanthavong",date:"2026-02-11",published:!0},{title:c,description:p,author:u,date:d,published:m}=o;var r=i(`<p>In the pre-agentic era, we viewed security as a series of locks—necessary
+import{a,f as i}from"./1kz9IMli.js";import"./AWc5D6On.js";import{P as n}from"./Cbs7v_Ax.js";const o={title:"The Next Generation of the User Experience",description:"The Evolution of UX: Why Security is the New Engine of Innovation",author:"Xavier Chanthavong",date:"2026-02-11",published:!0},{title:c,description:p,author:u,date:d,published:m}=o;var r=i(`<p>In the pre-agentic era, we viewed security as a series of locks—necessary
 restrictions that inevitably slowed down the user experience. But as we move
 into an age of autonomous agents, the paradigm has flipped. We are entering a
 world where security is no longer a barrier to capability; it is the primary

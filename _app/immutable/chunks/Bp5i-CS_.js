@@ -1,4 +1,4 @@
-import{a as o,f as a}from"./p5MUIfSB.js";import"./BalhOgjs.js";import{O as s}from"./BzleJMns.js";const n={title:"First Post",description:"An introduction to this blog - why it exists",author:"Xavier Chanthavong",date:"2024-12-29",published:!0},{title:h,description:d,author:m,date:u,published:f}=n;var r=a(`<p>I currently work at a startup called <a href="https://atsign.com" rel="nofollow">Atsign</a>, mainly
+import{a as o,f as a}from"./1kz9IMli.js";import"./AWc5D6On.js";import{P as s}from"./Cbs7v_Ax.js";const n={title:"First Post",description:"An introduction to this blog - why it exists",author:"Xavier Chanthavong",date:"2024-12-29",published:!0},{title:h,description:d,author:m,date:u,published:f}=n;var r=a(`<p>I currently work at a startup called <a href="https://atsign.com" rel="nofollow">Atsign</a>, mainly
 working on our product suite called <a href="https://noports.com" rel="nofollow">NoPorts</a>.
 Over the past few years, I’ve had the opportunity to work alongside some amazing
 colleagues. I’ve been given the privilege of receiving one-on-one mentorship from
