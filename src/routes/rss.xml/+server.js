@@ -1,7 +1,6 @@
 export const prerender = true;
 
 import showdown from 'showdown';
-import { readFile } from 'fs/promises';
 import { create } from 'xmlbuilder2';
 import { getPosts } from '$lib/utils.js';
 import {
@@ -60,14 +59,20 @@ async function getRssXml() {
   return root.end();
 }
 const converter = new showdown.Converter();
+const postMarkdownFiles = import.meta.glob('/src/posts/*.md', {
+	query: '?raw',
+	import: 'default'
+});
+
 /** @param {string} postSlug  */
 async function getHtmlForPost(
   postSlug,
 ) {
-  const postMarkdownWithFrontmatter = await readFile(
-    `./src/posts/${postSlug}.md`,
-    'utf-8'
-  );
+  const loadMarkdown = postMarkdownFiles[`/src/posts/${postSlug}.md`];
+  if (!loadMarkdown) {
+    throw new Error(`Unable to find post Markdown for "${postSlug}"`);
+  }
+  const postMarkdownWithFrontmatter = /** @type {string} */ (await loadMarkdown());
   const postMarkdown = postMarkdownWithFrontmatter.split('---')[2].trim();
   let postHtml = converter.makeHtml(postMarkdown);
   // prevents HTML in code tags from being rendered
