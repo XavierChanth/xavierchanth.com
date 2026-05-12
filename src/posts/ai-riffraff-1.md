@@ -113,6 +113,7 @@ AI mistakes are a form of technical debt, and we probably shouldn't be starting 
 
 - **Capture**: Get the raw shape of the problem out of your head first. Let the ideas be messy, then use AI to organize them into a coherent design doc draft.
 - **Refine**: Pull in a more powerful model to review, refine, and finalize the design document.
+- **Clarify**: Go back and forth on the gaps, weak assumptions, and tradeoffs until the important decisions are explicit.
 - **Develop**: Bring the design document into the codebase and break it down into sizeable chunks.
 - **Review**: The better you are at catching mistakes now, the happier you will be later.
 
