@@ -2,11 +2,11 @@
 
 ## SEO / AEO
 
-1. Fix `bun run check`
+1. [x] Fix `bun run check`
    - Resolve the current `fs/promises` type error in `src/routes/rss.xml/+server.js`.
    - Keep validation quiet enough that SEO and metadata regressions are easy to catch.
 
-2. Add `sitemap.xml`
+2. [x] Add `sitemap.xml`
    - Include the homepage, posts index, and all published posts.
    - Submit the sitemap in Google Search Console and Bing Webmaster Tools.
 
