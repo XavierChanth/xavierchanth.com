@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2026-02-12T04:29:57.192Z</lastBuiltDate><description>Software engineer, boulderer, and world traveler who loves learning and open-source.</description><item><guid>https://xavierchanth.com/posts/the-next-generation-of-the-user-experience</guid><title>The Next Generation of the User Experience</title><link href="https://xavierchanth.com/posts/the-next-generation-of-the-user-experience"/><description>The Evolution of UX: Why Security is the New Engine of Innovation</description><pubDate>2026-02-11</pubDate><content:encoded>&lt;p&gt;In the pre-agentic era, we viewed security as a series of locks—necessary
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2026-05-12T16:31:31.713Z</lastBuiltDate><description>Software engineer, boulderer, and world traveler who loves learning and open-source.</description><item><guid>https://xavierchanth.com/posts/ai-riffraff-1</guid><title>AI Riffraff, Part 1: Greenfield Architecture</title><link href="https://xavierchanth.com/posts/ai-riffraff-1"/><description>A practical workflow for using AI without giving up good greenfield decisions.</description><pubDate>2026-05-04</pubDate><content:encoded>&lt;h2 id="thisseries"&gt;This Series&lt;/h2&gt;
+&lt;p&gt;This is the first post in a series on how I use AI in software work.
+I'm still figuring out exactly where I want to take the series, but there are a few topics that I already know I want to write about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Working on architecture with AI, and leveraging it to research, explore, experiment, and record technology decisions. (&lt;strong&gt;this post&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;Some more hands-on workflows using pi and a custom distribution for it that I've put together.&lt;/li&gt;
+&lt;li&gt;Some less hands-on workflows using some of these larger harnesses, such as Cursor agents or Codex.&lt;/li&gt;
+&lt;li&gt;Voice-driven workflows with AI.&lt;/li&gt;
+&lt;li&gt;Less workflow oriented, but how I categorize all of the available products in the space, both from a usability perspective and GTM perspective.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="aimakesdecisionmakingharder"&gt;AI Makes Decision Making Harder&lt;/h2&gt;
+&lt;p&gt;AI is a force multiplier.
+It lets you move faster, whether you're moving in a good direction or a bad one.
+Something that used to take several weeks might now take several days.&lt;/p&gt;
+&lt;p&gt;That speed is great, but it changes how decisions get made.
+Over those few weeks, how many times would you have sat down with an architect, product manager, or designer to think through what you were building?
+When AI compresses that timeline, you lose some of those natural windows where decisions would have been made explicitly.
+Instead, they often get made implicitly by the model through assumptions.&lt;/p&gt;
+&lt;p&gt;That, to me, is one of the biggest risks of using AI in greenfield work.&lt;/p&gt;
+&lt;h2 id="solvingthedecisionmakingdilemma"&gt;Solving the Decision Making Dilemma&lt;/h2&gt;
+&lt;p&gt;So how do we solve this? How do we make more conscious decisions while still moving quickly?&lt;/p&gt;
+&lt;p&gt;I think the answer is to be more deliberate about what kind of work we're asking AI to help us with.
+Not all AI-assisted work has the same risk profile.&lt;/p&gt;
+&lt;p&gt;There are three areas I think about:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Prototypes.&lt;/strong&gt; In a prototype, code quality often doesn't matter that much. The point is to generate a quick idea and decide whether it's worth exploring further or throwing away. This is where speed matters most.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Brownfield codebases.&lt;/strong&gt; In an existing codebase, the model has something to ground itself in. Models are getting better at understanding what's already there, and the diffs they produce are a lot more reviewable than they used to be.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Greenfield codebases.&lt;/strong&gt; This is the trickiest area by far. There are more unanswered questions, less code for the model to anchor on, and a much higher chance that it makes assumptions or decisions you never would have made.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="greenfieldcodebases"&gt;Greenfield Codebases&lt;/h2&gt;
+&lt;p&gt;In greenfield codebases, there is very little for AI models to ground themselves in.
+That's a problem, because in my experience a model will almost always make some assumption I never would have made, or try to make a decision it shouldn't be making yet.
+I've tried working around this with skills that record decisions as they happen so they can be corrected later.
+It didn't really work that well.&lt;/p&gt;
+&lt;p&gt;This is where I think we need to be more hands-on.
+As engineers or architects, it's important that we maintain understanding of the code as it's being produced.
+The hardest time to do that is right at the beginning.
+If you don't understand how interfaces are being laid out, or how things are being wired together at a high level, it's very hard to reason about the details.&lt;/p&gt;
+&lt;p&gt;For greenfield codebases, the human should be the pilot, not the model.
+Over time, you can defer more and more to the LLM, but early on you need to lay down interface boundaries and decide where abstraction effort matters and where it doesn't.
+I still don't think models are equipped to make those calls well.
+A lot of architectural work comes down to experience and taste.
+Sometimes it's a gut check first, and then you verify that you're directionally correct.
+Sometimes it's realizing that you aren't sure yet, and making decisions that preserve flexibility without overcomplicating things too early.&lt;/p&gt;
+&lt;p&gt;Trying to explain all of that to a model in precise language is difficult.
+A lot of the time it's easier to do the thinking myself, lay the foundation, and then use the model in smaller, more contained ways.
+As I've gone from prototyping into actual greenfield production work, I've found myself reaching less for a fully agentic harness and more for short, focused queries to implement one small thing at a time.&lt;/p&gt;
+&lt;h2 id="mygreenfieldaiworkflow"&gt;My Greenfield AI Workflow&lt;/h2&gt;
+&lt;p&gt;The first thing I try to do is flesh out the most fundamental parts of the application.
+Not everything, just enough that I can start seeing some boundaries and identify parts of the project that can be isolated in scope.&lt;/p&gt;
+&lt;p&gt;Once I have that, I'll usually grab my phone and go for a walk.
+I'll put on headphones and start talking through the problem.
+I usually use Claude for this because I find the voice experience more natural than most of the other tools.
+I'll go back and forth with it and describe what I'm trying to build without much structure.&lt;/p&gt;
+&lt;p&gt;One of the hardest parts of writing a design doc is taking a bunch of loose ideas and turning them into something coherent.
+That conversational workflow helps a lot.
+It lets me stay in the flow while the model helps organize what I'm saying.
+Once I feel like I've covered everything I care about, I'll ask it to turn the conversation into a design doc.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;One thing to watch for during this stage is overfitting.
+  If you tell the model not to do something, it may still keep that idea at the
+  center of the response. For example, if I say, "don’t make this too abstract,"
+  the model might remove one interface or rename a layer while preserving the same
+  basic shape. What I really want to make it into the plan is usually more direct:
+  start with the concrete workflow and interfaces, and only introduce abstractions
+  if they become necessary.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After that, I'll usually take the draft to a stronger model and ask it to review the plan for gaps, open-ended decisions, weak assumptions, or places where the tradeoffs haven't really been thought through.
+I'll keep iterating until the plan feels solid, then I'll turn that into a Markdown document and bring it into my coding editor.&lt;/p&gt;
+&lt;p&gt;There are some obvious benefits to doing it this way.
+Because I'm not doing this inside the codebase, the model doesn't automatically see things I may not want it to see.
+I can stay vague where I want to stay vague, and get specific only when the problem starts to sharpen.
+That helps me start from the big picture and work my way down into something that actually fits what I'm trying to solve.&lt;/p&gt;
+&lt;p&gt;From there, the implementation approach depends on the size of the design doc and the kind of problem.
+Sometimes it's better to define interfaces first and have the model implement against those boundaries.
+Sometimes it's fine to give a larger chunk to an agent.
+The important thing, especially in a greenfield codebase, is that everything stays reviewable.
+If what the AI produces is too large for you to comfortably understand, you've already lost too much of the picture.&lt;/p&gt;
+&lt;h2 id="donttrustai"&gt;Don't Trust AI&lt;/h2&gt;
+&lt;p&gt;It's especially important in greenfield codebases that AI mistakes are caught and corrected immediately.
+Early mistakes are more likely to stick around, and the effects can compound over time.
+AI mistakes are a form of technical debt, and we probably shouldn't be starting new projects by injecting technical debt on day one.&lt;/p&gt;
+&lt;h2 id="recapofmyaigreenfielddevelopmentworkflow"&gt;Recap of my AI Greenfield Development Workflow&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Capture&lt;/strong&gt;: Get the raw shape of the problem out of your head first. Let the ideas be messy, then use AI to organize them into a coherent design doc draft.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refine&lt;/strong&gt;: Pull in a more powerful model to review, refine, and finalize the design document.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Develop&lt;/strong&gt;: Bring the design document into the codebase and break it down into sizeable chunks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review&lt;/strong&gt;: The better you are at catching mistakes now, the happier you will be later.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="takeaways"&gt;Takeaways&lt;/h2&gt;
+&lt;p&gt;When something has been vibe-coded, it's usually noticeable.
+We've even got a name for it now: slop.
+I don't want to be somebody building AI slop.&lt;/p&gt;
+&lt;p&gt;Not every project, and not every piece of code, needs the highest possible quality.
+Some software really does just need to work.
+But for the things that matter most, the things we're putting real effort into, those are exactly the places where we shouldn't be sacrificing quality.&lt;/p&gt;
+&lt;p&gt;It's okay to feel enlightened by AI, just don't let that enlightenment turn into enshittification.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/the-next-generation-of-the-user-experience</guid><title>The Next Generation of the User Experience</title><link href="https://xavierchanth.com/posts/the-next-generation-of-the-user-experience"/><description>The Evolution of UX: Why Security is the New Engine of Innovation</description><pubDate>2026-02-11</pubDate><content:encoded>&lt;p&gt;In the pre-agentic era, we viewed security as a series of locks—necessary
 restrictions that inevitably slowed down the user experience. But as we move
 into an age of autonomous agents, the paradigm has flipped. We are entering a
 world where security is no longer a barrier to capability; it is the primary

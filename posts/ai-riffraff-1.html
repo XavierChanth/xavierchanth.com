@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="../_app/immutable/assets/0.C-iRpl4n.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.BiW2ubTa.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DiN1D40a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BzleJMns.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BUApaBEI.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/D0NhRU-e.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.C0m-0tsp.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/PPVm8Dsz.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/B4yFigmL.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/p5MUIfSB.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BtA40Kuh.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.D9o-J42Q.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Cfg9vjro.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/B5XKIOri.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BalhOgjs.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CkyzbHji.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.CxuqisHt.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/YAlQlYJg.js"><!--12qhfyh--><meta name="description" content="Software engineer, boulderer, and world traveler who loves learning and open-source."/> <meta name="author" content="Xavier Chanthavong"/> <meta name="robots" content="index,follow"/> <link rel="canonical" href="https://xavierchanth.com/posts/ai-riffraff-1"/> <meta property="og:site_name" content="XavierChanth"/> <meta property="og:type" content="website"/> <meta property="og:title" content="XavierChanth"/> <meta property="og:description" content="Software engineer, boulderer, and world traveler who loves learning and open-source."/> <meta property="og:url" content="https://xavierchanth.com/posts/ai-riffraff-1"/> <meta property="og:image" content="https://xavierchanth.com/assets/Xavier_profile_2024.jpeg"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="XavierChanth"/> <meta name="twitter:description" content="Software engineer, boulderer, and world traveler who loves learning and open-source."/> <meta name="twitter:image" content="https://xavierchanth.com/assets/Xavier_profile_2024.jpeg"/> <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script> <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script><!----><!--14u6r3i--><meta name="description" content="A practical workflow for using AI without giving up good greenfield decisions."/> <link rel="canonical" href="https://xavierchanth.com/posts/ai-riffraff-1"/> <meta property="og:type" content="article"/> <meta property="og:title" content="AI Riffraff, Part 1: Greenfield Architecture - XavierChanth"/> <meta property="og:description" content="A practical workflow for using AI without giving up good greenfield decisions."/> <meta property="og:url" content="https://xavierchanth.com/posts/ai-riffraff-1"/> <meta property="og:image" content="https://xavierchanth.com/assets/Xavier_profile_2024.jpeg"/> <meta name="twitter:title" content="AI Riffraff, Part 1: Greenfield Architecture - XavierChanth"/> <meta name="twitter:description" content="A practical workflow for using AI without giving up good greenfield decisions."/> <meta name="twitter:image" content="https://xavierchanth.com/assets/Xavier_profile_2024.jpeg"/> <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script><!----><title>AI Riffraff, Part 1: Greenfield Architecture - XavierChanth</title>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[--><!----><main class="min-h-screen flex flex-col relative overflow-x-hidden bg-[rgb(var(--page))] pt-16"><div class="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,116,144,0.25),transparent_65%)] blur-3xl"></div> <div class="pointer-events-none absolute top-40 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.2),transparent_60%)] blur-3xl"></div> <nav class="fixed inset-x-0 top-0 z-50 border-b border-black/5 bg-[rgb(var(--page))]/80 backdrop-blur"><div class="max-w-6xl mx-auto px-4"><div class="flex justify-between items-center h-16"><a href="/" class="text-xl font-semibold tracking-tight"><span class="text-[rgb(var(--accent))]">Xavier</span>Chanth</a> <div class="flex items-center gap-3"><a href="/posts" class="inline-flex items-center justify-center rounded-full border border-black/10 bg-white/70 px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-slate-900">Blog posts</a> <a href="https://github.com/xavierchanth" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="inline-flex items-center justify-center rounded-full border border-white/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-slate-900"><svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="currentColor"><path d="M12 .5a12 12 0 00-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.78-1.34-1.78-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.57.12-3.28 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0C17.02 5 18.03 5.32 18.03 5.32c.66 1.71.24 2.97.12 3.28.77.84 1.24 1.91 1.24 3.22 0 4.61-2.82 5.62-5.5 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0012 .5z"></path></svg></a> <a href="https://www.linkedin.com/in/xavierchanth" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="inline-flex items-center justify-center rounded-full border border-white/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-slate-900"><svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.11 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2h.1c.53-1 1.82-2 3.75-2C19.2 8 21 10.35 21 14.2V23h-4v-7.6c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97V23h-4V8z"></path></svg></a></div></div></div></nav> <div class="flex-grow"><!----><div class="max-w-6xl mx-auto px-4 py-16 lg:py-20"><div class="max-w-4xl mx-auto text-center space-y-4"><p class="text-xs uppercase tracking-[0.3em] text-slate-500">Xavier Chanthavong - 2026-05-04</p> <h1 class="text-4xl sm:text-5xl">AI Riffraff, Part 1: Greenfield Architecture</h1> <p class="text-lg text-slate-600">A practical workflow for using AI without giving up good greenfield decisions.</p></div> <div class="mt-12 max-w-4xl mx-auto"><div class="prose-post prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-[rgb(var(--accent))] prose-pre:bg-slate-900 prose-pre:text-slate-100"><h2>This Series</h2> <p>This is the first post in a series on how I use AI in software work.
+I’m still figuring out exactly where I want to take the series, but there are a few topics that I already know I want to write about:</p> <ul><li>Working on architecture with AI, and leveraging it to research, explore, experiment, and record technology decisions. (<strong>this post</strong>)</li> <li>Some more hands-on workflows using pi and a custom distribution for it that I’ve put together.</li> <li>Some less hands-on workflows using some of these larger harnesses, such as Cursor agents or Codex.</li> <li>Voice-driven workflows with AI.</li> <li>Less workflow oriented, but how I categorize all of the available products in the space, both from a usability perspective and GTM perspective.</li></ul> <h2>AI Makes Decision Making Harder</h2> <p>AI is a force multiplier.
+It lets you move faster, whether you’re moving in a good direction or a bad one.
+Something that used to take several weeks might now take several days.</p> <p>That speed is great, but it changes how decisions get made.
+Over those few weeks, how many times would you have sat down with an architect, product manager, or designer to think through what you were building?
+When AI compresses that timeline, you lose some of those natural windows where decisions would have been made explicitly.
+Instead, they often get made implicitly by the model through assumptions.</p> <p>That, to me, is one of the biggest risks of using AI in greenfield work.</p> <h2>Solving the Decision Making Dilemma</h2> <p>So how do we solve this? How do we make more conscious decisions while still moving quickly?</p> <p>I think the answer is to be more deliberate about what kind of work we’re asking AI to help us with.
+Not all AI-assisted work has the same risk profile.</p> <p>There are three areas I think about:</p> <ol><li><strong>Prototypes.</strong> In a prototype, code quality often doesn’t matter that much. The point is to generate a quick idea and decide whether it’s worth exploring further or throwing away. This is where speed matters most.</li> <li><strong>Brownfield codebases.</strong> In an existing codebase, the model has something to ground itself in. Models are getting better at understanding what’s already there, and the diffs they produce are a lot more reviewable than they used to be.</li> <li><strong>Greenfield codebases.</strong> This is the trickiest area by far. There are more unanswered questions, less code for the model to anchor on, and a much higher chance that it makes assumptions or decisions you never would have made.</li></ol> <h2>Greenfield Codebases</h2> <p>In greenfield codebases, there is very little for AI models to ground themselves in.
+That’s a problem, because in my experience a model will almost always make some assumption I never would have made, or try to make a decision it shouldn’t be making yet.
+I’ve tried working around this with skills that record decisions as they happen so they can be corrected later.
+It didn’t really work that well.</p> <p>This is where I think we need to be more hands-on.
+As engineers or architects, it’s important that we maintain understanding of the code as it’s being produced.
+The hardest time to do that is right at the beginning.
+If you don’t understand how interfaces are being laid out, or how things are being wired together at a high level, it’s very hard to reason about the details.</p> <p>For greenfield codebases, the human should be the pilot, not the model.
+Over time, you can defer more and more to the LLM, but early on you need to lay down interface boundaries and decide where abstraction effort matters and where it doesn’t.
+I still don’t think models are equipped to make those calls well.
+A lot of architectural work comes down to experience and taste.
+Sometimes it’s a gut check first, and then you verify that you’re directionally correct.
+Sometimes it’s realizing that you aren’t sure yet, and making decisions that preserve flexibility without overcomplicating things too early.</p> <p>Trying to explain all of that to a model in precise language is difficult.
+A lot of the time it’s easier to do the thinking myself, lay the foundation, and then use the model in smaller, more contained ways.
+As I’ve gone from prototyping into actual greenfield production work, I’ve found myself reaching less for a fully agentic harness and more for short, focused queries to implement one small thing at a time.</p> <h2>My Greenfield AI Workflow</h2> <p>The first thing I try to do is flesh out the most fundamental parts of the application.
+Not everything, just enough that I can start seeing some boundaries and identify parts of the project that can be isolated in scope.</p> <p>Once I have that, I’ll usually grab my phone and go for a walk.
+I’ll put on headphones and start talking through the problem.
+I usually use Claude for this because I find the voice experience more natural than most of the other tools.
+I’ll go back and forth with it and describe what I’m trying to build without much structure.</p> <p>One of the hardest parts of writing a design doc is taking a bunch of loose ideas and turning them into something coherent.
+That conversational workflow helps a lot.
+It lets me stay in the flow while the model helps organize what I’m saying.
+Once I feel like I’ve covered everything I care about, I’ll ask it to turn the conversation into a design doc.</p> <blockquote><p>One thing to watch for during this stage is overfitting.
+If you tell the model not to do something, it may still keep that idea at the
+center of the response. For example, if I say, “don’t make this too abstract,”
+the model might remove one interface or rename a layer while preserving the same
+basic shape. What I really want to make it into the plan is usually more direct:
+start with the concrete workflow and interfaces, and only introduce abstractions
+if they become necessary.</p></blockquote> <p>After that, I’ll usually take the draft to a stronger model and ask it to review the plan for gaps, open-ended decisions, weak assumptions, or places where the tradeoffs haven’t really been thought through.
+I’ll keep iterating until the plan feels solid, then I’ll turn that into a Markdown document and bring it into my coding editor.</p> <p>There are some obvious benefits to doing it this way.
+Because I’m not doing this inside the codebase, the model doesn’t automatically see things I may not want it to see.
+I can stay vague where I want to stay vague, and get specific only when the problem starts to sharpen.
+That helps me start from the big picture and work my way down into something that actually fits what I’m trying to solve.</p> <p>From there, the implementation approach depends on the size of the design doc and the kind of problem.
+Sometimes it’s better to define interfaces first and have the model implement against those boundaries.
+Sometimes it’s fine to give a larger chunk to an agent.
+The important thing, especially in a greenfield codebase, is that everything stays reviewable.
+If what the AI produces is too large for you to comfortably understand, you’ve already lost too much of the picture.</p> <h2>Don’t Trust AI</h2> <p>It’s especially important in greenfield codebases that AI mistakes are caught and corrected immediately.
+Early mistakes are more likely to stick around, and the effects can compound over time.
+AI mistakes are a form of technical debt, and we probably shouldn’t be starting new projects by injecting technical debt on day one.</p> <h2>Recap of my AI Greenfield Development Workflow</h2> <ul><li><strong>Capture</strong>: Get the raw shape of the problem out of your head first. Let the ideas be messy, then use AI to organize them into a coherent design doc draft.</li> <li><strong>Refine</strong>: Pull in a more powerful model to review, refine, and finalize the design document.</li> <li><strong>Develop</strong>: Bring the design document into the codebase and break it down into sizeable chunks.</li> <li><strong>Review</strong>: The better you are at catching mistakes now, the happier you will be later.</li></ul> <h2>Takeaways</h2> <p>When something has been vibe-coded, it’s usually noticeable.
+We’ve even got a name for it now: slop.
+I don’t want to be somebody building AI slop.</p> <p>Not every project, and not every piece of code, needs the highest possible quality.
+Some software really does just need to work.
+But for the things that matter most, the things we’re putting real effort into, those are exactly the places where we shouldn’t be sacrificing quality.</p> <p>It’s okay to feel enlightened by AI, just don’t let that enlightenment turn into enshittification.</p><!----></div></div></div><!----><!----></div> <footer class="border-t border-black/5 bg-[rgb(var(--page))]/90 py-10 backdrop-blur"><div class="max-w-6xl mx-auto px-4 text-center space-y-2 text-[rgb(var(--muted))]"><p class="text-sm tracking-wide">© 2026 Xavier Chanthavong. All rights reserved.</p> <a href="/rss.xml" download="xavierchanth-rss.xml" class="inline-flex items-center gap-2 text-sm text-[rgb(var(--accent))] hover:text-[rgb(var(--ink))] transition-colors"><span class="feed-icon h-4 w-4 svelte-1uigj4g"></span> subscribe to future posts</a><!----></div></footer></main><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_vziet6 = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BiW2ubTa.js"),
+						import("../_app/immutable/entry/app.C0m-0tsp.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [{type:"data",data:null,uses:{}},null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
