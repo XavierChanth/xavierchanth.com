@@ -4,6 +4,20 @@
 	import { BLOG_DESCRIPTION, BLOG_TITLE, BLOG_URL } from '$lib/metadata';
 
 	const canonical = `${BLOG_URL}/posts`;
+	const blogJsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		name: `Blog Posts - ${BLOG_TITLE}`,
+		description: `Posts from ${BLOG_TITLE}. ${BLOG_DESCRIPTION}`,
+		url: canonical,
+		blogPost: data.posts.map((post) => ({
+			'@type': 'BlogPosting',
+			headline: post.title,
+			description: post.description,
+			url: `${BLOG_URL}/posts/${post.slug}`,
+			datePublished: post.date
+		}))
+	});
 </script>
 
 <svelte:head>
@@ -18,6 +32,8 @@
 
 	<meta name="twitter:title" content={`Blog Posts - ${BLOG_TITLE}`} />
 	<meta name="twitter:description" content={`Posts from ${BLOG_TITLE}. ${BLOG_DESCRIPTION}`} />
+
+	<script type="application/ld+json">{JSON.stringify(blogJsonLd)}</script>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">

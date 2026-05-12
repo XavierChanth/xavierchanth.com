@@ -24,8 +24,34 @@
 			name: BLOG_AUTHOR
 		},
 		datePublished: data.date,
+		dateModified: data.updated ?? data.date,
 		image: BLOG_IMAGE,
 		mainEntityOfPage: canonical
+	});
+
+	const breadcrumbJsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: BLOG_URL
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Blog Posts',
+				item: `${BLOG_URL}/posts`
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: data.title,
+				item: canonical
+			}
+		]
 	});
 </script>
 
@@ -45,6 +71,7 @@
 	<meta name="twitter:image" content={BLOG_IMAGE} />
 
 	<script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
+	<script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">

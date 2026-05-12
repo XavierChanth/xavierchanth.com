@@ -17,7 +17,7 @@
 4. [x] Add RSS discovery metadata
    - Add `<link rel="alternate" type="application/rss+xml">` in the shared head.
 
-5. Improve structured data
+5. [x] Improve structured data
    - Keep `WebSite`, `Person`, and `BlogPosting`.
    - Add `Blog` schema on `/posts`.
    - Add `BreadcrumbList` schema for post pages.
