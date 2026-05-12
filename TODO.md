@@ -14,7 +14,7 @@
    - Allow crawling.
    - Reference the sitemap URL.
 
-4. Add RSS discovery metadata
+4. [x] Add RSS discovery metadata
    - Add `<link rel="alternate" type="application/rss+xml">` in the shared head.
 
 5. Improve structured data

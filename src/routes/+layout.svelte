@@ -42,6 +42,7 @@
 	<meta name="author" content={BLOG_AUTHOR} />
 	<meta name="robots" content="index,follow" />
 	<link rel="canonical" href={canonical} />
+	<link rel="alternate" type="application/rss+xml" title={`${BLOG_TITLE} RSS`} href={`${BLOG_URL}/rss.xml`} />
 
 	<meta property="og:site_name" content={BLOG_TITLE} />
 	<meta property="og:type" content="website" />
