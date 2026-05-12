@@ -10,11 +10,11 @@
 
 	/** @type {{ data: Md.ResolvedPost }}*/
 	const { data } = $props();
-	const Component = data.component;
+	const Component = $derived(data.component);
 
-	const canonical = `${BLOG_URL}/posts/${data.slug}`;
+	const canonical = $derived(`${BLOG_URL}/posts/${data.slug}`);
 
-	const articleJsonLd = {
+	const articleJsonLd = $derived({
 		'@context': 'https://schema.org',
 		'@type': 'BlogPosting',
 		headline: data.title,
@@ -26,7 +26,7 @@
 		datePublished: data.date,
 		image: BLOG_IMAGE,
 		mainEntityOfPage: canonical
-	};
+	});
 </script>
 
 <svelte:head>
