@@ -165,6 +165,32 @@ const getSeriesPosts = async (seriesSlug) => {
 };
 
 /**
+ * @param {string} slug
+ * @returns {{ seriesSlug: string; index: number } | undefined}
+ */
+const seriesAliasFromSlug = (slug) => {
+	const match = slug.match(/^(.+)-([1-9]\d*)$/);
+	if (!match) return undefined;
+
+	return {
+		seriesSlug: match[1],
+		index: Number(match[2])
+	};
+};
+
+/**
+ * @param {string} slug
+ * @returns {Promise<Md.ResolvedPost | undefined>}
+ */
+const getPostBySeriesAlias = async (slug) => {
+	const alias = seriesAliasFromSlug(slug);
+	if (!alias) return undefined;
+
+	const posts = await getSeriesPosts(alias.seriesSlug);
+	return posts.find((post) => post.series?.index === alias.index);
+};
+
+/**
  * @returns {Promise<Md.SeriesSummary[]>}
  */
 const getSeriesSummaries = async () => {
@@ -214,6 +240,7 @@ const getTagSummaries = async () => {
 export {
 	getPosts,
 	getPost,
+	getPostBySeriesAlias,
 	getSeriesPosts,
 	getSeriesSummaries,
 	getTagPosts,
