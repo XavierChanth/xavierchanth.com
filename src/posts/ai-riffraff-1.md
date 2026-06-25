@@ -1,9 +1,10 @@
 ---
-title: "AI Riffraff, Part 1: Greenfield Architecture"
+title: "Greenfield Architecture"
 description: "A practical workflow for using AI without giving up good greenfield decisions."
 author: "Xavier Chanthavong"
 date: "2026-05-04"
 published: true
+series: "AI Riffraff"
 ---
 
 ## This Series
@@ -82,12 +83,12 @@ It lets me stay in the flow while the model helps organize what I'm saying.
 Once I feel like I've covered everything I care about, I'll ask it to turn the conversation into a design doc.
 
 > One thing to watch for during this stage is overfitting.
-If you tell the model not to do something, it may still keep that idea at the
-center of the response. For example, if I say, "don’t make this too abstract,"
-the model might remove one interface or rename a layer while preserving the same
-basic shape. What I really want to make it into the plan is usually more direct:
-start with the concrete workflow and interfaces, and only introduce abstractions
-if they become necessary.
+> If you tell the model not to do something, it may still keep that idea at the
+> center of the response. For example, if I say, "don’t make this too abstract,"
+> the model might remove one interface or rename a layer while preserving the same
+> basic shape. What I really want to make it into the plan is usually more direct:
+> start with the concrete workflow and interfaces, and only introduce abstractions
+> if they become necessary.
 
 After that, I'll usually take the draft to a stronger model and ask it to review the plan for gaps, open-ended decisions, weak assumptions, or places where the tradeoffs haven't really been thought through.
 I'll keep iterating until the plan feels solid, then I'll turn that into a Markdown document and bring it into my coding editor.

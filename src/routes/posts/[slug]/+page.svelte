@@ -1,12 +1,9 @@
 <script>
 	// @ts-nocheck
 
-	import {
-		BLOG_AUTHOR,
-		BLOG_IMAGE,
-		BLOG_TITLE,
-		BLOG_URL
-	} from '$lib/metadata';
+	import { BLOG_AUTHOR, BLOG_IMAGE, BLOG_TITLE, BLOG_URL } from '$lib/metadata';
+	import SeriesLabel from '$lib/components/SeriesLabel.svelte';
+	import SeriesNavigation from '$lib/components/SeriesNavigation.svelte';
 
 	/** @type {{ data: Md.ResolvedPost }}*/
 	const { data } = $props();
@@ -70,8 +67,12 @@
 	<meta name="twitter:description" content={data.description} />
 	<meta name="twitter:image" content={BLOG_IMAGE} />
 
-	<script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
-	<script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+	<script type="application/ld+json">
+{JSON.stringify(articleJsonLd)}
+	</script>
+	<script type="application/ld+json">
+{JSON.stringify(breadcrumbJsonLd)}
+	</script>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">
@@ -79,15 +80,30 @@
 		<p class="text-xs uppercase tracking-[0.3em] text-slate-500">
 			{data.author} - {data.date}
 		</p>
+		{#if data.series}
+			<div class="flex justify-center">
+				<SeriesLabel series={data.series} />
+			</div>
+		{/if}
 		<h1 class="text-4xl sm:text-5xl">{data.title}</h1>
 		<p class="text-lg text-slate-600">{data.description}</p>
 	</div>
 
 	<div class="mt-12 max-w-4xl mx-auto">
+		{#if data.series}
+			<div class="mb-10">
+				<SeriesNavigation series={data.series} currentSlug={data.slug} />
+			</div>
+		{/if}
 		<div
 			class="prose-post prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-[rgb(var(--accent))] prose-pre:bg-slate-900 prose-pre:text-slate-100"
 		>
 			<Component />
 		</div>
+		{#if data.series}
+			<div class="mt-12">
+				<SeriesNavigation series={data.series} currentSlug={data.slug} />
+			</div>
+		{/if}
 	</div>
 </div>

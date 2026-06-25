@@ -1,9 +1,10 @@
 ---
-title: "AI Riffraff, Part 2: Context Should Be Lazy"
+title: "Context Should Be Lazy"
 description: "A case for lazy context, small AGENTS.md files, and using plain Markdown instead of skill sprawl."
 author: "Xavier Chanthavong"
 date: "2026-05-14"
 published: true
+series: "AI Riffraff"
 ---
 
 ## Hot Take: Skills Are Usually Bad
@@ -12,7 +13,7 @@ Okay, this is sort of a hot take, but I think skills are usually a bad way to us
 
 It is not just that skills are misused. I think they are often misauthored, and the difference matters. Even for skills that are eval'd properly, where someone has written a bunch of evals to make sure the skill guides the model toward the correct behavior, I have a hunch that most of those evals do not care about token churn.
 
-They probably test the positive case. 
+They probably test the positive case.
 
 > Does the skill help when it is relevant?  
 > Does the model follow the right workflow?  
@@ -22,7 +23,7 @@ Those are all good questions, but I would assume most evals are not testing the 
 
 > Does the skill stay out of the way when it is irrelevant?  
 > Does it avoid triggering when it should not?  
-> How much context does it add to tasks that do not need it? 
+> How much context does it add to tasks that do not need it?
 
 This is something worth thinking about when authoring skills. A skill can be helpful in the right moment and still be bad tooling overall if it creates context inflation everywhere else.
 
