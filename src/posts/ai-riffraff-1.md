@@ -5,6 +5,9 @@ author: "Xavier Chanthavong"
 date: "2026-05-04"
 published: true
 series: "AI Riffraff"
+tags:
+  - "AI"
+  - "tooling"
 ---
 
 ## This Series

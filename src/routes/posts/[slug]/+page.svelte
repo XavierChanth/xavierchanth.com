@@ -4,6 +4,7 @@
 	import { BLOG_AUTHOR, BLOG_IMAGE, BLOG_TITLE, BLOG_URL } from '$lib/metadata';
 	import SeriesLabel from '$lib/components/SeriesLabel.svelte';
 	import SeriesNavigation from '$lib/components/SeriesNavigation.svelte';
+	import TagList from '$lib/components/TagList.svelte';
 
 	/** @type {{ data: Md.ResolvedPost }}*/
 	const { data } = $props();
@@ -76,25 +77,26 @@
 </svelte:head>
 
 <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20">
-	<div class="max-w-4xl mx-auto text-center space-y-4">
-		<p class="text-xs uppercase tracking-[0.3em] text-slate-500">
-			{data.author} - {data.date}
-		</p>
-		{#if data.series}
-			<div class="flex justify-center">
-				<SeriesLabel series={data.series} />
+	<div class="max-w-4xl mx-auto space-y-4">
+		<div class="grid gap-3 sm:grid-cols-2 sm:items-start">
+			<div class="space-y-2 text-center sm:text-left">
+				<p class="text-xs uppercase tracking-[0.3em] text-slate-500">{data.author}</p>
+				<p class="text-xs uppercase tracking-[0.3em] text-slate-500">{data.date}</p>
 			</div>
-		{/if}
+			<div class="flex flex-col items-center gap-2 sm:items-end">
+				{#if data.series}
+					<SeriesLabel series={data.series} />
+				{/if}
+				{#if data.tags?.length}
+					<TagList tags={data.tags} />
+				{/if}
+			</div>
+		</div>
 		<h1 class="text-4xl sm:text-5xl">{data.title}</h1>
 		<p class="text-lg text-slate-600">{data.description}</p>
 	</div>
 
 	<div class="mt-12 max-w-4xl mx-auto">
-		{#if data.series}
-			<div class="mb-10">
-				<SeriesNavigation series={data.series} currentSlug={data.slug} />
-			</div>
-		{/if}
 		<div
 			class="prose-post prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-[rgb(var(--accent))] prose-pre:bg-slate-900 prose-pre:text-slate-100"
 		>
@@ -102,7 +104,7 @@
 		</div>
 		{#if data.series}
 			<div class="mt-12">
-				<SeriesNavigation series={data.series} currentSlug={data.slug} />
+				<SeriesNavigation series={data.series} currentSlug={data.slug} currentTitle={data.title} />
 			</div>
 		{/if}
 	</div>

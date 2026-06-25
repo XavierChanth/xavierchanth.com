@@ -24,6 +24,24 @@ const kebabCase = (value) => {
  */
 
 /**
+ * @param {string[]} tags
+ * @returns {Md.Tag[]}
+ */
+const normalizeTags = (tags = []) => {
+	const seen = new Set();
+
+	return tags
+		.map((tag) => tag.trim())
+		.filter(Boolean)
+		.map((label) => ({ label, slug: kebabCase(label) }))
+		.filter((tag) => {
+			if (seen.has(tag.slug)) return false;
+			seen.add(tag.slug);
+			return true;
+		});
+};
+
+/**
  * @param {PostWithSeriesLabel[]} posts
  * @returns {Map<string, PostWithSeriesLabel[]>}
  */
@@ -36,6 +54,25 @@ const groupPostsBySeries = (posts) => {
 		const seriesPosts = groups.get(post.seriesSlug) ?? [];
 		seriesPosts.push(post);
 		groups.set(post.seriesSlug, seriesPosts);
+	}
+
+	return groups;
+};
+
+/**
+ * @param {Md.ResolvedPost[]} posts
+ * @returns {Map<string, Md.ResolvedPost[]>}
+ */
+const groupPostsByTag = (posts) => {
+	/** @type {Map<string, Md.ResolvedPost[]>} */
+	const groups = new Map();
+
+	for (const post of posts) {
+		for (const tag of post.tags ?? []) {
+			const tagPosts = groups.get(tag.slug) ?? [];
+			tagPosts.push(post);
+			groups.set(tag.slug, tagPosts);
+		}
 	}
 
 	return groups;
@@ -93,14 +130,15 @@ const toSeriesReference = (post, index) => ({
 const getPosts = async () => {
 	const posts = Object.entries(import.meta.glob('/src/posts/*.md')).map(async ([path, resolver]) => {
 		const post = /** @type Md.Post */ (await resolver());
-		const { series: frontmatterSeries, ...metadata } = post.metadata;
+		const { series: frontmatterSeries, tags: frontmatterTags, ...metadata } = post.metadata;
 		const series = frontmatterSeries?.trim();
 		return {
 			component: post.default,
 			slug: slugFromPath(path),
 			...metadata,
 			seriesLabel: series || undefined,
-			seriesSlug: series ? kebabCase(series) : undefined
+			seriesSlug: series ? kebabCase(series) : undefined,
+			tags: normalizeTags(frontmatterTags)
 		};
 	});
 	return attachSeriesMetadata(await Promise.all(posts));
@@ -143,4 +181,42 @@ const getSeriesSummaries = async () => {
 	});
 };
 
-export { getPosts, getPost, getSeriesPosts, getSeriesSummaries, kebabCase };
+/**
+ * @param {string} tagSlug
+ * @returns {Promise<Md.ResolvedPost[]>}
+ */
+const getTagPosts = async (tagSlug) => {
+	const posts = await getPosts();
+	return posts
+		.filter((post) => post.published && post.tags?.some((tag) => tag.slug === tagSlug))
+		.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+};
+
+/**
+ * @returns {Promise<Md.TagSummary[]>}
+ */
+const getTagSummaries = async () => {
+	const posts = (await getPosts()).filter((post) => post.published);
+	const groups = groupPostsByTag(posts);
+
+	return Array.from(groups.entries())
+		.map(([slug, tagPosts]) => {
+			const tag = tagPosts.flatMap((post) => post.tags ?? []).find((item) => item.slug === slug);
+			return {
+				label: tag?.label ?? slug,
+				slug,
+				total: tagPosts.length
+			};
+		})
+		.sort((a, b) => a.label.localeCompare(b.label));
+};
+
+export {
+	getPosts,
+	getPost,
+	getSeriesPosts,
+	getSeriesSummaries,
+	getTagPosts,
+	getTagSummaries,
+	kebabCase
+};

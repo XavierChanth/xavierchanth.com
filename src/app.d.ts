@@ -20,7 +20,17 @@ declare global {
 				date: string;
 				published: boolean;
 				series?: string;
+				tags?: string[];
 			};
+		}
+
+		interface Tag {
+			label: string;
+			slug: string;
+		}
+
+		interface TagSummary extends Tag {
+			total: number;
 		}
 
 		interface SeriesReference {
@@ -57,6 +67,7 @@ declare global {
 			published: boolean;
 			series?: Series;
 			seriesSlug?: string;
+			tags?: Tag[];
 		}
 	}
 }

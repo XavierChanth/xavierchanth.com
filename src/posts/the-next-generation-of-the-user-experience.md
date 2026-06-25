@@ -4,6 +4,8 @@ description: "The Evolution of UX: Why Security is the New Engine of Innovation"
 author: 'Xavier Chanthavong'
 date: '2026-02-11'
 published: true
+tags:
+  - 'AI'
 ---
 
 In the pre-agentic era, we viewed security as a series of locks—necessary
@@ -81,4 +83,3 @@ rather than performing tasks.
 
 By solving the hard problems of agentic security today, we aren't
 just protecting data—we are expanding the horizon of what is possible tomorrow.
-

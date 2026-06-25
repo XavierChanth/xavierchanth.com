@@ -4,6 +4,8 @@ description: "My history with computers and developer tooling."
 author: 'Xavier Chanthavong'
 date: '2025-10-19'
 published: true
+tags:
+  - 'arch linux'
 ---
 
 ## My Early Days

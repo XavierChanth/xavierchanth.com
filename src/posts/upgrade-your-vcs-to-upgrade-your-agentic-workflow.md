@@ -4,6 +4,10 @@ description: "Discussing rebasing tools like GitButler and Jujutsu"
 author: 'Xavier Chanthavong'
 date: '2025-12-10'
 published: true
+tags:
+  - 'AI'
+  - 'tooling'
+  - 'vcs'
 ---
 If you haven’t played with some VCS tools that enable rebasing workflows, they can be extremely powerful. The case for using such a tool is in managing multiple working copies simultaneously. Previously, I think this only mattered for those that worked in a high velocity team. I was on the receiving end of some very distasteful comments about my use of git worktrees. While I disagree with how they approached the initial conversation, I don’t disagree with their position. From their perspective, how I used git worktrees was probably a very stupid way for them to be using them. It’s all about circumstance.
 

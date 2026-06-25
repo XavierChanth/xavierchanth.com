@@ -4,6 +4,8 @@ description: "Still not perfect, but it's getting better."
 author: 'Xavier Chanthavong'
 date: '2025-08-31'
 published: true
+tags:
+  - 'tooling'
 ---
 
 Ever since switching to neovim, I've had a sore spot when it comes to using Python notebooks. For reference, my background is in Data Science, and while my day job doesn't really involve much of the work, I really enjoy jumping in a python notebook from time to time to do some analysis work. Every so often, I hear somebody mention something which sparks the thought "that would be quite easy to spike in a python notebook".

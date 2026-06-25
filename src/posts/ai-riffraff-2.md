@@ -5,6 +5,9 @@ author: "Xavier Chanthavong"
 date: "2026-05-14"
 published: true
 series: "AI Riffraff"
+tags:
+  - "AI"
+  - "tooling"
 ---
 
 ## Hot Take: Skills Are Usually Bad

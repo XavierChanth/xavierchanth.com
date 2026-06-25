@@ -4,6 +4,8 @@ description: "Every manual step I do to install Arch Linux."
 author: 'Xavier Chanthavong'
 date: '2025-10-19'
 published: true
+tags:
+  - 'arch linux'
 ---
 
 ## Preface

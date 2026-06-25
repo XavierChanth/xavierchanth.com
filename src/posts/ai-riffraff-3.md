@@ -5,6 +5,9 @@ author: "Xavier Chanthavong"
 date: "2026-06-25"
 published: true
 series: "AI Riffraff"
+tags:
+  - "AI"
+  - "tooling"
 ---
 
 My latest endeavor has been focused on building a highly complex system, which can easily become a slop-fest if AI is used carelessly.
@@ -12,11 +15,11 @@ At it's heart, it's basically a distributed runtime, with multiple layers and su
 A combination of code-gen tools, testing, and careful use of AI has led me to a workflow where iteration is faster than by hand, and code is still very easy for me to review and maintain.
 
 The Five I's is really a framework for writing better design documents to hand to AI agents and it's composed of five elements:
-- Intent: What you are trying to accomplish
-- Interfaces: What are the boundaries and facades we are building around 
-- Information: What (and how) information is: available, persisted, and transmitted
-- Invariants: Refine the design to rule out invalid behavior, and when possible, prefer information and interface designs that make it impossible to express an invalid state.
-- Implementation: Have AI propose an implementation plan after it has been given the other four I's. It should be able to one-shot the plan, otherwise you need to go back to design work.
+- Intent: What you are trying to accomplish?
+- Interfaces: What are the behaviors and boundaries we want to express?
+- Information: How is data shaped, transformed, and transmitted?
+- Invariants: Define system invariants, rule out illegal behavior.
+- Implementation: Iterate to a clean implemenation plan and implement it.
 
 ## Intent (Current & Overall goals)
 
