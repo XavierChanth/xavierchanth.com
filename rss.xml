@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2026-06-25T18:22:25.650Z</lastBuiltDate><description>Software engineer, boulderer, and world traveler who loves learning and open-source.</description><item><guid>https://xavierchanth.com/posts/five-i-s-of-ai-engineering</guid><title>The Five I's of Agentic Engineering</title><link href="https://xavierchanth.com/posts/five-i-s-of-ai-engineering"/><description>A simple framework for using AI agents to design high-quality software.</description><pubDate>2026-06-25</pubDate><content:encoded>&lt;p&gt;My latest endeavor has been focused on building a highly complex system, which can easily become a slop-fest if AI is used carelessly.
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/atom" version="2.0"><channel><atom:link rel="self" type="application/rss+xml" href="https://xavierchanth.com/rss.xml"/><title>XavierChanth</title><link href="https://xavierchanth.com"/><lastBuiltDate>2026-07-24T16:16:22.020Z</lastBuiltDate><description>Software engineer, boulderer, and world traveler who loves learning and open-source.</description><item><guid>https://xavierchanth.com/posts/why-spec-driven-development-fails</guid><title>Why spec driven development fails</title><link href="https://xavierchanth.com/posts/why-spec-driven-development-fails"/><description>And how I've made it work better for me</description><pubDate>2026-07-24</pubDate><content:encoded>&lt;blockquote&gt;
+  &lt;p&gt;Disclaimer: this article is not that scientific. I don't have enough data points yet to bother trying to make it so. This is purely an opinion/personal experience piece. Feel free to have your own opinions on the matter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="myfailures"&gt;My failures&lt;/h2&gt;
+&lt;p&gt;For a long time I struggled to make spec-driven development work. &lt;/p&gt;
+&lt;p&gt;One of my first failures was trying to get it to automatically document its own decisions and specifications updates, similar to automatic memory features. In that experiment I quickly learned the downside to that approach. It's pretty much the same as why you shouldn't have automatic memory turned on for most things. The agent over time begins to develop biases and starts overfitting on certain memories, which just leads to less diverse results over time. In the same way that it's much easier to build something good in a greenfield code base than it is in a brownfield code base, the same is true when interacting with an agent that does have bias from memory and one that does. &lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;I even went as far as to make a complicated graph-driven approach to documentation with backlinks, kind of like Obsidian, so I could use Obsidian to view it or some other tool. In fact I even came up with some other tool that used front matter as the way of linking these pages and gave that to agents. It was okay but it was hard to make it a useful part of my workflow.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="skills"&gt;Skills&lt;/h3&gt;
+&lt;p&gt;I also went through a skills arc using Matt Pocock's in addition to some of my own. I also tried a blend, basically modifying Matt's skills to be more the way that I wanted. Ultimately what I realized is it's just better to not have something persistent in the harness. The only way in which skills will perform well enough, especially across model generations, is if you have enough data points to actually eval a skill based on your own agentic coding patterns.&lt;/p&gt;
+&lt;p&gt;I personally don't have enough sessions left on my system because I've wiped my cache a few times. Nor do I really care enough to put in the effort to eval custom skills for myself and my workflow. It's almost always gonna be faster for me to tell the model exactly what I'm looking for than to try to encode enough behavior into a skill such that the model does the things I want it to. When it comes to writing documentation and designing things, there's just too much variance for there to be a rigid right way to do things. I'd rather reserve the flexibility to express docs freely.&lt;/p&gt;
+&lt;h2 id="whatidonow"&gt;What I do now&lt;/h2&gt;
+&lt;p&gt;Moving on, I've since kind of revised the way that I manage my documentation into two folders in my larger project. I have a &lt;code&gt;repo/&lt;/code&gt; folder, which contains information related to CI, software supply chain security practices, tooling, and those sorts of things.&lt;/p&gt;
+&lt;p&gt;And of course the second one is &lt;code&gt;docs/&lt;/code&gt;. Every documentation folder and subfolder has a readme in it that serves as an index map. This allows the agent to traverse the documentation within my repo like a descending tree. My &lt;code&gt;AGENTS.md&lt;/code&gt; file serves as a top-level index for docs, among other things.&lt;/p&gt;
+&lt;p&gt;Even with all of this it's still really easy to get spec-driven development to fail and I'll tell you why. The problem with spectrum and development is that we forget there are different types of tenses that we want to write specifications and documentation for. The bulk of my documentation or my specs is written to be the North Star for what I want the product to be or the desired end state or future state for the system. I never write it to be current tense. If I want to see what the current status of the project is, the best place to look is always the code and so that remains the source of truth for current tense.&lt;/p&gt;
+&lt;p&gt;In addition to this I have a roadmap subfolder within Docs, which then describes the transitions, the gaps, the problems with the existing implementation, and how we're going to fix it. It describes the initiatives that I want to take or the milestones I want to actively work on. It describes the strategies I plan on taking in order to get from the current state of the code to what is described in the documentation.&lt;/p&gt;
+&lt;p&gt;In practice it looks something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MY REPOSITORY/
+├── repo/
+│   ├── README.md
+│   ├── ci.md
+│   ├── tooling.md
+│   └── etc...
+├── docs/
+│   ├── README.md
+│   ├── MAIN PROJECT FOLDER/
+│   │   ├── README.md
+│   │   ├── architecture/
+│   │   ├── demos/
+│   │   ├── reference/
+│   │   └── roadmap/
+│   │       ├── README.md
+│   │       └── initiatives/
+│   │           ├── initiativeA.md
+│   │           ├── initiativeB.md
+│   │           └── initiativeC.md
+│   └── OTHER PROJECTS...
+└── REST OF REPO...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note how each tense has a home: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to develop/contribute to this project  = &lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;What needs to be done and how to do it = &lt;code&gt;docs/roadmap&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;What is the desired end product = &lt;code&gt;docs/**/*&lt;/code&gt; (except for roadmap)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This approach to organizing documentation has led to massive improvements in the quality of the output from the models. I'm able to do a lot more work instead of spending time trying to get the model to actually understand the work that we're trying to accomplish. It leads to far fewer solution hallucinations and generally keeps the model on task much more often.&lt;/p&gt;
+&lt;p&gt;How did I come to these conclusions you ask?&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/posts/i-read-the-code.png" alt="I read the code - Mitchell Hashimoto" /&gt;&lt;/p&gt;
+&lt;h2 id="migratingiseasy"&gt;Migrating is easy&lt;/h2&gt;
+&lt;p&gt;It's relatively cheap to get a model to go through documentation and clean it up and reorganize it for you. On the few occasions where I've started a random project that I didn't really care too much about and the docs got out of hand because I let the model do whatever it wanted with them, I've been able to have a fresh model do a second pass and draft new docs to tmp/docs. Often times I'll have it flag inconsistencies and raise up a recommendation matrix for me to review. Usually the recommendations the model comes up with already 90% correct so for any given table I usually am only correcting 10% or less of it.&lt;/p&gt;
+&lt;p&gt;After that I &lt;strong&gt;review the docs&lt;/strong&gt;, ask for any revisions, and then I'll just replace the old docs. If I really lost something that was important, I can always go back into git history and retrieve it.&lt;/p&gt;
+&lt;h2 id="wrappingthingsup"&gt;Wrapping things up&lt;/h2&gt;
+&lt;p&gt;At this time, I'm not sure if this is a progress update or if this is going to be something more permanent to my development methodology. But for the time being this is working quite well. I have a lot of flexibility. I don't enforce any rigid formats for how the documentation must be written. The only thing that I care about is the perspective from which it is written, which ultimately serves as the higher purpose for the documentation existing.&lt;/p&gt;
+&lt;p&gt;Hopefully this will age well and this will become something that's permanently part of my setup; I am quite bullish on it. However, I will remain diligent in ensuring that I stay productive and continue to produce high-quality code.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/five-i-s-of-ai-engineering</guid><title>The Five I's of Agentic Engineering</title><link href="https://xavierchanth.com/posts/five-i-s-of-ai-engineering"/><description>A simple framework for using AI agents to design high-quality software.</description><pubDate>2026-06-25</pubDate><content:encoded>&lt;p&gt;My latest endeavor has been focused on building a highly complex system, which can easily become a slop-fest if AI is used carelessly.
 At it's heart, it's basically a distributed runtime, with multiple layers and subsystems that can be swapped out based on the best deployment strategy for a given project.
 A combination of code-gen tools, testing, and careful use of AI has led me to a workflow where iteration is faster than by hand, and code is still very easy for me to review and maintain.&lt;/p&gt;
 &lt;p&gt;The Five I's is really a framework for writing better design documents to hand to AI agents and it's composed of five elements:&lt;/p&gt;
@@ -950,13 +1004,4 @@ uv run marimo edit notebooks --watch
 &lt;p&gt;The advantage of being young is that time is on your side. Time is an asset available to the young professional. Thus I think it is totally worth taking short-term losses for long-term gains. Time is not something that any of us can control, but how we choose to use it is. Improving efficiency and knowledge earlier rather than later will yield long-term gains.&lt;/p&gt;
 &lt;p&gt;Likewise, trading short-term gains for long-term loss is something to avoid early on in your career. As you progress further in your career, this will gradually become less true, but early on, make an effort to avoid taking short-term gains, it will cost you in the long run.&lt;/p&gt;
 &lt;p&gt;The greatest example of this today is the use of AI. Sometimes, when working on trivial matters, it may be worth it to just take the win and get something done. However, when it comes to more complex tasks, there is both an opportunity cost to potential learning, as well as the development of the task long term. If your job is to create something, then giving an LLM all of the context that you hold in your mind is nearly impossible. If you have any sort of long-term vision for what you're creating, it is very difficult to capture that in the resulting work produced by AI. Thus, if you want to grow faster, make an effort to avoid hurting your own development by over-using it.&lt;/p&gt;
-&lt;p&gt;There may be a day where all jobs are replaced by AI, but the reality is, if it ever does happen, it's very unlikely it will happen over night. If you develop you, then you make yourself that much more unlikely to be replaced early on. The less capable you are, the easier it will be for AI to take your job. So, work hard, learn as much as you can, and enjoy life.&lt;/p&gt;</content:encoded></item><item><guid>https://xavierchanth.com/posts/first-post</guid><title>First Post</title><link href="https://xavierchanth.com/posts/first-post"/><description>An introduction to this blog - why it exists</description><pubDate>2024-12-29</pubDate><content:encoded>&lt;p&gt;I currently work at a startup called &lt;a href="https://atsign.com"&gt;Atsign&lt;/a&gt;, mainly
-working on our product suite called &lt;a href="https://noports.com"&gt;NoPorts&lt;/a&gt;.
-Over the past few years, I've had the opportunity to work alongside some amazing
-colleagues. I've been given the privilege of receiving one-on-one mentorship from
-numerous individuals with extensive experience across a variety of subdomains.&lt;/p&gt;
-&lt;p&gt;As a result of this mentorship, and my aggressive passion for learning, I've
-been able to grow as a software engineer exceptionally fast.
-This blog is a place for me to formally share all that I've learned and will
-continue to learn. I will also discuss my own personal insights and the events
-and reasoning that have lead to them.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;There may be a day where all jobs are replaced by AI, but the reality is, if it ever does happen, it's very unlikely it will happen over night. If you develop you, then you make yourself that much more unlikely to be replaced early on. The less capable you are, the easier it will be for AI to take your job. So, work hard, learn as much as you can, and enjoy life.&lt;/p&gt;</content:encoded></item></channel></rss>
