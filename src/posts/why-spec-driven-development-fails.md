@@ -11,21 +11,23 @@ tags:
   - "development methodology"
 ---
 
-> Disclaimer: this article is not that scientific. I don't have enough data points yet to bother trying to make it so. This is purely an opinion/personal experience piece. Feel free to have your own opinions on the matter.
+> Disclaimer: this article is not scientific. I don't have enough personal data points to bother trying to make it so. This is purely an opinion/personal experience piece. Feel free to have your own opinions on the matter.
 
 ## My failures
 
 For a long time I struggled to make spec-driven development work. 
 
-One of my first failures was trying to get it to automatically document its own decisions and specifications updates, similar to automatic memory features. In that experiment I quickly learned the downside to that approach. It's pretty much the same as why you shouldn't have automatic memory turned on for most things. The agent over time begins to develop biases and starts overfitting on certain memories, which just leads to less diverse results over time. In the same way that it's much easier to build something good in a greenfield code base than it is in a brownfield code base, the same is true when interacting with an agent that does have bias from memory and one that does. 
+One of my first failures was trying to get coding agents to automatically document its own decisions and specifications updates, similar to automatic memory features. In that experiment I quickly learned the downside to that approach. It's pretty much the same as why you shouldn't have automatic memory turned on for most things. The agent over time begins to develop biases and starts overfitting on certain memories, which just leads to less diverse results over time. In the same way that it's much easier to build something good in a greenfield code base than it is in a brownfield code base, the same is true when interacting with an agent that doesn't have bias from memory and one that does. 
 
-> I even went as far as to make a complicated graph-driven approach to documentation with backlinks, kind of like Obsidian, so I could use Obsidian to view it or some other tool. In fact I even came up with some other tool that used front matter as the way of linking these pages and gave that to agents. It was okay but it was hard to make it a useful part of my workflow.
+> Please don't take the memory thing the wrong way. There are plenty of people working really hard to build good products that actually solve that problem but it is something that cannot just be turned on and called a day. There need to be real evals behind a memory feature to make sure that agents actually record the things we want recorded and don't over-record memories to the point where the model starts become overeager to portray certain mannerisms and behaviors that it maybe shouldn't. (i.e. how does it determine permanent preference vs one-off preference).
 
 ### Skills
 
 I also went through a skills arc using Matt Pocock's in addition to some of my own. I also tried a blend, basically modifying Matt's skills to be more the way that I wanted. Ultimately what I realized is it's just better to not have something persistent in the harness. The only way in which skills will perform well enough, especially across model generations, is if you have enough data points to actually eval a skill based on your own agentic coding patterns.
 
 I personally don't have enough sessions left on my system because I've wiped my cache a few times. Nor do I really care enough to put in the effort to eval custom skills for myself and my workflow. It's almost always gonna be faster for me to tell the model exactly what I'm looking for than to try to encode enough behavior into a skill such that the model does the things I want it to. When it comes to writing documentation and designing things, there's just too much variance for there to be a rigid right way to do things. I'd rather reserve the flexibility to express docs freely.
+
+>  I even went as far as to make a complicated graph-driven approach to documentation with backlinks, kind of like Obsidian, so I could use Obsidian to view it or some other tool. In fact I even came up with some other tool that used front matter as the way of linking these pages and gave that to agents. It was okay but it was hard to make it a useful part of my workflow.
 
 ## What I do now
 
