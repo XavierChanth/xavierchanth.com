@@ -1,13 +1,46 @@
 <script>
-	// @ts-nocheck
+  import LinkRow from "$lib/site/components/LinkRow.svelte";
+  import { page } from "$app/state";
+  import { BLOG_TITLE } from "$lib/metadata";
 
-	import { page } from '$app/state';
+  const status = $derived(page.status);
+  const heading = $derived(
+    status === 404 ? "Page not found" : "Something went wrong",
+  );
+
+  /**
+   * Only the loader-authored message is shown, and only when it is a real
+   * sentence: SvelteKit's terse defaults and any empty message fall back to
+   * plain copy. Nothing from the underlying exception is rendered.
+   */
+  const GENERIC = ["Not Found", "Internal Error"];
+  const detail = $derived(page.error?.message?.trim());
+  const message = $derived(
+    detail && !GENERIC.includes(detail)
+      ? detail
+      : status === 404
+        ? "The page you asked for isn't here."
+        : "This page could not be loaded.",
+  );
+
+  /** @type {{ label: string; href: string }[]} */
+  const links = [
+    { label: "Overview", href: "/" },
+    { label: "All posts", href: "/posts" },
+  ];
 </script>
 
-<div class="text-center">
-	<h1 class="text-4xl mt-8 mb-4">Error: {page.status}</h1>
-	<p class="text-lg mb-8">{page.error.message}</p>
-	<a href="/" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-		>Back to Homepage</a
-	>
+<svelte:head>
+  <title>{heading} - {BLOG_TITLE}</title>
+</svelte:head>
+
+<div class="site-shell">
+  <div class="site-intro">
+    <h1 class="site-title">{heading}</h1>
+    <div class="site-intro-body">
+      <p class="site-meta">Error {status}</p>
+      <p class="site-lede site-muted">{message}</p>
+      <LinkRow {links} label="Go elsewhere" />
+    </div>
+  </div>
 </div>

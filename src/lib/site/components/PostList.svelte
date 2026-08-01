@@ -19,9 +19,23 @@
    * `taxonomy` is opt-in: the homepage keeps its five latest posts bare, while
    * the archive shows each post's series and tags.
    *
-   * @type {{ posts: PostSummary[]; taxonomy?: boolean }}
+   * `excludeSeriesSlug` and `excludeTagSlug` are forwarded to `PostTaxonomy`, so
+   * a taxonomy index can drop the term it is already about from every row
+   * without restating this markup. Both default to undefined.
+   *
+   * @type {{
+   *   posts: PostSummary[];
+   *   taxonomy?: boolean;
+   *   excludeSeriesSlug?: string;
+   *   excludeTagSlug?: string;
+   * }}
    */
-  let { posts, taxonomy = false } = $props();
+  let {
+    posts,
+    taxonomy = false,
+    excludeSeriesSlug = undefined,
+    excludeTagSlug = undefined,
+  } = $props();
 </script>
 
 <ol class="site-list">
@@ -37,7 +51,12 @@
       </div>
       <p class="site-muted site-small">{post.description}</p>
       {#if taxonomy}
-        <PostTaxonomy series={post.series} tags={post.tags} />
+        <PostTaxonomy
+          series={post.series}
+          tags={post.tags}
+          {excludeSeriesSlug}
+          {excludeTagSlug}
+        />
       {/if}
     </li>
   {/each}

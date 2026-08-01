@@ -45,8 +45,9 @@ and JSON-LD markup are unchanged.
 ## Consequences
 
 - `src/lib/components/SeriesNavigation.svelte` is deleted; nothing referenced it after the
-  migration. `TagList`, `SeriesLabel`, and `PostListEntry` stay because the tag and series index
-  pages still render them.
+  migration. `TagList`, `SeriesLabel`, and `PostListEntry` stayed only because the tag and series
+  index pages still rendered them; those pages have since been migrated too and all three are now
+  deleted (see `adr/quiet-editorial-design.md`).
 - Prism styling now ships in the post route's own CSS chunk, so `/`, `/posts`, and the taxonomy
   indexes no longer download a code theme they never use.
 - Only code blocks scroll sideways; the page itself holds at 320px.

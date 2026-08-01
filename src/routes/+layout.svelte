@@ -2,6 +2,7 @@
   import "../app.css";
   import "$lib/site/styles/site.css";
   import LinkRow from "$lib/site/components/LinkRow.svelte";
+  import { page } from "$app/state";
   import {
     BLOG_AUTHOR,
     BLOG_AUTHOR_EMAIL,
@@ -43,6 +44,15 @@
     description: BLOG_DESCRIPTION,
   };
 
+  /**
+   * Indexability is owned here so a route never has to emit a second, competing
+   * `robots` meta: every real page is indexable, and any error rendering — the
+   * shared `+error.svelte` — is not.
+   */
+  const robots = $derived(
+    page.status >= 400 ? "noindex,nofollow" : "index,follow",
+  );
+
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -65,7 +75,7 @@
   -->
   <title>{BLOG_TITLE}</title>
   <meta name="author" content={BLOG_AUTHOR} />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content={robots} />
   <link
     rel="alternate"
     type="application/rss+xml"

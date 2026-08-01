@@ -35,6 +35,25 @@ as plain underlined links in semantic lists, separated by middots. The archive a
 compact `Browse` section listing every series and tag with post counts, sourced from
 `getSeriesSummaries()` and `getTagSummaries()`. The chronological archive stays visually primary.
 
+The tag index, the series index, and the error page now use the same system, which completes the
+migration — every rendered route is quiet.
+
+- `/posts/tags/[tagSlug]` and `/posts/series/[seriesSlug]` are `.site-shell` pages built from the
+  shared `Section`, `LinkRow`, and `PostList`: an `h1` naming the term, a count-aware line, links
+  back to `/posts` and to the matching archive `Browse` anchor, then the posts. Their loaders now
+  return the same reduced, serializable post summaries the archive uses.
+- Tags stay newest-first as `getTagPosts()` supplies them; the series index keeps the intentional
+  part order from `getSeriesPosts()` and is never re-sorted by date.
+- `PostTaxonomy` gained `excludeSeriesSlug` and `excludeTagSlug`, forwarded by `PostList`. A
+  taxonomy index drops the term it is already about from every row while the rest of the taxonomy
+  keeps working. Both default to undefined, so the homepage, archive, and article reader are byte
+  for byte unchanged.
+- `+error.svelte` is the same quiet shell: one `h1` (`Page not found` / `Something went wrong`), the
+  status, and the loader-authored message — SvelteKit's terse defaults are replaced with plain copy
+  and nothing from the underlying exception is rendered. Indexability moved into the root layout's
+  single `robots` meta, which is `noindex,nofollow` whenever `page.status >= 400`, so no route has
+  to emit a competing tag.
+
 ## Content rules
 
 Only user-confirmed public facts belong in `src/lib/site/data/`. No confidential customers, metrics,
@@ -45,9 +64,9 @@ public summary.
 
 - `src/lib/site/` is shared, not route-specific, so a later article-reader redesign can reuse the
   same shell, components, and CSS.
-- Typographic resets are scoped to `.site-shell` rather than `.site-root`, so routes that still
-  render Tailwind Typography prose — the tag and series indexes — inherit the new shell without
-  having their prose styles disturbed.
+- Typographic resets are scoped to `.site-shell` rather than `.site-root`, so the article reader,
+  which renders long-form prose, inherits the shell's tokens without having its rhythm flattened.
 - The article reader has since had its own pass; see `adr/quiet-article-reader.md`.
-- `src/lib/components/PostListEntry.svelte`, `TagList.svelte`, and `SeriesLabel.svelte` still use
-  the older card styling on the tag and series index pages, and were deliberately left alone.
+- The old card taxonomy is retired: `src/lib/components/PostListEntry.svelte`, `TagList.svelte`, and
+  `SeriesLabel.svelte` are deleted now that nothing references them, and `src/lib/components/` is
+  gone. Every list of posts on the site comes from one component.
