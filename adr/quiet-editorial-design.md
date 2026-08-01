@@ -46,8 +46,8 @@ public summary.
 - `src/lib/site/` is shared, not route-specific, so a later article-reader redesign can reuse the
   same shell, components, and CSS.
 - Typographic resets are scoped to `.site-shell` rather than `.site-root`, so routes that still
-  render Tailwind Typography prose — the article reader, tag indexes, and series indexes — inherit
-  the new shell without having their prose styles disturbed.
-- The article reader, `src/lib/components/PostListEntry.svelte`, `TagList.svelte`, and
-  `SeriesLabel.svelte` still use the older card styling. They are scheduled for a separate design
-  pass and were deliberately left alone.
+  render Tailwind Typography prose — the tag and series indexes — inherit the new shell without
+  having their prose styles disturbed.
+- The article reader has since had its own pass; see `adr/quiet-article-reader.md`.
+- `src/lib/components/PostListEntry.svelte`, `TagList.svelte`, and `SeriesLabel.svelte` still use
+  the older card styling on the tag and series index pages, and were deliberately left alone.
