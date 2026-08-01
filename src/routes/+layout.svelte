@@ -15,6 +15,11 @@
 
 	const canonical = $derived(`${BLOG_URL}${page.url.pathname}`);
 
+	// The /testing redesign prototype owns its own header, main, and footer.
+	// It opts out of the production shell entirely; every other route is
+	// rendered exactly as before.
+	const isTesting = $derived(/^\/testing(\/|$)/.test(page.url.pathname));
+
 	const websiteJsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
@@ -37,6 +42,7 @@
 </script>
 
 <svelte:head>
+	{#if !isTesting}
 	<title>{BLOG_TITLE}</title>
 	<meta name="description" content={BLOG_DESCRIPTION} />
 	<meta name="author" content={BLOG_AUTHOR} />
@@ -58,8 +64,14 @@
 
 	<script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
 	<script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
+	{/if}
 </svelte:head>
 
+{#if isTesting}
+<div>
+	{@render children()}
+</div>
+{:else}
 <main class="min-h-screen flex flex-col relative overflow-x-hidden bg-[rgb(var(--page))] pt-16">
 	<div
 		class="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,116,144,0.25),transparent_65%)] blur-3xl"
@@ -120,3 +132,4 @@
 		</div>
 	</footer>
 </main>
+{/if}
