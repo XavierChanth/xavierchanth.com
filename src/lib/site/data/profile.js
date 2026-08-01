@@ -1,6 +1,6 @@
 /**
- * Static intro copy and contact links for the /testing prototype.
- * Kept local to the prototype so nothing outside this folder changes.
+ * Static intro copy and contact links for the site.
+ * Only user-confirmed public facts belong here.
  */
 
 export const NAME = "Xavier Chanthavong";

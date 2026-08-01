@@ -7,16 +7,16 @@
   let { projects } = $props();
 </script>
 
-<ul class="t-list">
+<ul class="site-list">
   {#each projects as project (project.href)}
-    <li class="t-entry">
-      <div class="t-entry-head">
-        <h3 class="t-entry-title">
+    <li class="site-entry">
+      <div class="site-entry-head">
+        <h3 class="site-entry-title">
           <a href={project.href} rel="noopener noreferrer">{project.name}</a>
         </h3>
-        <p class="t-meta">{project.context}</p>
+        <p class="site-meta">{project.context}</p>
       </div>
-      <p class="t-muted t-small">{project.description}</p>
+      <p class="site-muted site-small">{project.description}</p>
     </li>
   {/each}
 </ul>

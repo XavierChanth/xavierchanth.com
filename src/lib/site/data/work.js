@@ -1,5 +1,5 @@
 /**
- * Work history shown on the /testing prototype.
+ * Work history shown on the homepage.
  * Public-facing summaries only: no customers, metrics, or architecture detail.
  *
  * @typedef {{ org: string; role: string; period: string; summary: string }} WorkEntry

@@ -11,7 +11,7 @@
   let { id, title, children } = $props();
 </script>
 
-<section class="t-section" {id} aria-labelledby="{id}-title">
-  <h2 class="t-section-title" id="{id}-title">{title}</h2>
+<section class="site-section" {id} aria-labelledby="{id}-title">
+  <h2 class="site-section-title" id="{id}-title">{title}</h2>
   {@render children()}
 </section>

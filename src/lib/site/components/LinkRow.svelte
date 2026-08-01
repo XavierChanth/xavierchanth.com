@@ -9,7 +9,7 @@
   let { links, label = undefined, class: className = "" } = $props();
 </script>
 
-<ul class="t-inline-links {className}" aria-label={label}>
+<ul class="site-inline-links {className}" aria-label={label}>
   {#each links as link (link.href)}
     <li>
       <a

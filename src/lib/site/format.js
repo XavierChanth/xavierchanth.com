@@ -1,5 +1,5 @@
 /**
- * Formatting helpers local to the /testing prototype.
+ * Formatting helpers for the site shell and the pages that use it.
  */
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", {

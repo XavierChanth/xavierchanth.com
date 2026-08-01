@@ -1,5 +1,5 @@
 /**
- * Public open-source work shown on the /testing prototype.
+ * Public open-source work shown on the homepage.
  * Descriptions follow each repository's own public summary.
  *
  * @typedef {{ name: string; href: string; context: string; description: string }} Project
