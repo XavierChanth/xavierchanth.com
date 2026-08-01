@@ -20,7 +20,7 @@ export const BIO = [
 export const CONTACT_LINKS = [
   { label: "GitHub", href: "https://github.com/xavierchanth" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/xavierchanth" },
-  { label: "Email", href: "mailto:xchanthavong@gmail.com" },
+  { label: "Email", href: "mailto:xavier@woosah.io" },
 ];
 
 export const PORTRAIT = {

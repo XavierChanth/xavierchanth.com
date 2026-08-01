@@ -24,7 +24,7 @@
 
   /** @type {{ label: string; href: string }[]} */
   const writingLinks = [
-    { label: "All posts", href: "/posts" },
+    { label: "All posts", href: "/testing/posts/" },
     { label: "RSS", href: "/rss.xml" },
   ];
 </script>

@@ -5,19 +5,21 @@
   let { children } = $props();
 
   /** @type {{ label: string; href: string }[]} */
+  // Absolute hrefs so the same nav resolves from `/testing/` and
+  // `/testing/posts/` alike.
   const sectionLinks = [
-    { label: "Writing", href: "#writing" },
-    { label: "Work", href: "#work" },
-    { label: "Open source", href: "#open-source" },
+    { label: "Writing", href: "/testing/posts/" },
+    { label: "Work", href: "/testing/#work" },
+    { label: "Open source", href: "/testing/#open-source" },
   ];
 
   /** @type {{ label: string; href: string }[]} */
   const footerLinks = [
-    { label: "All posts", href: "/posts" },
+    { label: "All posts", href: "/testing/posts/" },
     { label: "RSS", href: "/rss.xml" },
     { label: "GitHub", href: "https://github.com/xavierchanth" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/xavierchanth" },
-    { label: "Email", href: "mailto:xchanthavong@gmail.com" },
+    { label: "Email", href: "mailto:xavier@woosah.io" },
   ];
 </script>
 
