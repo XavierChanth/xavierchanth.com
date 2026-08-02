@@ -3,7 +3,7 @@
  * @returns {string}
  */
 const slugFromPath = (path) => {
-	return path.match(/([\w-]+)\.md/i)?.[1] ?? path /** @type {string} */;
+	return path.match(/([\w-]+)\.md/i)?.[1] ?? path; /** @type {string} */
 };
 
 /**
@@ -128,19 +128,21 @@ const toSeriesReference = (post, index) => ({
  * @returns {Promise<Md.ResolvedPost[]>}
  */
 const getPosts = async () => {
-	const posts = Object.entries(import.meta.glob('/src/posts/*.md')).map(async ([path, resolver]) => {
-		const post = /** @type Md.Post */ (await resolver());
-		const { series: frontmatterSeries, tags: frontmatterTags, ...metadata } = post.metadata;
-		const series = frontmatterSeries?.trim();
-		return {
-			component: post.default,
-			slug: slugFromPath(path),
-			...metadata,
-			seriesLabel: series || undefined,
-			seriesSlug: series ? kebabCase(series) : undefined,
-			tags: normalizeTags(frontmatterTags)
-		};
-	});
+	const posts = Object.entries(import.meta.glob('/src/posts/*.md')).map(
+		async ([path, resolver]) => {
+			const post = /** @type Md.Post */ (await resolver());
+			const { series: frontmatterSeries, tags: frontmatterTags, ...metadata } = post.metadata;
+			const series = frontmatterSeries?.trim();
+			return {
+				component: post.default,
+				slug: slugFromPath(path),
+				...metadata,
+				seriesLabel: series || undefined,
+				seriesSlug: series ? kebabCase(series) : undefined,
+				tags: normalizeTags(frontmatterTags)
+			};
+		}
+	);
 	return attachSeriesMetadata(await Promise.all(posts));
 };
 

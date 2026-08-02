@@ -4,13 +4,13 @@
  * @param {unknown} value
  */
 export function serializeJsonLd(value) {
-  return JSON.stringify(value)
-    .replaceAll("<", "\\u003C")
-    .replaceAll(">", "\\u003E")
-    .replaceAll("&", "\\u0026");
+	return JSON.stringify(value)
+		.replaceAll('<', '\\u003C')
+		.replaceAll('>', '\\u003E')
+		.replaceAll('&', '\\u0026');
 }
 
 /** @param {unknown} value */
 export function renderJsonLd(value) {
-  return `<script type="application/ld+json">${serializeJsonLd(value)}</script>`;
+	return `<script type="application/ld+json">${serializeJsonLd(value)}</script>`;
 }

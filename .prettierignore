@@ -1,4 +1,8 @@
-# Package Managers
+# Authored prose and agent instructions
+src/posts/
+.agents/
+
+# Package managers
 package-lock.json
 pnpm-lock.yaml
 yarn.lock

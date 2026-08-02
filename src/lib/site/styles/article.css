@@ -17,100 +17,100 @@
 /* ---------------------------------------------------------------- layout */
 
 .site-article {
-  --article-code-paper: 242 238 231;
+	--article-code-paper: 242 238 231;
 
-  width: 100%;
-  max-width: var(--site-measure);
-  margin-inline: auto;
-  padding-inline: var(--site-gutter);
-  padding-block: 2.25rem 3.5rem;
-  font-size: 1rem;
-  line-height: 1.7;
+	width: 100%;
+	max-width: var(--site-measure);
+	margin-inline: auto;
+	padding-inline: var(--site-gutter);
+	padding-block: 2.25rem 3.5rem;
+	font-size: 1rem;
+	line-height: 1.7;
 }
 
 @media (min-width: 40rem) {
-  .site-article {
-    padding-block: 2.75rem 4.5rem;
-    font-size: 1.0625rem;
-    line-height: 1.75;
-  }
+	.site-article {
+		padding-block: 2.75rem 4.5rem;
+		font-size: 1.0625rem;
+		line-height: 1.75;
+	}
 }
 
 /* ----------------------------------------------------------------- links */
 
 .site-article a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  text-decoration-color: rgb(var(--site-ink) / 0.35);
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+	text-decoration-color: rgb(var(--site-ink) / 0.35);
 }
 
 .site-article a:hover,
 .site-article a:focus-visible {
-  color: rgb(var(--site-accent));
-  text-decoration-color: currentColor;
+	color: rgb(var(--site-accent));
+	text-decoration-color: currentColor;
 }
 
 /* ---------------------------------------------------------------- header */
 
 .site-article-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgb(var(--site-rule) / 0.12);
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding-bottom: 1.75rem;
+	border-bottom: 1px solid rgb(var(--site-rule) / 0.12);
 }
 
 /* The back link owns a 44px target through `.site-inline-links`; pull the row
  * back so that target does not read as extra space above the title. */
 .site-article-back {
-  margin-left: -0.0625rem;
-  margin-bottom: -0.5rem;
+	margin-left: -0.0625rem;
+	margin-bottom: -0.5rem;
 }
 
 .site-article-title {
-  margin: 0;
-  font-family: var(--site-serif);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  font-size: clamp(1.875rem, 1.45rem + 1.9vw, 2.5rem);
-  line-height: 1.18;
-  text-wrap: balance;
+	margin: 0;
+	font-family: var(--site-serif);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	font-size: clamp(1.875rem, 1.45rem + 1.9vw, 2.5rem);
+	line-height: 1.18;
+	text-wrap: balance;
 }
 
 .site-article-lede {
-  margin: 0;
-  font-size: 1.0625rem;
-  color: rgb(var(--site-muted));
+	margin: 0;
+	font-size: 1.0625rem;
+	color: rgb(var(--site-muted));
 }
 
 @media (min-width: 40rem) {
-  .site-article-lede {
-    font-size: 1.125rem;
-  }
+	.site-article-lede {
+		font-size: 1.125rem;
+	}
 }
 
 .site-article-byline {
-  margin: 0;
+	margin: 0;
 }
 
 /* ------------------------------------------------------------------ body */
 
 .site-article-body {
-  margin-top: 2.25rem;
+	margin-top: 2.25rem;
 }
 
 .site-article-body > :first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .site-article-body > :last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .site-article-body p {
-  margin: 0 0 1.25rem;
+	margin: 0 0 1.25rem;
 }
 
 /* --------------------------------------------------------- body headings */
@@ -118,240 +118,239 @@
 .site-article-body h2,
 .site-article-body h3,
 .site-article-body h4 {
-  color: rgb(var(--site-ink));
-  text-wrap: pretty;
+	color: rgb(var(--site-ink));
+	text-wrap: pretty;
 }
 
 .site-article-body h2,
 .site-article-body h3 {
-  font-family: var(--site-serif);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+	font-family: var(--site-serif);
+	font-weight: 600;
+	letter-spacing: -0.015em;
 }
 
 .site-article-body h2 {
-  margin: 2.75rem 0 0.75rem;
-  font-size: 1.5rem;
-  line-height: 1.25;
+	margin: 2.75rem 0 0.75rem;
+	font-size: 1.5rem;
+	line-height: 1.25;
 }
 
 .site-article-body h3 {
-  margin: 2rem 0 0.5rem;
-  font-size: 1.25rem;
-  line-height: 1.3;
+	margin: 2rem 0 0.5rem;
+	font-size: 1.25rem;
+	line-height: 1.3;
 }
 
 .site-article-body h4 {
-  margin: 1.75rem 0 0.375rem;
-  font-family: var(--site-sans);
-  font-weight: 600;
-  font-size: 1.0625rem;
-  line-height: 1.4;
-  letter-spacing: 0;
+	margin: 1.75rem 0 0.375rem;
+	font-family: var(--site-sans);
+	font-weight: 600;
+	font-size: 1.0625rem;
+	line-height: 1.4;
+	letter-spacing: 0;
 }
 
 @media (min-width: 40rem) {
-  .site-article-body h2 {
-    font-size: 1.625rem;
-  }
+	.site-article-body h2 {
+		font-size: 1.625rem;
+	}
 }
 
 /* Several posts write `## **Heading**`. Without this the emphasis stacks on
  * top of the heading's own weight and the type distorts. */
 .site-article-body :is(h2, h3, h4) :is(strong, b) {
-  font-weight: inherit;
+	font-weight: inherit;
 }
 
 .site-article-body :is(h2, h3, h4) :is(em, i) {
-  font-style: normal;
+	font-style: normal;
 }
 
 .site-article-body :is(h2, h3, h4) code {
-  font-size: 0.9em;
-  font-weight: inherit;
+	font-size: 0.9em;
+	font-weight: inherit;
 }
 
 /* ----------------------------------------------------------------- lists */
 
 .site-article-body ul,
 .site-article-body ol {
-  margin: 0 0 1.25rem;
-  padding-left: 1.4rem;
+	margin: 0 0 1.25rem;
+	padding-left: 1.4rem;
 }
 
 .site-article-body ul {
-  list-style: disc;
+	list-style: disc;
 }
 
 .site-article-body ol {
-  list-style: decimal;
+	list-style: decimal;
 }
 
 .site-article-body li {
-  margin: 0 0 0.375rem;
-  padding-left: 0.15rem;
+	margin: 0 0 0.375rem;
+	padding-left: 0.15rem;
 }
 
 .site-article-body li::marker {
-  color: rgb(var(--site-muted));
+	color: rgb(var(--site-muted));
 }
 
 /* Nested lists tighten up and change marker so three levels stay readable. */
 .site-article-body li > ul,
 .site-article-body li > ol {
-  margin: 0.375rem 0 0.625rem;
+	margin: 0.375rem 0 0.625rem;
 }
 
 .site-article-body ul ul {
-  list-style: circle;
+	list-style: circle;
 }
 
 .site-article-body ul ul ul {
-  list-style: square;
+	list-style: square;
 }
 
 .site-article-body ol ol {
-  list-style: lower-alpha;
+	list-style: lower-alpha;
 }
 
 .site-article-body ol ol ol {
-  list-style: lower-roman;
+	list-style: lower-roman;
 }
 
 .site-article-body li > p {
-  margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .site-article-body li > p:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 /* ------------------------------------------------------------ block bits */
 
 .site-article-body blockquote {
-  margin: 1.75rem 0;
-  padding-left: 1.125rem;
-  border-left: 2px solid rgb(var(--site-accent) / 0.4);
-  color: rgb(var(--site-muted));
-  font-style: normal;
+	margin: 1.75rem 0;
+	padding-left: 1.125rem;
+	border-left: 2px solid rgb(var(--site-accent) / 0.4);
+	color: rgb(var(--site-muted));
+	font-style: normal;
 }
 
 .site-article-body blockquote > :last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .site-article-body hr {
-  height: 0;
-  margin: 2.5rem 0;
-  border: 0;
-  border-top: 1px solid rgb(var(--site-rule) / 0.12);
+	height: 0;
+	margin: 2.5rem 0;
+	border: 0;
+	border-top: 1px solid rgb(var(--site-rule) / 0.12);
 }
 
 .site-article-body img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 1.75rem auto;
-  /* Screenshots in these posts are light-UI, so they need an edge to sit on
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 1.75rem auto;
+	/* Screenshots in these posts are light-UI, so they need an edge to sit on
    * the warm paper without floating. */
-  border: 1px solid rgb(var(--site-rule) / 0.14);
-  border-radius: 2px;
+	border: 1px solid rgb(var(--site-rule) / 0.14);
+	border-radius: 2px;
 }
 
 .site-article-body strong {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 /* ---------------------------------------------------------------- tables */
 
 .site-article-body table {
-  width: 100%;
-  margin: 1.75rem 0;
-  border-collapse: collapse;
-  font-size: 0.9375rem;
-  line-height: 1.5;
+	width: 100%;
+	margin: 1.75rem 0;
+	border-collapse: collapse;
+	font-size: 0.9375rem;
+	line-height: 1.5;
 }
 
 .site-article-body th,
 .site-article-body td {
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid rgb(var(--site-rule) / 0.1);
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid rgb(var(--site-rule) / 0.1);
 }
 
 .site-article-body th {
-  font-weight: 600;
-  border-bottom-color: rgb(var(--site-rule) / 0.24);
+	font-weight: 600;
+	border-bottom-color: rgb(var(--site-rule) / 0.24);
 }
 
 .site-article-body :is(th, td):first-child {
-  padding-left: 0;
+	padding-left: 0;
 }
 
 .site-article-body :is(th, td):last-child {
-  padding-right: 0;
+	padding-right: 0;
 }
 
 /* ------------------------------------------------------------ inline code */
 
 .site-article code {
-  font-family:
-    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
-    monospace;
+	font-family:
+		ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 }
 
 .site-article-body :not(pre) > code {
-  padding: 0.1em 0.3em;
-  border-radius: 2px;
-  background-color: rgb(var(--site-ink) / 0.06);
-  font-size: 0.875em;
-  /* Long flags and absolute paths appear inline throughout; break them rather
+	padding: 0.1em 0.3em;
+	border-radius: 2px;
+	background-color: rgb(var(--site-ink) / 0.06);
+	font-size: 0.875em;
+	/* Long flags and absolute paths appear inline throughout; break them rather
    * than let them widen the page. */
-  overflow-wrap: anywhere;
+	overflow-wrap: anywhere;
 }
 
 /* ------------------------------------------------------------ code blocks */
 
 .site-article-body pre,
-.site-article-body pre[class*="language-"] {
-  margin: 1.5rem 0;
-  padding: 0.875rem 1rem;
-  background-color: rgb(var(--article-code-paper));
-  border: 1px solid rgb(var(--site-rule) / 0.12);
-  border-radius: 2px;
-  box-shadow: none;
-  color: rgb(var(--site-ink));
-  font-size: 0.8125rem;
-  line-height: 1.65;
-  tab-size: 2;
-  white-space: pre;
-  overflow-x: auto;
-  /* Only code may scroll sideways; the page itself never does. */
-  overflow-wrap: normal;
-  word-break: normal;
+.site-article-body pre[class*='language-'] {
+	margin: 1.5rem 0;
+	padding: 0.875rem 1rem;
+	background-color: rgb(var(--article-code-paper));
+	border: 1px solid rgb(var(--site-rule) / 0.12);
+	border-radius: 2px;
+	box-shadow: none;
+	color: rgb(var(--site-ink));
+	font-size: 0.8125rem;
+	line-height: 1.65;
+	tab-size: 2;
+	white-space: pre;
+	overflow-x: auto;
+	/* Only code may scroll sideways; the page itself never does. */
+	overflow-wrap: normal;
+	word-break: normal;
 }
 
 @media (min-width: 40rem) {
-  .site-article-body pre,
-  .site-article-body pre[class*="language-"] {
-    font-size: 0.875rem;
-  }
+	.site-article-body pre,
+	.site-article-body pre[class*='language-'] {
+		font-size: 0.875rem;
+	}
 }
 
 .site-article-body pre > code,
-.site-article-body pre code[class*="language-"] {
-  display: block;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  white-space: pre;
-  overflow-wrap: normal;
-  text-shadow: none;
+.site-article-body pre code[class*='language-'] {
+	display: block;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	white-space: pre;
+	overflow-wrap: normal;
+	text-shadow: none;
 }
 
 /* ------------------------------------------------- prism token palette */
@@ -363,30 +362,30 @@
  * Every colour below clears 4.5:1 against rgb(242 238 231).
  */
 
-.site-article-body :is(pre, code)[class*="language-"] {
-  text-shadow: none;
-  hyphens: none;
-  direction: ltr;
-  text-align: left;
-  word-spacing: normal;
+.site-article-body :is(pre, code)[class*='language-'] {
+	text-shadow: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	word-spacing: normal;
 }
 
 .site-article-body :is(pre, code) ::selection,
 .site-article-body :is(pre, code)::selection {
-  background: rgb(var(--site-accent) / 0.18);
+	background: rgb(var(--site-accent) / 0.18);
 }
 
 .site-article-body .token.comment,
 .site-article-body .token.prolog,
 .site-article-body .token.doctype,
 .site-article-body .token.cdata {
-  color: rgb(104 112 126);
+	color: rgb(104 112 126);
 }
 
 .site-article-body .token.punctuation,
 .site-article-body .token.operator,
 .site-article-body .token.entity {
-  color: rgb(87 96 110);
+	color: rgb(87 96 110);
 }
 
 .site-article-body .token.string,
@@ -395,7 +394,7 @@
 .site-article-body .token.regex,
 .site-article-body .token.inserted,
 .site-article-body .token.url {
-  color: rgb(85 96 33);
+	color: rgb(85 96 33);
 }
 
 .site-article-body .token.number,
@@ -403,7 +402,7 @@
 .site-article-body .token.constant,
 .site-article-body .token.symbol,
 .site-article-body .token.deleted {
-  color: rgb(150 62 24);
+	color: rgb(150 62 24);
 }
 
 /* Ink-weighted names come before the teal group so the compound classes these
@@ -415,8 +414,8 @@
 .site-article-body .token.attr-name,
 .site-article-body .token.tag,
 .site-article-body .token.selector {
-  color: rgb(23 32 48);
-  font-weight: 600;
+	color: rgb(23 32 48);
+	font-weight: 600;
 }
 
 .site-article-body .token.keyword,
@@ -424,100 +423,99 @@
 .site-article-body .token.atrule,
 .site-article-body .token.important,
 .site-article-body .token.shebang {
-  color: rgb(13 100 122);
+	color: rgb(13 100 122);
 }
 
 .site-article-body .token.variable,
 .site-article-body .token.parameter,
 .site-article-body .token.namespace {
-  color: rgb(var(--site-ink));
-  font-weight: 400;
+	color: rgb(var(--site-ink));
+	font-weight: 400;
 }
 
 /* Markdown headings arrive as `title important`; they should read as titles,
  * not as accent keywords. */
 .site-article-body .token.title {
-  color: rgb(23 32 48);
-  font-weight: 600;
+	color: rgb(23 32 48);
+	font-weight: 600;
 }
 
 .site-article-body .token.bold {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 .site-article-body .token.italic {
-  font-style: italic;
+	font-style: italic;
 }
 
 /* --------------------------------------------------------- series nav */
 
 .site-article-series {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgb(var(--site-rule) / 0.12);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+	margin-top: 3rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid rgb(var(--site-rule) / 0.12);
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
 }
 
 .site-article-series-label {
-  margin: 0;
-  font-family: var(--site-sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgb(var(--site-muted));
+	margin: 0;
+	font-family: var(--site-sans);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgb(var(--site-muted));
 }
 
 .site-article-series-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
 }
 
 .site-article-series-link {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-  min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+	min-width: 0;
 }
 
 .site-article-series-direction {
-  font-size: 0.8125rem;
-  color: rgb(var(--site-muted));
+	font-size: 0.8125rem;
+	color: rgb(var(--site-muted));
 }
 
 .site-article-series-title {
-  font-size: 1rem;
-  line-height: 1.4;
+	font-size: 1rem;
+	line-height: 1.4;
 }
 
 /* 44px targets for the series controls without turning them into buttons. */
 .site-article-series-title a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
 }
 
 @media (min-width: 40rem) {
-  .site-article-series-links {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2rem;
-  }
+	.site-article-series-links {
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 2rem;
+	}
 
-  /* When only "Next" survives it still belongs on the right. */
-  .site-article-series-link[data-direction="next"] {
-    margin-left: auto;
-    text-align: right;
-  }
+	/* When only "Next" survives it still belongs on the right. */
+	.site-article-series-link[data-direction='next'] {
+		margin-left: auto;
+		text-align: right;
+	}
 
-  .site-article-series-links
-    > .site-article-series-link[data-direction="next"]:only-child {
-    margin-left: auto;
-  }
+	.site-article-series-links > .site-article-series-link[data-direction='next']:only-child {
+		margin-left: auto;
+	}
 }

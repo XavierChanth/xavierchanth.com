@@ -1,8 +1,7 @@
 export const BLOG_TITLE = 'Xavier Chanthavong';
 export const BLOG_URL = 'https://xavierchanth.com';
 export const BLOG_DOMAIN = 'xavierchanth.com';
-export const BLOG_DESCRIPTION =
-  'I write about how software is designed, shipped, and maintained.';
+export const BLOG_DESCRIPTION = 'I write about how software is designed, shipped, and maintained.';
 export const BLOG_AUTHOR = 'Xavier Chanthavong';
 export const BLOG_AUTHOR_GITHUB = 'xavierchanth';
 export const BLOG_AUTHOR_LINKEDIN = 'xavierchanth';

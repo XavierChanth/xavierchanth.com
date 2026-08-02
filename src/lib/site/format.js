@@ -2,11 +2,11 @@
  * Formatting helpers for the site shell and the pages that use it.
  */
 
-const dateFormatter = new Intl.DateTimeFormat("en-CA", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  timeZone: "UTC",
+const dateFormatter = new Intl.DateTimeFormat('en-CA', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+	timeZone: 'UTC'
 });
 
 /**
@@ -16,8 +16,6 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA", {
  * @returns {string}
  */
 export const formatDate = (isoDate) => {
-  const parsed = new Date(`${isoDate}T00:00:00Z`);
-  return Number.isNaN(parsed.getTime())
-    ? isoDate
-    : dateFormatter.format(parsed);
+	const parsed = new Date(`${isoDate}T00:00:00Z`);
+	return Number.isNaN(parsed.getTime()) ? isoDate : dateFormatter.format(parsed);
 };
