@@ -57,7 +57,11 @@
 
     <div class="site-intro-body">
       <p>
-        I am currently building <a href="https://www.woosah.io">Woosah</a>, a
+        I am currently building <a
+          href="https://www.woosah.io"
+          target="_blank"
+          rel="noopener noreferrer">Woosah</a
+        >, a
         startup working on solving problems in the operational assurance space.
         I love all kinds of software and have spent time deepening my knowledge
         across full-stack development, systems programming, and data science and
@@ -96,7 +100,11 @@
       <p>{EDUCATION}</p>
       <p>
         I am a dotfile fanatic, you can find mine on
-        <a href={COLOPHON_DOTFILES.href} rel="noopener noreferrer">GitHub</a>.
+        <a
+          href={COLOPHON_DOTFILES.href}
+          target="_blank"
+          rel="noopener noreferrer">GitHub</a
+        >.
         I maintained them with a massive handwritten posix shell harness until
         agents got good enough to rewrite it all in nix.
       </p>

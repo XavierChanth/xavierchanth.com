@@ -3,7 +3,7 @@ title: 'First Post'
 description: "An introduction to this blog - why it exists"
 author: 'Xavier Chanthavong'
 date: '2024-12-29'
-published: true
+published: false
 ---
 
 I currently work at a startup called [Atsign](https://atsign.com), mainly

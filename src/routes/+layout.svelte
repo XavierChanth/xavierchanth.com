@@ -117,7 +117,7 @@
 
   <footer class="site-footer">
     <div class="site-shell site-footer-inner">
-      <p class="site-meta">&copy; 2026 {BLOG_AUTHOR}</p>
+      <p class="site-meta">&copy; 2024–2026 {BLOG_AUTHOR}</p>
       <LinkRow links={footerLinks} label="Elsewhere" />
     </div>
   </footer>

@@ -1,6 +1,7 @@
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-static';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeExternalLinks from './scripts/rehype-external-links.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,7 +16,7 @@ const config = {
   preprocess: [
     mdsvex({
       extensions: ['.md'],
-      rehypePlugins: [rehypePrism]
+      rehypePlugins: [rehypePrism, rehypeExternalLinks]
     })
   ]
 };

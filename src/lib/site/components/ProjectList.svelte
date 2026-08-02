@@ -15,6 +15,7 @@
           {#each project.links as link, index (link.href)}
             {#if index > 0}{" & "}{/if}<a
               href={link.href}
+              target="_blank"
               rel="noopener noreferrer">{link.label}</a
             >
           {/each}

@@ -4,6 +4,8 @@ description: "One who leverages time into accelerated growth, allowing them to b
 author: 'Xavier Chanthavong'
 date: '2025-08-10'
 published: true
+tags:
+  - 'self-improvement'
 ---
 
 ## **TLDR**

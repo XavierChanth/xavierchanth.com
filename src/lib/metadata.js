@@ -1,4 +1,4 @@
-export const BLOG_TITLE = 'XavierChanth';
+export const BLOG_TITLE = 'Xavier Chanthavong';
 export const BLOG_URL = 'https://xavierchanth.com';
 export const BLOG_DOMAIN = 'xavierchanth.com';
 export const BLOG_DESCRIPTION =
