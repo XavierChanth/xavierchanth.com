@@ -2,10 +2,10 @@
   import "../app.css";
   import "$lib/site/styles/site.css";
   import LinkRow from "$lib/site/components/LinkRow.svelte";
+  import { renderJsonLd } from "$lib/json-ld.js";
   import { page } from "$app/state";
   import {
     BLOG_AUTHOR,
-    BLOG_AUTHOR_EMAIL,
     BLOG_AUTHOR_GITHUB,
     BLOG_AUTHOR_LINKEDIN,
     BLOG_DESCRIPTION,
@@ -33,7 +33,6 @@
       label: "LinkedIn",
       href: `https://www.linkedin.com/in/${BLOG_AUTHOR_LINKEDIN}`,
     },
-    { label: "Email", href: `mailto:${BLOG_AUTHOR_EMAIL}` },
   ];
 
   const websiteJsonLd = {
@@ -89,8 +88,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={BLOG_IMAGE} />
 
-  <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
-  <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html renderJsonLd(websiteJsonLd)}
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html renderJsonLd(personJsonLd)}
 </svelte:head>
 
 <div class="site-root">

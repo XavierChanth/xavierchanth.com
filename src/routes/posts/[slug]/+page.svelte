@@ -4,6 +4,7 @@
   import "$lib/site/styles/article.css";
   import ArticleHeader from "$lib/site/components/ArticleHeader.svelte";
   import SeriesNav from "$lib/site/components/SeriesNav.svelte";
+  import { renderJsonLd } from "$lib/json-ld.js";
   import { BLOG_AUTHOR, BLOG_IMAGE, BLOG_TITLE, BLOG_URL } from "$lib/metadata";
 
   /** @type {{ data: Md.ResolvedPost }}*/
@@ -68,12 +69,10 @@
   <meta name="twitter:description" content={data.description} />
   <meta name="twitter:image" content={BLOG_IMAGE} />
 
-  <script type="application/ld+json">
-{JSON.stringify(articleJsonLd)}
-  </script>
-  <script type="application/ld+json">
-{JSON.stringify(breadcrumbJsonLd)}
-  </script>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html renderJsonLd(articleJsonLd)}
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html renderJsonLd(breadcrumbJsonLd)}
 </svelte:head>
 
 <!--

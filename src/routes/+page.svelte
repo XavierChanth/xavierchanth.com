@@ -7,21 +7,18 @@
   import { PROJECTS } from "$lib/site/data/projects.js";
   import { WORK } from "$lib/site/data/work.js";
   import {
-    BIO,
     COLOPHON_DOTFILES,
     CONTACT_LINKS,
     EDUCATION,
     NAME,
     PORTRAIT,
-    ROLE,
   } from "$lib/site/data/profile.js";
-  import { BLOG_URL } from "$lib/metadata";
+  import { BLOG_DESCRIPTION, BLOG_URL } from "$lib/metadata";
 
   let { data } = $props();
 
-  const TITLE = "Xavier Chanthavong — a writer who builds";
-  const DESCRIPTION =
-    "Writing, work, and open source from Xavier Chanthavong: Co-Founder & CTO at Woosah Technologies and an independent software consultant since 2017.";
+  const TITLE = "Xavier Chanthavong";
+  const DESCRIPTION = BLOG_DESCRIPTION;
   const canonical = `${BLOG_URL}/`;
 
   /** @type {{ label: string; href: string }[]} */
@@ -55,16 +52,24 @@
         width={PORTRAIT.width}
         height={PORTRAIT.height}
       />
-      <div>
-        <h1 class="site-title">{NAME}</h1>
-        <p class="site-lede site-muted">{ROLE}</p>
-      </div>
+      <h1 class="site-title">{NAME}</h1>
     </div>
 
     <div class="site-intro-body">
-      {#each BIO as paragraph (paragraph)}
-        <p>{paragraph}</p>
-      {/each}
+      <p>
+        I am currently building <a href="https://www.woosah.io">Woosah</a>, a
+        startup working on solving problems in the operational assurance space.
+        I love all kinds of software and have spent time deepening my knowledge
+        across full-stack development, systems programming, and data science and
+        machine learning. I write about how software is designed, shipped, and
+        maintained.
+      </p>
+      <p>
+        Before Woosah, I was a senior engineer at Atsign. I've also worked as an
+        independent consultant since 2017, serving clients across technology
+        startups, public-sector records, mining services, healthcare, media and
+        entertainment, and recreation.
+      </p>
       <LinkRow links={CONTACT_LINKS} label="Contact" />
     </div>
   </div>

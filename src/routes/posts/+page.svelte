@@ -3,6 +3,7 @@
   import PostList from "$lib/site/components/PostList.svelte";
   import Section from "$lib/site/components/Section.svelte";
   import TaxonomyBrowse from "$lib/site/components/TaxonomyBrowse.svelte";
+  import { renderJsonLd } from "$lib/json-ld.js";
   import { BLOG_DESCRIPTION, BLOG_TITLE, BLOG_URL } from "$lib/metadata";
 
   const { data } = $props();
@@ -49,9 +50,8 @@
   <meta name="twitter:title" content={TITLE} />
   <meta name="twitter:description" content={DESCRIPTION} />
 
-  <script type="application/ld+json">
-{JSON.stringify(blogJsonLd)}
-  </script>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html renderJsonLd(blogJsonLd)}
 </svelte:head>
 
 <div class="site-shell">
