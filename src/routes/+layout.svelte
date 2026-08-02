@@ -83,7 +83,7 @@
 	<meta property="og:site_name" content={BLOG_TITLE} />
 	<meta property="og:image" content={BLOG_IMAGE} />
 
-	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:image" content={BLOG_IMAGE} />
 
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
