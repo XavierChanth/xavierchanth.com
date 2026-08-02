@@ -8,11 +8,14 @@
 </script>
 
 <ul class="site-list">
-  {#each projects as project (project.href)}
+  {#each projects as project (project.links[0].href)}
     <li class="site-entry">
       <div class="site-entry-head">
         <h3 class="site-entry-title">
-          <a href={project.href} rel="noopener noreferrer">{project.name}</a>
+          {#each project.links as link, index (link.href)}
+            {#if index > 0} &amp; {/if}
+            <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+          {/each}
         </h3>
         <p class="site-meta">{project.context}</p>
       </div>
