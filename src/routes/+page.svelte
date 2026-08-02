@@ -95,11 +95,10 @@
     <div class="site-colophon site-small site-muted site-section-footer">
       <p>{EDUCATION}</p>
       <p>
-        Machine setup lives in
-        <a href={COLOPHON_DOTFILES.href} rel="noopener noreferrer"
-          >{COLOPHON_DOTFILES.label}</a
-        >.
-        {COLOPHON_DOTFILES.description}
+        I am a dotfile fanatic, you can find mine on
+        <a href={COLOPHON_DOTFILES.href} rel="noopener noreferrer">GitHub</a>.
+        I maintained them with a massive handwritten posix shell harness until
+        agents got good enough to rewrite it all in nix.
       </p>
     </div>
   </Section>

@@ -26,7 +26,5 @@ export const EDUCATION =
   "Computer Science, Ontario Tech University — Data Science specialization with distinction, Mathematics minor.";
 
 export const COLOPHON_DOTFILES = {
-  label: "dotfiles",
   href: "https://github.com/xavierchanth/dotfiles",
-  description: "Nix flake based configuration for my machines.",
 };
