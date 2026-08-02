@@ -49,7 +49,7 @@ async function getRssXml() {
       .ele('description').txt(post.description).up()
       .ele('dc:creator').txt(BLOG_AUTHOR).up()
       .ele('pubDate').txt(new Date(post.date).toUTCString()).up()
-      .ele('content:encoded').txt(await getHtmlForPost(post.slug)).up()
+      .ele('content:encoded').txt((await getHtmlForPost(post.slug)).replaceAll('&', '&amp;')).up()
       .up();
   }
 
