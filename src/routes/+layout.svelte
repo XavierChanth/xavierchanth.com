@@ -11,7 +11,9 @@
 		BLOG_DESCRIPTION,
 		BLOG_IMAGE,
 		BLOG_TITLE,
-		BLOG_URL
+		BLOG_URL,
+		CONSULTING_BUSINESS_NAME,
+		WOOSAH_BUSINESS_NAME
 	} from '$lib/metadata';
 
 	let { children } = $props();
@@ -36,27 +38,29 @@
 	];
 
 	/**
-	 * Legal identities shown in the footer, with each address stored as its
-	 * separate parts: local part first, then domain labels.
+	 * Legal identities shown in the footer. Addresses are raster images so they
+	 * are not exposed in the page source to basic text scrapers.
 	 *
-	 * The address is never written out in full anywhere a scraper can lift it —
-	 * no `mailto:`, no attribute, no single text node. The " at " and " dot "
-	 * connectors are drawn by CSS generated content (see `site.css`), so the
-	 * markup only ever contains disjoint fragments while sighted readers and
-	 * screen readers both get the complete, human-readable address.
-	 *
-	 * @type {{ name: string; role: string; address: string[] }[]}
+	 * @type {{ name: string; role: string; addressImage: { src: string; width: number; height: number } }[]}
 	 */
 	const footerEntities = [
 		{
-			name: 'Chanthavong Consulting Inc.',
-			role: 'Consulting inquiries',
-			address: ['xavier', 'chanthavongconsulting', 'ca']
+			name: CONSULTING_BUSINESS_NAME,
+			role: 'Consulting & fractional inquiries',
+			addressImage: {
+				src: '/assets/contact/professional-contact.png',
+				width: 229,
+				height: 18
+			}
 		},
 		{
-			name: 'Woosah™ Technologies',
-			role: 'Product inquiries',
-			address: ['xavier', 'woosah', 'io']
+			name: WOOSAH_BUSINESS_NAME,
+			role: 'Inquiries about my startup',
+			addressImage: {
+				src: '/assets/contact/creative-contact.png',
+				width: 134,
+				height: 18
+			}
 		}
 	];
 
@@ -148,11 +152,13 @@
 							<dt class="site-footer-entity-name">{entity.name}</dt>
 							<dd class="site-footer-entity-detail">
 								<span class="site-footer-role">{entity.role}</span>
-								<span class="site-footer-address">
-									{#each entity.address as part, index (index)}<span
-											class="site-footer-address-part">{part}</span
-										>{/each}
-								</span>
+								<img
+									class="site-footer-address"
+									src={entity.addressImage.src}
+									alt="Email address"
+									width={entity.addressImage.width}
+									height={entity.addressImage.height}
+								/>
 							</dd>
 						</div>
 					{/each}

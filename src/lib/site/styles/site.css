@@ -420,18 +420,10 @@
 	color: rgb(var(--site-muted) / 0.85);
 }
 
-/*
- * Anti-scraping: the address is stored as separate fragments in the markup and
- * the " at " / " dot " connectors are drawn here, so no single node — and no
- * attribute — holds the complete address. Generated content is still part of
- * the accessibility tree, so assistive technology reads the whole address.
- */
-.site-footer-address-part + .site-footer-address-part::before {
-	content: '\00a0dot\00a0';
-}
-
-.site-footer-address-part:nth-child(2)::before {
-	content: '\00a0at\00a0';
+.site-footer-address {
+	display: block;
+	max-width: 100%;
+	margin-top: 0.125rem;
 }
 
 .site-footer-base {

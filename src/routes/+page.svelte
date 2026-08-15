@@ -13,7 +13,7 @@
 		NAME,
 		PORTRAIT
 	} from '$lib/site/data/profile.js';
-	import { BLOG_DESCRIPTION, BLOG_URL } from '$lib/metadata';
+	import { BLOG_DESCRIPTION, BLOG_URL, CONSULTING_BUSINESS_NAME } from '$lib/metadata';
 
 	let { data } = $props();
 
@@ -57,7 +57,7 @@
 
 		<div class="site-intro-body">
 			<p>
-				I am currently building <a
+				I am an independent software consultant and currently building <a
 					href="https://www.woosah.io"
 					target="_blank"
 					rel="noopener noreferrer">Woosah</a
@@ -67,9 +67,9 @@
 				designed, shipped, and maintained.
 			</p>
 			<p>
-				Before Woosah, I was a senior engineer at Atsign. I've also worked as an independent
-				consultant since 2017, serving clients across technology startups, public-sector records,
-				mining services, healthcare, media and entertainment, and recreation.
+				Before Woosah, I was a senior engineer at Atsign. Through {CONSULTING_BUSINESS_NAME}, I've
+				served clients across technology startups, public-sector records, mining services,
+				healthcare, media and entertainment, and recreation since 2017.
 			</p>
 			<LinkRow links={CONTACT_LINKS} label="Contact" />
 		</div>

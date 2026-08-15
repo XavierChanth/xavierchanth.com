@@ -5,5 +5,7 @@ export const BLOG_DESCRIPTION = 'I write about how software is designed, shipped
 export const BLOG_AUTHOR = 'Xavier Chanthavong';
 export const BLOG_AUTHOR_GITHUB = 'xavierchanth';
 export const BLOG_AUTHOR_LINKEDIN = 'xavierchanth';
+export const CONSULTING_BUSINESS_NAME = 'Chanthavong Consulting Inc.';
+export const WOOSAH_BUSINESS_NAME = 'Woosah™ Technologies';
 export const BLOG_IMAGE_FILENAME = 'Xavier_profile_2024.jpeg';
 export const BLOG_IMAGE = `${BLOG_URL}/assets/${BLOG_IMAGE_FILENAME}`;
