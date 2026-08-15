@@ -35,6 +35,31 @@
 		}
 	];
 
+	/**
+	 * Legal identities shown in the footer, with each address stored as its
+	 * separate parts: local part first, then domain labels.
+	 *
+	 * The address is never written out in full anywhere a scraper can lift it —
+	 * no `mailto:`, no attribute, no single text node. The " at " and " dot "
+	 * connectors are drawn by CSS generated content (see `site.css`), so the
+	 * markup only ever contains disjoint fragments while sighted readers and
+	 * screen readers both get the complete, human-readable address.
+	 *
+	 * @type {{ name: string; role: string; address: string[] }[]}
+	 */
+	const footerEntities = [
+		{
+			name: 'Chanthavong Consulting Inc.',
+			role: 'Consulting inquiries',
+			address: ['xavier', 'chanthavongconsulting', 'ca']
+		},
+		{
+			name: 'Woosah™ Technologies',
+			role: 'Product inquiries',
+			address: ['xavier', 'woosah', 'io']
+		}
+	];
+
 	const websiteJsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
@@ -115,8 +140,29 @@
 
 	<footer class="site-footer">
 		<div class="site-shell site-footer-inner">
-			<p class="site-meta">&copy; 2024–2026 {BLOG_AUTHOR}</p>
-			<LinkRow links={footerLinks} label="Elsewhere" />
+			<section class="site-footer-contact" aria-labelledby="footer-contact-title">
+				<h2 class="site-footer-title" id="footer-contact-title">Contact</h2>
+				<dl class="site-footer-entities">
+					{#each footerEntities as entity (entity.name)}
+						<div class="site-footer-entity">
+							<dt class="site-footer-entity-name">{entity.name}</dt>
+							<dd class="site-footer-entity-detail">
+								<span class="site-footer-role">{entity.role}</span>
+								<span class="site-footer-address">
+									{#each entity.address as part, index (index)}<span
+											class="site-footer-address-part">{part}</span
+										>{/each}
+								</span>
+							</dd>
+						</div>
+					{/each}
+				</dl>
+			</section>
+
+			<div class="site-footer-base">
+				<p class="site-meta">&copy; 2024–2026 {BLOG_AUTHOR}</p>
+				<LinkRow links={footerLinks} label="Elsewhere" />
+			</div>
 		</div>
 	</footer>
 </div>
