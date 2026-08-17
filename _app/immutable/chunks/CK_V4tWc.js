@@ -1,0 +1,1 @@
+function e(r){return JSON.stringify(r).replaceAll("<","\\u003C").replaceAll(">","\\u003E").replaceAll("&","\\u0026")}function l(r){return`<script type="application/ld+json">${e(r)}<\/script>`}export{l as r};

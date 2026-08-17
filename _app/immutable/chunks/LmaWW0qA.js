@@ -1,0 +1,1 @@
+import{b as f,h as o,e as l,E as v,f as y,i as m,j as p,k as i,H as T,l as A}from"./-01Tas95.js";import{B as E}from"./BuxTsni-.js";function g(d,_,e){var s;o&&(s=A,l());var r=new E(d);f(()=>{var a=_()??null;if(o){var h=y(s),c=h===T,u=a!==null;if(c!==u){var t=m();p(t),r.anchor=t,i(!1),r.ensure(a,a&&(n=>e(n,a))),i(!0);return}}r.ensure(a,a&&(n=>e(n,a)))},v)}export{g as c};
