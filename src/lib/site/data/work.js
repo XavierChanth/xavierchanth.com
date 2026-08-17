@@ -9,7 +9,7 @@
 export const WORK = [
 	{
 		org: 'Woosah Technologies',
-		role: 'Co-Founder & CTO',
+		role: 'Co-Founder & CPTO',
 		period: 'Present',
 		summary: 'Building operations-assurance infrastructure for distributed systems.'
 	},
